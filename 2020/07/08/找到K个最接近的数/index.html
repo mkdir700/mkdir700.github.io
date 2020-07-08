@@ -99,13 +99,13 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    1.8k
+                    3.8k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    2 mins.
+                    3 mins.
                 </span>
                 
                 
@@ -152,28 +152,63 @@
 </ol>
 <p><strong>更新(2017/9/19):</strong><br>这个参数 <em>arr</em> 已经被改变为一个<strong>整数数组</strong>（而不是整数列表）。 <strong>请重新加载代码定义以获取最新更改。</strong></p>
 <hr>
-<p>问题可以转换为 <strong>寻找最左边界</strong></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>本文参考这位大佬的题解[方法二： 二分查找最优区间的左边界]</p>
+<p><a href="https://leetcode-cn.com/problems/find-k-closest-elements/solution/pai-chu-fa-shuang-zhi-zhen-er-fen-fa-python-dai-ma/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-k-closest-elements/solution/pai-chu-fa-shuang-zhi-zhen-er-fen-fa-python-dai-ma/</a></p>
+<p>此问题转换为 <strong>查找最优区间的左边界</strong></p>
 <pre><code>输入: [1,2,3,4,5], k=4, x=3
-输出: [1,2,3,4]</code></pre><p>例如这个示例，<strong>k为4</strong>，则可能有 <strong>[1,2,3,4] &amp; [2,3,4,5]</strong>，所以最左边界的区间在 <strong>[0, 1]</strong></p>
-<p>也就是说最左边界的区间是<strong>[0, length-k]</strong> (length是数组长度)</p>
-<p>那么，现在的问题就转换成了 <strong>在这个区间内找到一个元素，使得满足题目条件</strong></p>
+输出: [1,2,3,4]</code></pre><p>例如这个示例，<strong>k为4</strong>，即区间的长度为4，这个区间可能是 <strong>[1,2,3,4] 和 [2,3,4,5]</strong>，所以最左边界元素的区间在 <strong>[0, 1]</strong>范围内</p>
+<p>也就是说，<strong>最优区间的左边界</strong>在<strong>[0, length-k]</strong>这个区间中</p>
+<p>那么，现在的问题就转换成了 在<strong>[0, length-k]</strong>区间内找到一个元素，这个元素是<strong>最优区间的左边界</strong></p>
 <p>来整理一下题目的条件：</p>
 <blockquote>
 <p><strong>x</strong> ： 目标值</p>
 <p><strong>k</strong> ： 结果数组内的元素个数</p>
 </blockquote>
 <ol>
-<li>找到的结果数组内的每个元素与 <strong>x</strong> 的差值都是最小的</li>
-<li>找到的结果数组必须升序排列的</li>
+<li>最优区间内的每个元素与 <strong>x</strong> 的差值都是最小的</li>
+<li>找到的最优区间必须升序排列的</li>
 </ol>
-<p>程序执行动图</p>
-<p><img src="https://s1.ax1x.com/2020/07/08/UVsOsg.gif" alt="UVsOsg.gif"></p>
-<pre><code class="python">class Solution:
+<h2 id="执行步骤"><a href="#执行步骤" class="headerlink" title="执行步骤"></a>执行步骤</h2><ol>
+<li>找到左边界元素所在区间</li>
+</ol>
+<blockquote>
+<p>这个很简单，就是[0, length-k]</p>
+</blockquote>
+<ol start="2">
+<li>区间内的中位数(<strong>x - arr[mid]</strong>与<strong>arr[mid+k] - x</strong>进行比较)</li>
+</ol>
+<blockquote>
+<p>首先明白此时<strong>mid</strong>和<strong>mid+k</strong>各自代表的意义是什么？</p>
+<p>mid：“最优区间”的左边界，可能当前不是最优区间，待进一步二分查找</p>
+<p>mid+k：“最优区间”右边界的<strong>右边一位</strong></p>
+<p>1) 如果<strong>x - arr[mid] &gt; arr[mid+k] - x</strong>,说明什么？</p>
+<ul>
+<li>说明 <strong>x</strong> 更应该靠近<strong>arr[mid+k]</strong>一些， 即<strong>arr[mid, mid+k]</strong>这个区间整体向右滑动，才可能成为 <strong>最优区间</strong></li>
+<li>要使得这个区间<strong>向右滑动</strong>，也就是将这个区间的<strong>左边界右移</strong>。</li>
+<li>回到二分查找，就是向右收缩 =&gt; <strong>left = mid + 1</strong></li>
+</ul>
+<p>2) 如果<strong>x - arr[mid] &lt; arr[mid+k] - x</strong>,说明什么？</p>
+<ul>
+<li>说明 <strong>mid + k位置 及 右边所有的元素</strong> 都不符合最优区间（因为是升序的），当前的“最优区间”为 arr[mid, mid + k]。但是mid之前可能存在有元素哦，所以mid之前的元素应该继续进行判断</li>
+<li>mid之前的元素可能有更优的，就是区间<strong>可能向左移动</strong>，也可能当前mid就是最优区间的左边界（不移动）</li>
+<li>为了找到更合适的mid，所以应该收缩[0, length-k]这个区间，因为是去找mid及mid之前的元素，所以是向左收缩，即 right = mid</li>
+<li>为什么是right = mid，而不是right = mid - 1？因为mid这个位置的值，可能刚好就是<strong>最优区间的左边界</strong>，如果mid-1就错过了</li>
+</ul>
+<p>3) 如果<strong>x - arr[mid] = arr[mid+k] - x</strong>,说明什么？</p>
+<ul>
+<li>仔细想想，这两者差值相等的情况是和 <strong>2)</strong> 的情况一致</li>
+</ul>
+</blockquote>
+<ol start="3">
+<li>经过左右边界的不断收缩，最终找到的一个元素，这个元素就是 <strong>最优区间的左边界</strong>,即可求出答案</li>
+</ol>
+<p><img src="https://s1.ax1x.com/2020/07/08/UVsOsg.gif" alt="程序执行动图"></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="python">class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -&gt; List[int]:
-        left, right = 0, len(arr) - k
+        left, right = 0, len(arr) - k # 确定最优区间的左边界所在区间范围
         while left &lt; right:
-            mid = (left + right) &gt;&gt; 1
-            if x - arr[mid] &gt; arr[mid+k] - x:
+            mid = (left + right) &gt;&gt; 1 # 找到中位数
+            if x - arr[mid] &gt; arr[mid+k] - x: # 比较差值，收缩区间
                 left = mid + 1
             elif x - arr[mid] &lt;= arr[mid+k] - x:
                 right = mid
@@ -236,7 +271,7 @@
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#找到K个最接近的元素"><span class="toc-number">1.</span> <span class="toc-text">找到K个最接近的元素</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#找到K个最接近的元素"><span class="toc-number">1.</span> <span class="toc-text">找到K个最接近的元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">1.1.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行步骤"><span class="toc-number">1.2.</span> <span class="toc-text">执行步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">1.3.</span> <span class="toc-text">代码</span></a></li></ol></li></ol>
                 </div>
             </div>
             
