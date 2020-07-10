@@ -5,15 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>二分查找模板 - Mkdir700的算法笔记</title>
+    <title>658.找到K个最接近的元素 - Mkdir700的算法笔记</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Mkdir700 算法笔记,"> 
-    <meta name="description" content="Mkdir700的算法笔记,最近又开始刷算法题，准备在这个暑假把算法练练。
-本文模板均来自leetcode
-https://leetcode-cn.com/explore/learn/card/binary-search/
-二,"> 
+    <meta name="description" content="Mkdir700的算法笔记,找到K个最接近的元素给定一个排序好的数组，两个整数 k 和 x，从数组中找到最靠近 x（两数之差最小）的 k 个数。返回的结果必须要是按升序排好的。如果有两个数与 x 的差值一样，优先选择数值较小的,"> 
     <meta name="author" content="Mkdir700"> 
     <link rel="alternative" href="atom.xml" title="Mkdir700的算法笔记" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -60,7 +57,7 @@ https://leetcode-cn.com/explore/learn/card/binary-search/
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://mkdir700.github.io">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">二分查找模板</h3>
+        <h3 class="subtitle">658.找到K个最接近的元素</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -90,19 +87,19 @@ https://leetcode-cn.com/explore/learn/card/binary-search/
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/算法模板"><b>「
-                    </b>算法模板<b> 」</b></a>
+                <a href="/categories/算法题"><b>「
+                    </b>算法题<b> 」</b></a>
                 
-                July 08, 2020
+                July 10, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2020/07/08/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%A8%A1%E6%9D%BF/" title="二分查找模板" class="">二分查找模板</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/07/10/658.%E6%89%BE%E5%88%B0K%E4%B8%AA%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E6%95%B0/" title="658.找到K个最接近的元素" class="">658.找到K个最接近的元素</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    3.7k
+                    3.8k
                 </span>
                 
                 
@@ -142,101 +139,75 @@ https://leetcode-cn.com/explore/learn/card/binary-search/
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p>最近又开始刷算法题，准备在这个暑假把算法练练。</p>
-<p>本文模板均来自leetcode</p>
-<p><a href="https://leetcode-cn.com/explore/learn/card/binary-search/" target="_blank" rel="noopener">https://leetcode-cn.com/explore/learn/card/binary-search/</a></p>
-<h2 id="二分查找模板-1"><a href="#二分查找模板-1" class="headerlink" title="二分查找模板 #1"></a>二分查找模板 #1</h2><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="python">def binarySearch(nums, target):
-    &quot;&quot;&quot;
-    :type nums: List[int]
-    :type target: int
-    :rtype: int
-    &quot;&quot;&quot;
-    if len(nums) == 0:
-        return -1
-
-    left, right = 0, len(nums) - 1
-    while left &lt;= right:
-        mid = (left + right) // 2
-        if nums[mid] == target:
-            return mid
-        elif nums[mid] &lt; target:
-            left = mid + 1
-        else:
-            right = mid - 1
-
-    # End Condition: left &gt; right
-    return -1</code></pre>
-<h3 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h3><blockquote>
-<p>用于查找可以通过<em>访问数组中的单个索引</em>来确定的元素或条件。</p>
-</blockquote>
-<h2 id="二分查找模板-2"><a href="#二分查找模板-2" class="headerlink" title="二分查找模板 #2"></a>二分查找模板 #2</h2><h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre><code class="python">def binarySearch(nums, target):
-    &quot;&quot;&quot;
-    :type nums: List[int]
-    :type target: int
-    :rtype: int
-    &quot;&quot;&quot;
-    if len(nums) == 0:
-        return -1
-
-    left, right = 0, len(nums) # 注意right = len(nums)
-    while left &lt; right:
-        mid = (left + right) // 2
-        if nums[mid] == target:
-            return mid
-        elif nums[mid] &lt; target:
-            left = mid + 1
-        else:
-            right = mid
-
-    # Post-processing:
-    # End Condition: left == right
-    if left != len(nums) and nums[left] == target:
-        return left
-    return -1</code></pre>
-<h3 id="用途-1"><a href="#用途-1" class="headerlink" title="用途"></a>用途</h3><blockquote>
-<p>模板 #2 是二分查找的高级模板。它用于查找需要<em>访问数组中*</em>当前索引及其直接右邻居索引***的元素或条件。</p>
-</blockquote>
-<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><h4 id="寻找峰值"><a href="#寻找峰值" class="headerlink" title="寻找峰值"></a>寻找峰值</h4><p>峰值元素是指其值大于左右相邻值的元素。</p>
-<p>给定一个输入数组 <code>nums</code>，其中 <code>nums[i] ≠ nums[i+1]</code>，找到峰值元素并返回其索引。</p>
-<p>数组可能包含多个峰值，在这种情况下，返回任何一个峰值所在位置即可。</p>
-<p>你可以假设 <code>nums[-1] = nums[n] = -∞</code>。</p>
+            <h1 id="找到K个最接近的元素"><a href="#找到K个最接近的元素" class="headerlink" title="找到K个最接近的元素"></a>找到K个最接近的元素</h1><p>给定一个排序好的数组，两个整数 <code>k</code> 和 <code>x</code>，从数组中找到最靠近 <code>x</code>（两数之差最小）的 <code>k</code> 个数。返回的结果必须要是按升序排好的。如果有两个数与 <code>x</code> 的差值一样，优先选择数值较小的那个数。</p>
 <p><strong>示例 1:</strong></p>
-<pre><code>输入: nums = [1,2,3,1]
-输出: 2
-解释: 3 是峰值元素，你的函数应该返回其索引 2。</code></pre><p><strong>示例 2:</strong></p>
-<pre><code>输入: nums = [1,2,1,3,5,6,4]
-输出: 1 或 5 
-解释: 你的函数可以返回索引 1，其峰值元素为 2；
-     或者返回索引 5， 其峰值元素为 6。</code></pre><p><strong>说明:</strong></p>
-<p>你的解法应该是 <em>O</em>(<em>logN</em>) 时间复杂度的。</p>
-<h2 id="二分查找模板-3"><a href="#二分查找模板-3" class="headerlink" title="二分查找模板 #3"></a>二分查找模板 #3</h2><h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre><code class="python">def binarySearch(nums, target):
-    &quot;&quot;&quot;
-    :type nums: List[int]
-    :type target: int
-    :rtype: int
-    &quot;&quot;&quot;
-    if len(nums) == 0:
-        return -1
-
-    left, right = 0, len(nums) - 1
-    while left + 1 &lt; right:
-        mid = (left + right) // 2
-        if nums[mid] == target:
-            return mid
-        elif nums[mid] &lt; target:
-            left = mid
-        else:
-            right = mid
-
-    # Post-processing:
-    # End Condition: left + 1 == right
-    if nums[left] == target: return left
-    if nums[right] == target: return right
-    return -1</code></pre>
-<h3 id="用途-2"><a href="#用途-2" class="headerlink" title="用途"></a>用途</h3><blockquote>
-<p>模板 #3 是二分查找的另一种独特形式。 它用于搜索需要<em>访问当前索引及其在数组中的直接左右邻居索引</em>的元素或条件。</p>
+<pre><code>输入: [1,2,3,4,5], k=4, x=3
+输出: [1,2,3,4]</code></pre><p><strong>示例 2:</strong></p>
+<pre><code>输入: [1,2,3,4,5], k=4, x=-1
+输出: [1,2,3,4]</code></pre><p><strong>说明:</strong></p>
+<ol>
+<li>k 的值为正数，且总是小于给定排序数组的长度。</li>
+<li>数组不为空，且长度不超过 104</li>
+<li>数组里的每个元素与 x 的绝对值不超过 104</li>
+</ol>
+<p><strong>更新(2017/9/19):</strong><br>这个参数 <em>arr</em> 已经被改变为一个<strong>整数数组</strong>（而不是整数列表）。 <strong>请重新加载代码定义以获取最新更改。</strong></p>
+<hr>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>本文参考这位大佬的题解[方法二： 二分查找最优区间的左边界]</p>
+<p><a href="https://leetcode-cn.com/problems/find-k-closest-elements/solution/pai-chu-fa-shuang-zhi-zhen-er-fen-fa-python-dai-ma/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-k-closest-elements/solution/pai-chu-fa-shuang-zhi-zhen-er-fen-fa-python-dai-ma/</a></p>
+<p>此问题转换为 <strong>查找最优区间的左边界</strong></p>
+<pre><code>输入: [1,2,3,4,5], k=4, x=3
+输出: [1,2,3,4]</code></pre><p>例如这个示例，<strong>k为4</strong>，即区间的长度为4，这个区间可能是 <strong>[1,2,3,4] 和 [2,3,4,5]</strong>，所以最左边界元素的区间在 <strong>[0, 1]</strong>范围内</p>
+<p>也就是说，<strong>最优区间的左边界</strong>在<strong>[0, length-k]</strong>这个区间中</p>
+<p>那么，现在的问题就转换成了 在<strong>[0, length-k]</strong>区间内找到一个元素，这个元素是<strong>最优区间的左边界</strong></p>
+<p>来整理一下题目的条件：</p>
+<blockquote>
+<p><strong>x</strong> ： 目标值</p>
+<p><strong>k</strong> ： 结果数组内的元素个数</p>
 </blockquote>
-<h3 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h3>
+<ol>
+<li>最优区间内的每个元素与 <strong>x</strong> 的差值都是最小的</li>
+<li>找到的最优区间必须升序排列的</li>
+</ol>
+<h3 id="步骤解析"><a href="#步骤解析" class="headerlink" title="步骤解析"></a>步骤解析</h3><p>1.找到左边界元素所在区间</p>
+<blockquote>
+<p>这个很简单，就是[0, length-k]</p>
+</blockquote>
+<p>2.区间内的中位数(<strong>x - arr[mid]</strong>与<strong>arr[mid+k] - x</strong>进行比较)</p>
+<blockquote>
+<p>首先明白此时<strong>mid</strong>和<strong>mid+k</strong>各自代表的意义是什么？</p>
+<p>mid：“最优区间”的左边界，可能当前不是最优区间，待进一步二分查找</p>
+<p>mid+k：“最优区间”右边界的<strong>右边一位</strong></p>
+<p>1) 如果<strong>x - arr[mid] &gt; arr[mid+k] - x</strong>,说明什么？</p>
+<ul>
+<li>说明 <strong>x</strong> 更应该靠近<strong>arr[mid+k]</strong>一些， 即<strong>arr[mid, mid+k]</strong>这个区间整体向右滑动，才可能成为 <strong>最优区间</strong></li>
+<li>要使得这个区间<strong>向右滑动</strong>，也就是将这个区间的<strong>左边界右移</strong>。</li>
+<li>回到二分查找，就是向右收缩 =&gt; <strong>left = mid + 1</strong></li>
+</ul>
+<p>2) 如果<strong>x - arr[mid] &lt; arr[mid+k] - x</strong>,说明什么？</p>
+<ul>
+<li>说明 <strong>mid + k位置 及 右边所有的元素</strong> 都不符合最优区间（因为是升序的），当前的“最优区间”为 arr[mid, mid + k]。但是mid之前可能存在有元素哦，所以mid之前的元素应该继续进行判断</li>
+<li>mid之前的元素可能有更优的，就是区间<strong>可能向左移动</strong>，也可能当前mid就是最优区间的左边界（不移动）</li>
+<li>为了找到更合适的mid，所以应该收缩[0, length-k]这个区间，因为是去找mid及mid之前的元素，所以是向左收缩，即 right = mid</li>
+<li>为什么是right = mid，而不是right = mid - 1？因为mid这个位置的值，可能刚好就是<strong>最优区间的左边界</strong>，如果mid-1就错过了</li>
+</ul>
+<p>3) 如果<strong>x - arr[mid] = arr[mid+k] - x</strong>,说明什么？</p>
+<ul>
+<li>仔细想想，这两者差值相等的情况是和 <strong>2)</strong> 的情况一致</li>
+</ul>
+</blockquote>
+<p>3.经过左右边界的不断收缩，最终找到的一个元素，这个元素就是 <strong>最优区间的左边界</strong>,即可求出答案</p>
+<p><img src="https://s1.ax1x.com/2020/07/08/UVsOsg.gif" alt="程序执行动图"></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="python">class Solution:
+    def findClosestElements(self, arr: List[int], k: int, x: int) -&gt; List[int]:
+        left, right = 0, len(arr) - k # 确定最优区间的左边界所在区间范围
+        while left &lt; right:
+            mid = (left + right) &gt;&gt; 1 # 找到中位数
+            if x - arr[mid] &gt; arr[mid+k] - x: # 比较差值，收缩区间
+                left = mid + 1
+            elif x - arr[mid] &lt;= arr[mid+k] - x:
+                right = mid
+        return arr[left:left+k]</code></pre>
+
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
                 data-autoplay="false">
@@ -294,7 +265,7 @@ https://leetcode-cn.com/explore/learn/card/binary-search/
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#二分查找模板-1"><span class="toc-number">1.</span> <span class="toc-text">二分查找模板 #1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-number">1.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用途"><span class="toc-number">1.2.</span> <span class="toc-text">用途</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二分查找模板-2"><span class="toc-number">2.</span> <span class="toc-text">二分查找模板 #2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-1"><span class="toc-number">2.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用途-1"><span class="toc-number">2.2.</span> <span class="toc-text">用途</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#练习"><span class="toc-number">2.3.</span> <span class="toc-text">练习</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二分查找模板-3"><span class="toc-number">3.</span> <span class="toc-text">二分查找模板 #3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-2"><span class="toc-number">3.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用途-2"><span class="toc-number">3.2.</span> <span class="toc-text">用途</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#练习-1"><span class="toc-number">3.3.</span> <span class="toc-text">练习</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#找到K个最接近的元素"><span class="toc-number">1.</span> <span class="toc-text">找到K个最接近的元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">1.1.</span> <span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤解析"><span class="toc-number">1.1.1.</span> <span class="toc-text">步骤解析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">1.2.</span> <span class="toc-text">代码</span></a></li></ol></li></ol>
                 </div>
             </div>
             
