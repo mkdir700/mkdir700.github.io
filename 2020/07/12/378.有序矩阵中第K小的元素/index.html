@@ -94,22 +94,22 @@ matrix = [
                 <a href="/categories/算法题"><b>「
                     </b>算法题<b> 」</b></a>
                 
-                July 11, 2020
+                July 12, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2020/07/11/378.%E6%9C%89%E5%BA%8F%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/" title="378.有序矩阵中第K小的元素" class="">378.有序矩阵中第K小的元素</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/07/12/378.%E6%9C%89%E5%BA%8F%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/" title="378.有序矩阵中第K小的元素" class="">378.有序矩阵中第K小的元素</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    4.7k
+                    6.1k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    4 mins.
+                    6 mins.
                 </span>
                 
                 
@@ -160,43 +160,42 @@ k = 8,
 <hr>
 <p>此笔记参考题解：</p>
 <p><a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/solution/you-xu-ju-zhen-zhong-di-kxiao-de-yuan-su-by-leetco/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/solution/you-xu-ju-zhen-zhong-di-kxiao-de-yuan-su-by-leetco/</a></p>
-<h1 id="思路及算法"><a href="#思路及算法" class="headerlink" title="思路及算法"></a>思路及算法</h1><p>横向从左到右递增，纵向从上往下递增，则左上往右下递增，即<code>matrix[0][0]</code>是最小值，<code>matrix[n-1][n-1]</code>是最大值。我们所需找到的第Ｋ小元素必定在<code>[matrix[0][0], matrix[n-1][n-1]]</code>区间内。</p>
-<p>至此，<strong>有序</strong>　＋　<strong>确定范围</strong>　可以联想到使用<strong>二分查找</strong></p>
+<h1 id="思路及算法"><a href="#思路及算法" class="headerlink" title="思路及算法"></a>思路及算法</h1><p>从左到右递增，从上往下递增，即<code>matrix[0][0]</code>是最小值，<code>matrix[n-1][n-1]</code>是最大值。我们所需找到的第Ｋ小元素必定在<code>[matrix[0][0], matrix[n-1][n-1]]</code>区间内。</p>
+<p>至此，<strong>有序</strong>　＋　<strong>确定范围</strong>　可以使用<strong>二分查找</strong></p>
 <p>让　<code>left = matrix[0][0]</code> <code>right = matrix[n-1][n-1]</code></p>
 <p>则有 <code>mid = (left + right) &gt;&gt; 1</code></p>
 <p>以下方这个矩阵举例</p>
 <p><img src="https://s1.ax1x.com/2020/07/11/U1VQJJ.png" alt="U1VQJJ.png"></p>
-<p>第一次计算<code>mid = (1 + 16) &gt;&gt; 1 = 8</code></p>
+<h2 id="分割矩阵"><a href="#分割矩阵" class="headerlink" title="分割矩阵"></a>分割矩阵</h2><p>第一次计算<code>mid = (1 + 16) &gt;&gt; 1 = 8</code></p>
 <p>以<code>mid</code>为界，可以将整个矩阵分割成两个部分，那怎么分？</p>
 <p>重要条件 <strong>每行和每列元素均按升序排序</strong></p>
 <p>从左下角开始的元素开始，不断往右走，当元素小于或等于<code>mid</code>，则此元素及上方所有元素，均是比<code>mid</code>值小的元素。 文字表达不太清楚，看图比较直观。橙色部分都是<code>&lt;=mid</code>的元素</p>
 <p><img src="https://s1.ax1x.com/2020/07/11/U1nOD1.png" alt="U1nOD1.png"></p>
-<p>通过<code>mid</code>将矩阵一分为二，则需要我们判断<strong>第k小元素在那一边</strong></p>
+<p>通过<code>mid</code>将矩阵一分为二，则需要我们判断<strong>第k小元素在哪一边</strong></p>
 <blockquote>
 <p>  这里和常规的二分查找类似，都需要依据mid来判定目标元素在左右的哪一边</p>
 </blockquote>
 <p>但这里又和二分查找又有点区别，就是我们<strong>拿什么与什么进行比较</strong></p>
-<p>第一，明白 <strong>寻找第k小元素</strong> 的区间内元素个数要求</p>
+<h2 id="确定查找范围"><a href="#确定查找范围" class="headerlink" title="确定查找范围"></a>确定查找范围</h2><p>第一，明白 <strong>寻找第k小元素</strong> 的区间内元素个数要求</p>
 <p>举个例子：<code>1,2,3,4</code>，第3小的元素，那么是3；<code>1,2,2,3,4</code>，同样是第3小的，则是2</p>
 <p>由此可知，要找到第k小元素，那么这个区间中至少至少得有k个元素吧！</p>
-<p>第二， <code>mid</code>将矩阵分割成两部分，我们简单可以看成<strong>较小元素的部分</strong>和<strong>较大元素的部分</strong>，既然寻找第k<strong>小元素</strong>，结合第一个解释，所以，元素较小部分的元素个数应该是<strong>大于等于k的</strong></p>
+<p>第二， <code>mid</code>将矩阵分割成两部分，我们简单可以看成<strong>较小元素的部分</strong>和<strong>较大元素的部分</strong>，既然寻找第k<strong>小元素</strong>，结合第一个解释，所以，较小元素部分的元素个数应该是<strong>大于等于k的</strong></p>
 <p>至此，我们知道是 <strong>num</strong>(元素较小部分的元素个数) 与 <strong>k</strong>之间的比较</p>
-<p>怎么个比较法？</p>
-<p>如果 <strong>num &gt; k</strong> ，说明 <strong>较小元素部分的范围太大了</strong> 需要缩小范围，即「边界收缩」</p>
+<h2 id="比较num与k"><a href="#比较num与k" class="headerlink" title="比较num与k"></a>比较num与k</h2><p>怎么个比较法？</p>
+<p>如果 <strong>num &gt;= k</strong> ，说明 <strong>较小元素部分的范围太大了</strong> 需要缩小范围，即「边界收缩」</p>
 <blockquote>
 <p>   right = mid</p>
 </blockquote>
 <p>如果 <strong>num &lt; k</strong>，说明 <strong>较小元素部分的范围太小了</strong> 需要扩大范围</p>
-<p>这里特殊说明下，待查找范围的大小与<code>right</code>有关，而<code>left</code>的作用是查找元素。</p>
+<p>这里说明下，待查找范围的大小与<code>right</code>有关，而<code>left</code>的作用是查找元素。</p>
 <p>即 <code>right</code>将一个大致的范围给定好，然后<code>left</code>在范围内「猜」元素</p>
-<p>范围小了，就扩大嘛，<strong>直接限定</strong>范围大小的元素是<code>right</code>吗？不是，是<code>mid</code>。因为我们是以此<code>mid</code>为中线，进行分割，所以想<strong>扩大范围</strong>，就是<strong>增大<code>mid</code>值</strong>，增大mid意味着增大<code>left</code>或<code>right</code></p>
+<p><strong>直接限定</strong>范围大小的元素是<code>right</code>吗？不是，是<code>mid</code>。因为我们是以<code>mid</code>为中线，进行分割，所以想<strong>扩大范围</strong>，就是<strong>增大<code>mid</code>值</strong>，增大mid意味着增大<code>left</code>或<code>right</code></p>
 <blockquote>
 <p>  left = mid + 1</p>
 </blockquote>
-<p>经过 <code>while left &lt; right</code> 循环后，最终跳出循环 <code>return left</code>，left即是答案</p>
+<p>经过 <code>while left &lt; right</code> 循环，最终跳出循环 <code>return left</code>，left即是答案</p>
 <p><img src="http://cdn.z2blog.com/img/20200711232803.gif" alt="动图演示"></p>
-<p>完整代码：</p>
-<pre><code class="python">class Solution:
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><pre><code class="python">class Solution:
     def kthSmallest(self, matrix: List[List[int]], k: int) -&gt; int:
         n = len(matrix)
         def check(mid):
@@ -222,44 +221,22 @@ k = 8,
             else:
                 left = mid + 1
         return left</code></pre>
-<p>看到这儿，感觉还是很模糊，慢慢来，一点一点的梳理清楚</p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>mid</td>
-<td>将矩阵一分为二</td>
-</tr>
-<tr>
-<td>right</td>
-<td>限定查找范围</td>
-</tr>
-<tr>
-<td>left</td>
-<td>查询目标元素</td>
-</tr>
-<tr>
-<td>num</td>
-<td>较小元素部分的元素个数</td>
-</tr>
-<tr>
-<td>k</td>
-<td>第k小元素，较小元素部分元素个数大于等于k</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>为什么不是增加<code>right</code>？</p>
-<blockquote>
-<p>  这和二分查找一样，while left &lt; right</p>
-<p>  需要在此循环中，不断缩小范围，找到目标元素，增大right又缩小，反复横跳吗</p>
+<h2 id="问题解释"><a href="#问题解释" class="headerlink" title="问题解释"></a>问题解释</h2><h3 id="为什么left就一定是在矩阵中呢？"><a href="#为什么left就一定是在矩阵中呢？" class="headerlink" title="为什么left就一定是在矩阵中呢？"></a>为什么left就一定是在矩阵中呢？</h3><blockquote>
+<p>  <code>matrix[0][0]</code> 与 <code>matrix[n-1][n-1]</code>是存在矩阵中，而计算出来的<code>mid</code>，可能不在矩阵中，也就意味后续相关的<code>left</code>与<code>right</code>也可能不在矩阵中，那么为什么偏偏<code>left</code>就在矩阵中而且还是正确答案呢？</p>
 </blockquote>
+<p>先来看一个简单的矩阵示例：</p>
+<p><img src="http://cdn.z2blog.com/img/20200711235324.png" alt=""></p>
+<p><strong>要求：找到第2小的元素</strong></p>
+<p>在这个矩阵中，第一次<code>mid</code>计算值为<code>50</code>（不在矩阵中），以<code>50</code>为分割，得到的<code>num</code>为<code>1</code></p>
+<p>在循环中，<code>num</code> 一直小于<code>k</code>， 则<code>left</code> 一直在做 <code>mid + 1</code>，最终加到<code>80</code>的时候，mid = (80 + 100) / 2 = 90，至此使得<code>num</code>为<code>2</code>，此时<code>num=k</code>，即<code>right = mid = 90</code>，<code>left</code>继续做<code>mid+1</code>，当加到<code>90</code>时，left = right，退出循环，返回<code>left</code>，即90</p>
+<p>通过这个简单的矩阵，就知道 第k小的值不是直接算出来的，而是「猜」出来的，二分查找就是在不断缩小范围并猜值</p>
+<p>回到问题，为什么left就一定是在矩阵中呢？</p>
+<p>上面的示例，退出循环时，必定有<code>left=right</code>，返回<code>left</code>即返回<code>right</code>，所以<code>right</code>的值是最终答案</p>
+<p>好的，那么<code>right</code>的值怎么来滴，由<code>right=mid</code>可知，<code>mid</code>决定<code>right</code></p>
+<p>所以，<code>mid</code>就是最终答案(有特例，比如<code>[[-5]]</code>)， 这里只是笼统的认为，方便理解</p>
+<p>(left + right) / 2 决定了<code>mid</code>， left的变换是因为<code>num&lt;k</code></p>
+<p><strong>因为<code>left</code>在不停的失错，直到使得mid的值，可以满足num&gt;=k</strong></p>
+<p>这也说明了，此方法只适用于<strong>整数矩阵</strong>，如果是小数就不行了，因为每次试错的最小增量是<strong>1</strong></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -318,7 +295,7 @@ k = 8,
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路及算法"><span class="toc-number">2.</span> <span class="toc-text">思路及算法</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路及算法"><span class="toc-number">2.</span> <span class="toc-text">思路及算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分割矩阵"><span class="toc-number">2.1.</span> <span class="toc-text">分割矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#确定查找范围"><span class="toc-number">2.2.</span> <span class="toc-text">确定查找范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较num与k"><span class="toc-number">2.3.</span> <span class="toc-text">比较num与k</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完整代码"><span class="toc-number">2.4.</span> <span class="toc-text">完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题解释"><span class="toc-number">2.5.</span> <span class="toc-text">问题解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么left就一定是在矩阵中呢？"><span class="toc-number">2.5.1.</span> <span class="toc-text">为什么left就一定是在矩阵中呢？</span></a></li></ol></li></ol></li></ol>
                 </div>
             </div>
             
