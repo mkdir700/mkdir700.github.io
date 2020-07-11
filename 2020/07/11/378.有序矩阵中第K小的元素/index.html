@@ -5,23 +5,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>23.合并K个排序列表 - Mkdir700的算法笔记</title>
+    <title>378.有序矩阵中第K小的元素 - Mkdir700的算法笔记</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Mkdir700 算法笔记,"> 
-    <meta name="description" content="Mkdir700的算法笔记,题目合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
-示例:
-输入:
-[
+    <meta name="description" content="Mkdir700的算法笔记,题目给定一个 n x n 矩阵，其中每行和每列元素均按升序排序，找到矩阵中第 k 小的元素。请注意，它是排序后的第 k 小元素，而不是第 k 个不同的元素。 
+示例：
+matrix = [
 
-  1-&amp;gt;4-&amp;gt;5,
-
-  1-&amp;gt;3-&amp;gt;4,
-
-  2-&amp;gt;6
-
-]输出,"> 
+   ,"> 
     <meta name="author" content="Mkdir700"> 
     <link rel="alternative" href="atom.xml" title="Mkdir700的算法笔记" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -68,7 +61,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://mkdir700.github.io">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">23.合并K个排序列表</h3>
+        <h3 class="subtitle">378.有序矩阵中第K小的元素</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -101,22 +94,22 @@
                 <a href="/categories/算法题"><b>「
                     </b>算法题<b> 」</b></a>
                 
-                July 10, 2020
+                July 11, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2020/07/10/23.%E5%90%88%E5%B9%B6K%E4%B8%AA%E6%8E%92%E5%BA%8F%E5%88%97%E8%A1%A8/" title="23.合并K个排序列表" class="">23.合并K个排序列表</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/07/11/378.%E6%9C%89%E5%BA%8F%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/" title="378.有序矩阵中第K小的元素" class="">378.有序矩阵中第K小的元素</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    7.2k
+                    4.7k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    7 mins.
+                    4 mins.
                 </span>
                 
                 
@@ -129,7 +122,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95-%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97/" rel="tag">二分搜索 分治算法 优先级队列</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2-%E5%A0%86/" rel="tag">二分搜索 堆</a></li></ul>
             
         </div>
     </div>
@@ -150,203 +143,123 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。</p>
-<p><strong>示例:</strong></p>
-<p>输入:</p>
-<pre><code>[
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个 n x n 矩阵，其中每行和每列元素均按升序排序，找到矩阵中第 k 小的元素。<br>请注意，它是排序后的第 k 小元素，而不是第 k 个不同的元素。 </p>
+<p>示例：</p>
+<pre><code>matrix = [
 
-  1-&gt;4-&gt;5,
+   [ 1,  5,  9],
 
-  1-&gt;3-&gt;4,
+   [10, 11, 13],
 
-  2-&gt;6
+   [12, 13, 15]
 
-]</code></pre><p>输出: <strong>1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</strong></p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/merge-k-sorted-lists" target="_blank" rel="noopener">https://leetcode-cn.com/problems/merge-k-sorted-lists</a></p>
-<p>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+],
+k = 8,
+返回 13。</code></pre><p>提示：<br>你可以假设 k 的值永远是有效的，1 ≤ k ≤ n2 。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix" target="_blank" rel="noopener">https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
 <hr>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>此学习笔记，参考题解：</p>
-<p>感谢！！</p>
-<p><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/duo-tu-yan-shi-23-he-bing-kge-pai-xu-lian-biao-by-/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/duo-tu-yan-shi-23-he-bing-kge-pai-xu-lian-biao-by-/</a></p>
-<p><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/leetcode-23-he-bing-kge-pai-xu-lian-biao-by-powcai/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/leetcode-23-he-bing-kge-pai-xu-lian-biao-by-powcai/</a></p>
-<h3 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h3><blockquote>
-<p>  依靠最小堆的特性，每次弹出必定是最小值</p>
-</blockquote>
-<h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><p>步骤：</p>
-<ol>
-<li>将所有节点的加入到堆队列中</li>
-<li>不断弹出，生成新的链表</li>
-</ol>
+<p>此笔记参考题解：</p>
+<p><a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/solution/you-xu-ju-zhen-zhong-di-kxiao-de-yuan-su-by-leetco/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/solution/you-xu-ju-zhen-zhong-di-kxiao-de-yuan-su-by-leetco/</a></p>
+<h1 id="思路及算法"><a href="#思路及算法" class="headerlink" title="思路及算法"></a>思路及算法</h1><p>横向从左到右递增，纵向从上往下递增，则左上往右下递增，即<code>matrix[0][0]</code>是最小值，<code>matrix[n-1][n-1]</code>是最大值。我们所需找到的第Ｋ小元素必定在<code>[matrix[0][0], matrix[n-1][n-1]]</code>区间内。</p>
+<p>至此，<strong>有序</strong>　＋　<strong>确定范围</strong>　可以联想到使用<strong>二分查找</strong></p>
+<p>让　<code>left = matrix[0][0]</code> <code>right = matrix[n-1][n-1]</code></p>
+<p>则有 <code>mid = (left + right) &gt;&gt; 1</code></p>
+<p>以下方这个矩阵举例</p>
+<p><img src="https://s1.ax1x.com/2020/07/11/U1VQJJ.png" alt="U1VQJJ.png"></p>
+<p>第一次计算<code>mid = (1 + 16) &gt;&gt; 1 = 8</code></p>
+<p>以<code>mid</code>为界，可以将整个矩阵分割成两个部分，那怎么分？</p>
+<p>重要条件 <strong>每行和每列元素均按升序排序</strong></p>
+<p>从左下角开始的元素开始，不断往右走，当元素小于或等于<code>mid</code>，则此元素及上方所有元素，均是比<code>mid</code>值小的元素。 文字表达不太清楚，看图比较直观。橙色部分都是<code>&lt;=mid</code>的元素</p>
+<p><img src="https://s1.ax1x.com/2020/07/11/U1nOD1.png" alt="U1nOD1.png"></p>
+<p>通过<code>mid</code>将矩阵一分为二，则需要我们判断<strong>第k小元素在那一边</strong></p>
 <blockquote>
-<p>  说明： 在python中，实例与实例之间不能直接使用 <code>&gt;</code>等比较运算符</p>
-<p>  我们可以写一个魔术方法，使得〔ListNode〕之间可以大小比较</p>
-<pre><code class="python">  def __lt__(self, other):
-      return self.val &lt; other.val
-  ListNode.__lt__ = __lt__</code></pre>
+<p>  这里和常规的二分查找类似，都需要依据mid来判定目标元素在左右的哪一边</p>
 </blockquote>
+<p>但这里又和二分查找又有点区别，就是我们<strong>拿什么与什么进行比较</strong></p>
+<p>第一，明白 <strong>寻找第k小元素</strong> 的区间内元素个数要求</p>
+<p>举个例子：<code>1,2,3,4</code>，第3小的元素，那么是3；<code>1,2,2,3,4</code>，同样是第3小的，则是2</p>
+<p>由此可知，要找到第k小元素，那么这个区间中至少至少得有k个元素吧！</p>
+<p>第二， <code>mid</code>将矩阵分割成两部分，我们简单可以看成<strong>较小元素的部分</strong>和<strong>较大元素的部分</strong>，既然寻找第k<strong>小元素</strong>，结合第一个解释，所以，元素较小部分的元素个数应该是<strong>大于等于k的</strong></p>
+<p>至此，我们知道是 <strong>num</strong>(元素较小部分的元素个数) 与 <strong>k</strong>之间的比较</p>
+<p>怎么个比较法？</p>
+<p>如果 <strong>num &gt; k</strong> ，说明 <strong>较小元素部分的范围太大了</strong> 需要缩小范围，即「边界收缩」</p>
+<blockquote>
+<p>   right = mid</p>
+</blockquote>
+<p>如果 <strong>num &lt; k</strong>，说明 <strong>较小元素部分的范围太小了</strong> 需要扩大范围</p>
+<p>这里特殊说明下，待查找范围的大小与<code>right</code>有关，而<code>left</code>的作用是查找元素。</p>
+<p>即 <code>right</code>将一个大致的范围给定好，然后<code>left</code>在范围内「猜」元素</p>
+<p>范围小了，就扩大嘛，<strong>直接限定</strong>范围大小的元素是<code>right</code>吗？不是，是<code>mid</code>。因为我们是以此<code>mid</code>为中线，进行分割，所以想<strong>扩大范围</strong>，就是<strong>增大<code>mid</code>值</strong>，增大mid意味着增大<code>left</code>或<code>right</code></p>
+<blockquote>
+<p>  left = mid + 1</p>
+</blockquote>
+<p>经过 <code>while left &lt; right</code> 循环后，最终跳出循环 <code>return left</code>，left即是答案</p>
+<p><img src="http://cdn.z2blog.com/img/20200711232803.gif" alt="动图演示"></p>
 <p>完整代码：</p>
-<pre><code class="python"># Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-class Solution:
-    def mergeKLists(self, lists: List[ListNode]) -&gt; ListNode:
-        if not lists: return None
-        import heapq
-        queue = []
-        dummy = ListNode(-1)
-        def __lt__(self, other):
-            return self.val &lt; other.val
-        ListNode.__lt__ = __lt__
-        cur = dummy
-        # 将所有节点加入至堆队列中
-        for l in lists:
-            while l:
-                heapq.heappush(queue, l)
-                l = l.next
-        # 不断取出节点
-        while queue:
-            # 由于最小堆的特性，每次取出的节点都是最小的
-            node = heapq.heappop(queue)
-            cur.next = node
-            cur = cur.next
-        cur.next = None
-        return dummy.next</code></pre>
-<p>空间复杂度： O(N)</p>
-<h4 id="堆排序优化"><a href="#堆排序优化" class="headerlink" title="堆排序优化"></a>堆排序优化</h4><p>此方法是对上一方法的优化，在上面方法中是直接将所有的节点一股脑全部丢到堆队列中，这造成了空间的浪费。在此，可以将空间复杂度优化成<code>O(K)</code>，即链表的数量</p>
-<p><img src="https://pic.leetcode-cn.com/a91253f60b46b4d804adff9d3af7fb54586018e173d480cf06f4530630f3eb8d-3.jpg" alt="演示图"></p>
-<p>将每个链表的头结点，加入到堆队列即可，<strong>当此节点出队列时，立即判断此节点的指针域是否为空，不为空就表示后面还有节点，所以将后面的节点加入到堆队列中</strong>。如此一来，堆队列的空间大小就没有发生变换。</p>
-<p>步骤：</p>
-<ol>
-<li>将所有链表的头节点加入到堆队列中</li>
-<li>出队，将出来的节点连接到新节点上<code>dummy</code></li>
-<li>检测刚出队的节点的指针域是否有效，有效则将下一个节点加入到堆队列中</li>
-</ol>
-<p>完整代码：</p>
-<pre><code class="python"># Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-
-class Solution:
-    def mergeKLists(self, lists: List[ListNode]) -&gt; ListNode:
-
-        def __lt__(self, other):
-            return self.val &lt; other.val
-        ListNode.__lt__ = __lt__
-
-        if not lists:
-            return
-        import heapq
-        queue = []
-        dummy = ListNode(-1)
-        cur  = dummy
-        # 将所有的链表的头结点入队
-        for i in range(len(lists)):
-            head = lists[i]
-            if head:
-                heapq.heappush(queue, head)
-
-        # 从堆队列中弹出并检测是否还有下一个节点，有则加入到堆队列中
-        while queue:
-            node = heapq.heappop(queue)
-            cur.next = node
-            cur = cur.next
-            # 下一个节点是否有效
-            if node.next:
-                heapq.heappush(queue, node.next)
-        cur.next = None
-        return dummy.next</code></pre>
-<h3 id="两两合并"><a href="#两两合并" class="headerlink" title="两两合并"></a>两两合并</h3><p>[简单]合并两个有序链表：<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/merge-two-sorted-lists/</a></p>
-<p>之前做过一道题，实现两个有序链表的合并</p>
-<p>本题是多个有序链表的合并，所以自然可以使用使用两两合并，合并到最后即成为一个有序链表</p>
-<p>完整代码：</p>
-<pre><code class="python"># Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-
-class Solution:
-    def mergeKLists(self, lists: List[ListNode]) -&gt; ListNode:
-        dummy = ListNode(float(&#39;-inf&#39;))
-        cur = dummy
-        for i in range(len(lists)):
-            cur = self.mergeTwoLists(cur, lists[i])
-        return dummy.next
-
-    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -&gt; ListNode:
-        dummy = ListNode(-1)
-        cur = dummy
-        while l1 and l2:
-            if l1.val &lt; l2.val:
-                cur.next = l1
-                l1 = l1.next
+<pre><code class="python">class Solution:
+    def kthSmallest(self, matrix: List[List[int]], k: int) -&gt; int:
+        n = len(matrix)
+        def check(mid):
+            &quot;&quot;&quot;遍历获取较小元素部分元素总数，并与k值比较&quot;&quot;&quot;
+            i, j = n-1, 0
+            num = 0
+            while i &gt;= 0 and j &lt; n:
+                if matrix[i][j] &lt;= mid:
+                    # 当前元素小于mid，则此函数及上方函数均小于mid
+                    num += i + 1
+                    # 向右移动
+                    j += 1
+                else:
+                    # 当前元素大于mid，则向上移动，直到找到比mid小的值，或者出矩阵
+                    i -= 1
+            return num &gt;= k
+        left, right = matrix[0][0], matrix[-1][-1]
+        while left &lt; right:
+            mid = (left + right) &gt;&gt; 1
+            if check(mid):
+                # 满足 num &gt;= k，范围太大，移动right至mid， 范围收缩
+                right = mid
             else:
-                cur.next = l2
-                l2 = l2.next
-            cur = cur.next
-        cur.next = l1 if l1 else l2
-        return dummy.next
-</code></pre>
-<p>然而，效率极低</p>
-<p><img src="https://s1.ax1x.com/2020/07/10/UK53rQ.png" alt="UK53rQ.png"></p>
-<h3 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h3><p>在排序算法中，一个〔归并排序〕</p>
+                left = mid + 1
+        return left</code></pre>
+<p>看到这儿，感觉还是很模糊，慢慢来，一点一点的梳理清楚</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mid</td>
+<td>将矩阵一分为二</td>
+</tr>
+<tr>
+<td>right</td>
+<td>限定查找范围</td>
+</tr>
+<tr>
+<td>left</td>
+<td>查询目标元素</td>
+</tr>
+<tr>
+<td>num</td>
+<td>较小元素部分的元素个数</td>
+</tr>
+<tr>
+<td>k</td>
+<td>第k小元素，较小元素部分元素个数大于等于k</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>为什么不是增加<code>right</code>？</p>
 <blockquote>
-<p>  将无序的序列分解成一个一个，然后按有序方式组合</p>
+<p>  这和二分查找一样，while left &lt; right</p>
+<p>  需要在此循环中，不断缩小范围，找到目标元素，增大right又缩小，反复横跳吗</p>
 </blockquote>
-<p>归并排序中的 <strong>分治思想</strong> 可以在此题应用到</p>
-<p><img src="https://pic.leetcode-cn.com/88d261465f1f21288dd23cef2f059297f5d053fc19805458a47ae1b05f3c0703-6.jpg" alt="6.jpg"></p>
-<p>按照归并排序的案例或上图的演示，我们首先将 <strong>lists</strong> 中的链表一分再分， 然后按照大小关系一一合并</p>
-<p>步骤：</p>
-<ol>
-<li>将 <strong>lists</strong> 一分再分，分到不能再分为止</li>
-<li>不断合并</li>
-<li>最后得到完整的有序链表</li>
-</ol>
-<blockquote>
-<p>  步骤描述只是大概，具体还是得根据代码来慢慢理解，所以一定要写注释！！！</p>
-</blockquote>
-<p>完整代码：</p>
-<pre><code class="python"># Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-
-class Solution:
-    def mergeKLists(self, lists: List[ListNode]) -&gt; ListNode:
-        if not lists: return 
-        return self.merge(0, len(lists)-1, lists)
-
-    def merge(self, left, right, lists):
-        &quot;&quot;&quot;将lists不断分割，这里的操作有点像二分法
-        通过不断的一分二，分到最小单位
-        &quot;&quot;&quot;
-        if left == right:
-            return lists[left]
-        mid = (left + right) &gt;&gt; 1
-        l1 = self.merge(left, mid, lists)
-        l2 = self.merge(mid+1, right, lists)
-        # 调用合并函数，将 l1 和 l2合并成新有序链表
-        return self.mergeTwoLists(l1, l2)
-
-    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -&gt; ListNode:
-        &quot;&quot;&quot;将两个链表合成一个有序链表&quot;&quot;&quot;
-        dummy = ListNode(-1)
-        cur = dummy
-        while l1 and l2:
-            if l1.val &lt; l2.val:
-                cur.next = l1
-                l1 = l1.next
-            else:
-                cur.next = l2
-                l2 = l2.next
-            cur = cur.next
-        cur.next = l1 if l1 else l2
-        return dummy.next</code></pre>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -405,7 +318,7 @@ class Solution:
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">2.</span> <span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优先队列"><span class="toc-number">2.1.</span> <span class="toc-text">优先队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#两两合并"><span class="toc-number">2.2.</span> <span class="toc-text">两两合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分治法"><span class="toc-number">2.3.</span> <span class="toc-text">分治法</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题目"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路及算法"><span class="toc-number">2.</span> <span class="toc-text">思路及算法</span></a></li></ol>
                 </div>
             </div>
             

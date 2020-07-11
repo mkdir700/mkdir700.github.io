@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>378.有序矩阵中第K小的元素</title>
+      <link href="/2020/07/11/378.%E6%9C%89%E5%BA%8F%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/"/>
+      <url>/2020/07/11/378.%E6%9C%89%E5%BA%8F%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个 n x n 矩阵，其中每行和每列元素均按升序排序，找到矩阵中第 k 小的元素。<br>请注意，它是排序后的第 k 小元素，而不是第 k 个不同的元素。 </p><p>示例：</p><pre><code>matrix = [   [ 1,  5,  9],   [10, 11, 13],   [12, 13, 15]],k = 8,返回 13。</code></pre><p>提示：<br>你可以假设 k 的值永远是有效的，1 ≤ k ≤ n2 。</p><p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix" target="_blank" rel="noopener">https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p><hr><p>此笔记参考题解：</p><p><a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/solution/you-xu-ju-zhen-zhong-di-kxiao-de-yuan-su-by-leetco/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/solution/you-xu-ju-zhen-zhong-di-kxiao-de-yuan-su-by-leetco/</a></p><h1 id="思路及算法"><a href="#思路及算法" class="headerlink" title="思路及算法"></a>思路及算法</h1><p>横向从左到右递增，纵向从上往下递增，则左上往右下递增，即<code>matrix[0][0]</code>是最小值，<code>matrix[n-1][n-1]</code>是最大值。我们所需找到的第Ｋ小元素必定在<code>[matrix[0][0], matrix[n-1][n-1]]</code>区间内。</p><p>至此，<strong>有序</strong>　＋　<strong>确定范围</strong>　可以联想到使用<strong>二分查找</strong></p><p>让　<code>left = matrix[0][0]</code> <code>right = matrix[n-1][n-1]</code></p><p>则有 <code>mid = (left + right) &gt;&gt; 1</code></p><p>以下方这个矩阵举例</p><p><img src="https://s1.ax1x.com/2020/07/11/U1VQJJ.png" alt="U1VQJJ.png"></p><p>第一次计算<code>mid = (1 + 16) &gt;&gt; 1 = 8</code></p><p>以<code>mid</code>为界，可以将整个矩阵分割成两个部分，那怎么分？</p><p>重要条件 <strong>每行和每列元素均按升序排序</strong></p><p>从左下角开始的元素开始，不断往右走，当元素小于或等于<code>mid</code>，则此元素及上方所有元素，均是比<code>mid</code>值小的元素。 文字表达不太清楚，看图比较直观。橙色部分都是<code>&lt;=mid</code>的元素</p><p><img src="https://s1.ax1x.com/2020/07/11/U1nOD1.png" alt="U1nOD1.png"></p><p>通过<code>mid</code>将矩阵一分为二，则需要我们判断<strong>第k小元素在那一边</strong></p><blockquote><p>  这里和常规的二分查找类似，都需要依据mid来判定目标元素在左右的哪一边</p></blockquote><p>但这里又和二分查找又有点区别，就是我们<strong>拿什么与什么进行比较</strong></p><p>第一，明白 <strong>寻找第k小元素</strong> 的区间内元素个数要求</p><p>举个例子：<code>1,2,3,4</code>，第3小的元素，那么是3；<code>1,2,2,3,4</code>，同样是第3小的，则是2</p><p>由此可知，要找到第k小元素，那么这个区间中至少至少得有k个元素吧！</p><p>第二， <code>mid</code>将矩阵分割成两部分，我们简单可以看成<strong>较小元素的部分</strong>和<strong>较大元素的部分</strong>，既然寻找第k<strong>小元素</strong>，结合第一个解释，所以，元素较小部分的元素个数应该是<strong>大于等于k的</strong></p><p>至此，我们知道是 <strong>num</strong>(元素较小部分的元素个数) 与 <strong>k</strong>之间的比较</p><p>怎么个比较法？</p><p>如果 <strong>num &gt; k</strong> ，说明 <strong>较小元素部分的范围太大了</strong> 需要缩小范围，即「边界收缩」</p><blockquote><p>   right = mid</p></blockquote><p>如果 <strong>num &lt; k</strong>，说明 <strong>较小元素部分的范围太小了</strong> 需要扩大范围</p><p>这里特殊说明下，待查找范围的大小与<code>right</code>有关，而<code>left</code>的作用是查找元素。</p><p>即 <code>right</code>将一个大致的范围给定好，然后<code>left</code>在范围内「猜」元素</p><p>范围小了，就扩大嘛，<strong>直接限定</strong>范围大小的元素是<code>right</code>吗？不是，是<code>mid</code>。因为我们是以此<code>mid</code>为中线，进行分割，所以想<strong>扩大范围</strong>，就是<strong>增大<code>mid</code>值</strong>，增大mid意味着增大<code>left</code>或<code>right</code></p><blockquote><p>  left = mid + 1</p></blockquote><p>经过 <code>while left &lt; right</code> 循环后，最终跳出循环 <code>return left</code>，left即是答案</p><p><img src="http://cdn.z2blog.com/img/20200711232803.gif" alt="动图演示"></p><p>完整代码：</p><pre><code class="python">class Solution:    def kthSmallest(self, matrix: List[List[int]], k: int) -&gt; int:        n = len(matrix)        def check(mid):            &quot;&quot;&quot;遍历获取较小元素部分元素总数，并与k值比较&quot;&quot;&quot;            i, j = n-1, 0            num = 0            while i &gt;= 0 and j &lt; n:                if matrix[i][j] &lt;= mid:                    # 当前元素小于mid，则此函数及上方函数均小于mid                    num += i + 1                    # 向右移动                    j += 1                else:                    # 当前元素大于mid，则向上移动，直到找到比mid小的值，或者出矩阵                    i -= 1            return num &gt;= k        left, right = matrix[0][0], matrix[-1][-1]        while left &lt; right:            mid = (left + right) &gt;&gt; 1            if check(mid):                # 满足 num &gt;= k，范围太大，移动right至mid， 范围收缩                right = mid            else:                left = mid + 1        return left</code></pre><p>看到这儿，感觉还是很模糊，慢慢来，一点一点的梳理清楚</p><table><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td>mid</td><td>将矩阵一分为二</td></tr><tr><td>right</td><td>限定查找范围</td></tr><tr><td>left</td><td>查询目标元素</td></tr><tr><td>num</td><td>较小元素部分的元素个数</td></tr><tr><td>k</td><td>第k小元素，较小元素部分元素个数大于等于k</td></tr><tr><td></td><td></td></tr></tbody></table><p>为什么不是增加<code>right</code>？</p><blockquote><p>  这和二分查找一样，while left &lt; right</p><p>  需要在此循环中，不断缩小范围，找到目标元素，增大right又缩小，反复横跳吗</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二分搜索 堆 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>658.找到K个最接近的元素</title>
       <link href="/2020/07/10/658.%E6%89%BE%E5%88%B0K%E4%B8%AA%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E6%95%B0/"/>
       <url>/2020/07/10/658.%E6%89%BE%E5%88%B0K%E4%B8%AA%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E6%95%B0/</url>
