@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>287.寻找重复数</title>
+      <link href="/2020/07/13/287.%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/"/>
+      <url>/2020/07/13/287.%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/</url>
+      
+        <content type="html"><![CDATA[<p>给定一个包含 <code>n + 1</code> 个整数的数组 nums，其数字都在 1 到 n 之间（包括 1 和 n），可知至少存在一个重复的整数。假设只有一个重复的整数，找出这个重复的数。</p><p>示例 1:</p><pre><code>输入: [1,3,4,2,2]输出: 2</code></pre><p>示例 2:</p><pre><code>输入: [3,1,3,4,2]输出: 3</code></pre><p>说明：</p><ul><li>不能更改原数组（假设数组是只读的）。</li><li>只能使用额外的 O(1) 的空间。</li><li>时间复杂度小于 O(n2) 。</li><li>数组中只有一个重复的数字，但它可能不止重复出现一次。</li></ul><p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/find-the-duplicate-number" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-the-duplicate-number</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p><hr><a id="more"></a><h1 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h1><h2 id="思路及算法"><a href="#思路及算法" class="headerlink" title="思路及算法"></a>思路及算法</h2><p>看了标签有 「二分查找」，我就一直琢磨这个用「二分查找」怎么完成这道题</p><ul><li><p><strong>排序</strong></p><p>二分查找需要有序数组，所以在查找前必须排序。</p><p>题目要求「不能更改原数组（假设数组是只读的）」，但是我们可以将排序好的结果放入新的数组中，满足要求「只能使用额外的 O(1) 的空间」</p></li><li><p><strong>求中位数</strong></p><p>既然求<code>mid</code>，那么我们需要知道大小范围才能求吧。</p><p>仔细审题 「<code>n + 1</code> 个整数的数组 nums」， 「数字都在 1 到 n 之间」</p><pre><code class="python">length = len(nums) # 求出数组长度 n+1n = length - 1     # 数字都在1到n之间</code></pre><p>所以，范围是 <code>[0, len(nums)-1]</code></p><pre><code class="python">length = len(nums) # 求出数组长度 n+1n = length - 1     # 数字都在1到n之间left = 0right = n...mid = (left + right) &gt;&gt; 1</code></pre></li></ul><ul><li><p><strong>与谁比较，怎么比较？</strong></p><p>「二分查找」的特性就是，按中位数将有序数组一分为二，每次选择满足条件的一半，继续二分</p><p>那么，现在的问题就是 「如何知道重复元素在哪一半？」</p><p>重要信息：</p><p><strong>只有一个重复元素</strong> <strong>数字范围是[0, len(nums)-1]</strong></p><p>举例来说明，当前有一个有序数组 [1,2,3,4,4]，这个数组长度为5，而数字取值范围是[1, 4]，就算一字排开[1,2,3,4] 也只有4个元素，所以剩下一个元素，必定重复。绕了个弯子，那么如何找重复元素呢？</p><p><strong>可以把每个不同的数字，看做是不同种类的萝卜，一个坑位对应一种类型的萝卜</strong></p><p>在此例中，第一次<code>mid</code>是<code>2</code>，对应的元素值是<code>3</code>，用<code>rihgt-mid</code>我们得知mid之后还有两个位置</p><p>然而用<code>nums[right]-nums[mid]</code>，差值为<code>1</code>，小于剩余位置的个数，这就可以说明重复元素在mid的右边部分。这就好像，<strong>坑有两个，但是只有一个品种的萝卜</strong></p><p>换个例子[1,2,2,3,4],在这个例子中的第一次计算mid之后，<code>nums[right]-nums[mid]</code> 等于 <code>right-mid</code>，mid右边部分就符合 <strong>一个坑位对应一个品种</strong></p><p>形象一点：</p><p><code>rihgt-mid</code>： 计算坑位</p><p><code>nums[right]-nums[mid]</code>：计算萝卜品种数</p><p>经过上面的分析，得出结果：</p><blockquote><p>  如果right - mid &gt; nums[right] - nums[mid]</p><p>  表示重复元素在右边，即向右收缩，<code>left = mid</code>，因为<code>mid</code>可能刚好是重复元素，所以不是 left = mid + 1</p><p>  否则表示重复元素在左边，即向左收缩，<code>right = mid</code></p></blockquote></li><li><p><strong>循环何时退出？</strong></p><p>通过上面的分析，左右收缩的时候都是 <code>=mid</code>，观望大佬们总结的模板，此等情况循环的结束条件为 <code>left + 1 = right</code></p></li></ul><h2 id="动图演示"><a href="#动图演示" class="headerlink" title="动图演示"></a>动图演示</h2><p><img src="http://cdn.z2blog.com/img/20200713230426.gif" alt=""></p><h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><pre><code class="python">class Solution:    def findDuplicate(self, nums: List[int]) -&gt; int:        length = len(nums)        n = length - 1        left, right = 0, n        nums = sorted(nums)        while left + 1 &lt; right:            mid = (left + right) &gt;&gt; 1            if nums[right] - nums[mid] &lt; right - mid:                left = mid            else:                right = mid        return nums[left]</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 双指针 </tag>
+            
+            <tag> 排序 </tag>
+            
+            <tag> 二分查找 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>349&amp;350.两个数组的交集</title>
       <link href="/2020/07/13/349&amp;350.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/"/>
       <url>/2020/07/13/349&amp;350.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/</url>
