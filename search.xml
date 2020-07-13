@@ -5,6 +5,37 @@
     
     <entry>
       <title>153&amp;154.寻找旋转排序数组中的最小值</title>
+      <link href="/2020/07/13/349&amp;350.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/"/>
+      <url>/2020/07/13/349&amp;350.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/</url>
+      
+        <content type="html"><![CDATA[<h1 id="两个数组的交集"><a href="#两个数组的交集" class="headerlink" title="两个数组的交集"></a>两个数组的交集</h1><p>给定两个数组，编写一个函数来计算它们的交集。</p><p>示例 1：</p><pre><code>输入：nums1 = [1,2,2,1], nums2 = [2,2]输出：[2]</code></pre><p>示例 2：</p><pre><code>输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]输出：[9,4]</code></pre><p>说明：</p><p>输出结果中的每个元素一定是唯一的。<br>我们可以不考虑输出结果的顺序。</p><p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/intersection-of-two-arrays" target="_blank" rel="noopener">https://leetcode-cn.com/problems/intersection-of-two-arrays</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p><hr><a id="more"></a><h2 id="排序-双指针"><a href="#排序-双指针" class="headerlink" title="排序+双指针"></a>排序+双指针</h2><h3 id="思路及算法"><a href="#思路及算法" class="headerlink" title="思路及算法"></a>思路及算法</h3><ol><li>对两个数组进行升序排序</li><li>为两个数组分别设置两个「指针」 p1 p2，初始值为0</li><li>比较<code>nums1[p1]</code>与<code>nums2[p2]</code></li></ol><blockquote><p>  1) nums1[p1] &gt; nums2[p2]</p><p>  两个数组都是升序排序，假如<code>nums1[p1]</code>这个元素在<code>nums2</code>中存在「同等大小的元素」，那么必定在当前<code>p2</code>的后面，所以此时执行 <code>p2 += 1</code>，<code>p2</code>指针向右移动一位</p><p>  2) nums1[p1] &lt; nums2[p2]</p><p>  与上方同理 <code>p1 += 1</code></p><p>  3) nums1[p1] == nums2[p2]</p><p>  这时即找到了「交集」，将此元素加入新的数组中，方便我们之后输出</p><p>  在题目中有要求「输出结果中的每个元素一定是唯一的。」</p><p>  所以，当满足相等情况时，应该判断「结果数组」中，是否已经有同等大小的元素存在了</p><p>  有则跳过，无则添加</p><p>  然后，p1 p2 同时向右移动一位</p></blockquote><ol start="4"><li>重复「步骤3」</li></ol><blockquote><p>  重复步骤3，什么时候结束循环呢？</p><p>  两个指针都在向右走，当其中一个「指针」等于其数组长度时，即退出循环。</p><p>  可以在每次循环开始前，判断两个指针是否越界，越界就退出循环</p></blockquote><h3 id="动图演示"><a href="#动图演示" class="headerlink" title="动图演示"></a>动图演示</h3><p><img src="http://cdn.z2blog.com/img/20200713145202.gif" alt=""></p><h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><pre><code class="python">class Solution:    def intersection(self, nums1: List[int], nums2: List[int]) -&gt; List[int]:        p1, p2 = 0, 0        nums1.sort()        nums2.sort()        res = []        while 1:            # 判断是否越界            if p1 == len(nums1) or p2 == len(nums2): break            if nums1[p1] &gt; nums2[p2]:                p2 += 1            elif nums1[p1] &lt; nums2[p2]:                p1 += 1            else:                # 判断元素是否存在，避免重复元素                if nums2[p2] not in res:                    res.append(nums2[p2])                # 两个指针同时向右移动                p1 += 1                p2 += 1        return res</code></pre><h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>时间复杂度：O(m \log m+n \log n)O(mlogm+nlogn)，其中 mm 和 nn 分别是两个数组的长度。对两个数组进行排序的时间复杂度是 O(m \log m+n \log n)O(mlogm+nlogn)，遍历两个数组的时间复杂度是 O(m+n)O(m+n)，因此总时间复杂度是 O(m \log m+n \log n)O(mlogm+nlogn)。</p><p>空间复杂度：O(\min(m,n))O(min(m,n))，其中 mm 和 nn 分别是两个数组的长度。为返回值创建一个数组 intersection，其长度为较短的数组的长度。不过在 C++ 中，我们可以直接创建一个 vector，不需要把答案临时存放在一个额外的数组中，所以这种实现的空间复杂度为 O(1)。</p><h1 id="两个数组的交集-II"><a href="#两个数组的交集-II" class="headerlink" title="两个数组的交集 II"></a>两个数组的交集 II</h1><p>给定两个数组，编写一个函数来计算它们的交集。 </p><p>示例 1：</p><pre><code>输入：nums1 = [1,2,2,1], nums2 = [2,2]输出：[2,2]</code></pre><p>示例 2:</p><pre><code>输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]输出：[4,9]</code></pre><p>说明：</p><p>输出结果中每个元素出现的次数，应与元素在两个数组中出现次数的最小值一致。<br>我们可以不考虑输出结果的顺序。<br>进阶：</p><p>如果给定的数组已经排好序呢？你将如何优化你的算法？<br>如果 nums1 的大小比 nums2 小很多，哪种方法更优？<br>如果 nums2 的元素存储在磁盘上，磁盘内存是有限的，并且你不能一次加载所有的元素到内存中，你该怎么办？</p><p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/intersection-of-two-arrays-ii" target="_blank" rel="noopener">https://leetcode-cn.com/problems/intersection-of-two-arrays-ii</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p><hr><h2 id="排序-双指针-1"><a href="#排序-双指针-1" class="headerlink" title="排序+双指针"></a>排序+双指针</h2><p>在此题中多了一个要求「输出结果中每个元素出现的次数，应与元素在两个数组中出现次数的最小值一致」</p><p>同样可以使用「排序+双指针」的方法解决此题。</p><p>唯一有所不同的是，当遇到<code>nums1[p1] == nums2[p2]</code>时，不用再去判断「结果数组」中是否已经存在同等大小的元素。</p><h3 id="动图演示-1"><a href="#动图演示-1" class="headerlink" title="动图演示"></a>动图演示</h3><h3 id="完整代码-1"><a href="#完整代码-1" class="headerlink" title="完整代码"></a>完整代码</h3><pre><code class="python">class Solution:    def intersect(self, nums1: List[int], nums2: List[int]) -&gt; List[int]:        p1, p2 = 0, 0        nums1.sort()        nums2.sort()        res = []        while 1:            # 判断是否越界            if p1 == len(nums1) or p2 == len(nums2): break            if nums1[p1] &gt; nums2[p2]:                p2 += 1            elif nums1[p1] &lt; nums2[p2]:                p1 += 1            else:                res.append(nums2[p2])                # 两个指针同时向右移动                p1 += 1                p2 += 1        return res</code></pre><h2 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h2><h3 id="思路及算法-1"><a href="#思路及算法-1" class="headerlink" title="思路及算法"></a>思路及算法</h3><p>摘自官方题解</p><blockquote><p>  由于同一个数字在两个数组中都可能出现多次，因此需要用哈希表存储每个数字出现的次数。对于一个数字，其在交集中出现的次数等于该数字在两个数组中出现次数的最小值。</p><p>  首先遍历第一个数组，并在哈希表中记录第一个数组中的每个数字以及对应出现的次数，然后遍历第二个数组，对于第二个数组中的每个数字，如果在哈希表中存在这个数字，则将该数字添加到答案，并减少哈希表中该数字出现的次数。</p><p>  为了降低空间复杂度，首先遍历较短的数组并在哈希表中记录每个数字以及对应出现的次数，然后遍历较长的数组得到交集。</p><p>  作者：LeetCode-Solution<br>  链接：<a href="https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/solution/liang-ge-shu-zu-de-jiao-ji-ii-by-leetcode-solution/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/solution/liang-ge-shu-zu-de-jiao-ji-ii-by-leetcode-solution/</a><br>  来源：力扣（LeetCode）<br>  著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p></blockquote><h3 id="动图演示-2"><a href="#动图演示-2" class="headerlink" title="动图演示"></a>动图演示</h3><p>官方做的图解好好看，自己做的有点点小丑，哈哈哈</p><p><img src="http://cdn.z2blog.com/img/20200713152800.gif" alt="来源leetcode"></p><h3 id="完整代码-2"><a href="#完整代码-2" class="headerlink" title="完整代码"></a>完整代码</h3><pre><code class="python">class Solution:    def intersect(self, nums1: List[int], nums2: List[int]) -&gt; List[int]:        import collections        # 构建nums1的元素个数表        c = collections.Counter(nums1)        res = []        for n in nums2:            if n in c:                if c[n] != 0:                    # 如果等于0了，则表示nums2中的这个元素数量比nums1多                    # 而题目要求按最小值                    c[n] -= 1                    res.append(n)        return res</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 哈希表 </tag>
+            
+            <tag> 双指针 </tag>
+            
+            <tag> 排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>153&amp;154.寻找旋转排序数组中的最小值</title>
       <link href="/2020/07/12/153&amp;154.%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC/"/>
       <url>/2020/07/12/153&amp;154.%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC/</url>
       

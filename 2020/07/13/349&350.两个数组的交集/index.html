@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="二分搜索," />
+  <meta name="keywords" content="数组,哈希表,双指针,排序," />
 
 
 
@@ -79,20 +79,24 @@
 
 
 
-<meta name="description" content="找到K个最接近的元素给定一个排序好的数组，两个整数 k 和 x，从数组中找到最靠近 x（两数之差最小）的 k 个数。返回的结果必须要是按升序排好的。如果有两个数与 x 的差值一样，优先选择数值较小的那个数。 示例 1: 输入: [1,2,3,4,5], k&#x3D;4, x&#x3D;3 输出: [1,2,3,4]示例 2: 输入: [1,2,3,4,5], k&#x3D;4, x&#x3D;-1 输出: [1,2,3,4]说明:">
+<meta name="description" content="两个数组的交集给定两个数组，编写一个函数来计算它们的交集。 示例 1： 输入：nums1 &#x3D; [1,2,2,1], nums2 &#x3D; [2,2]  输出：[2] 示例 2： 输入：nums1 &#x3D; [4,9,5], nums2 &#x3D; [9,4,9,8,4]  输出：[9,4] 说明： 输出结果中的每个元素一定是唯一的。我们可以不考虑输出结果的顺序。 来源：力扣（LeetCode）链接：https:&#x2F;&#x2F;l">
 <meta property="og:type" content="article">
-<meta property="og:title" content="658.找到K个最接近的元素">
-<meta property="og:url" content="http://mkdir700.github.io/2020/07/12/658.%E6%89%BE%E5%88%B0K%E4%B8%AA%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E6%95%B0/index.html">
+<meta property="og:title" content="153&amp;154.寻找旋转排序数组中的最小值">
+<meta property="og:url" content="http://mkdir700.github.io/2020/07/13/349&350.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/index.html">
 <meta property="og:site_name" content="Mkdir700的算法笔记">
-<meta property="og:description" content="找到K个最接近的元素给定一个排序好的数组，两个整数 k 和 x，从数组中找到最靠近 x（两数之差最小）的 k 个数。返回的结果必须要是按升序排好的。如果有两个数与 x 的差值一样，优先选择数值较小的那个数。 示例 1: 输入: [1,2,3,4,5], k&#x3D;4, x&#x3D;3 输出: [1,2,3,4]示例 2: 输入: [1,2,3,4,5], k&#x3D;4, x&#x3D;-1 输出: [1,2,3,4]说明:">
+<meta property="og:description" content="两个数组的交集给定两个数组，编写一个函数来计算它们的交集。 示例 1： 输入：nums1 &#x3D; [1,2,2,1], nums2 &#x3D; [2,2]  输出：[2] 示例 2： 输入：nums1 &#x3D; [4,9,5], nums2 &#x3D; [9,4,9,8,4]  输出：[9,4] 说明： 输出结果中的每个元素一定是唯一的。我们可以不考虑输出结果的顺序。 来源：力扣（LeetCode）链接：https:&#x2F;&#x2F;l">
 <meta property="og:locale" content="zh">
-<meta property="og:image" content="https://s1.ax1x.com/2020/07/08/UVsOsg.gif">
-<meta property="article:published_time" content="2020-07-12T06:23:05.969Z">
-<meta property="article:modified_time" content="2020-07-12T06:22:47.000Z">
+<meta property="og:image" content="http://cdn.z2blog.com/img/20200713145202.gif">
+<meta property="og:image" content="http://cdn.z2blog.com/img/20200713152800.gif">
+<meta property="article:published_time" content="2020-07-13T07:39:47.091Z">
+<meta property="article:modified_time" content="2020-07-13T07:39:19.000Z">
 <meta property="article:author" content="Mkdir700">
-<meta property="article:tag" content="二分搜索">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="哈希表">
+<meta property="article:tag" content="双指针">
+<meta property="article:tag" content="排序">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2020/07/08/UVsOsg.gif">
+<meta name="twitter:image" content="http://cdn.z2blog.com/img/20200713145202.gif">
 
 
 
@@ -122,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://mkdir700.github.io/2020/07/12/658.找到K个最接近的数/"/>
+  <link rel="canonical" href="http://mkdir700.github.io/2020/07/13/349&350.两个数组的交集/"/>
 
 
 
 
 
-  <title>658.找到K个最接近的元素 | Mkdir700的算法笔记</title>
+  <title>153&154.寻找旋转排序数组中的最小值 | Mkdir700的算法笔记</title>
   
 
 
@@ -279,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://mkdir700.github.io/2020/07/12/658.%E6%89%BE%E5%88%B0K%E4%B8%AA%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="http://mkdir700.github.io/2020/07/13/349&350.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mkdir700">
@@ -296,7 +300,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">658.找到K个最接近的元素</h1>
+          <h1 class="post-title" itemprop="name headline">153&154.寻找旋转排序数组中的最小值</h1>
         
 
         <div class="post-meta">
@@ -308,8 +312,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-12T14:23:05+08:00">
-                2020-07-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-13T15:39:47+08:00">
+                2020-07-13
               </time>
             
 
@@ -368,76 +372,131 @@
       
 
       
-        <h1 id="找到K个最接近的元素"><a href="#找到K个最接近的元素" class="headerlink" title="找到K个最接近的元素"></a>找到K个最接近的元素</h1><p>给定一个排序好的数组，两个整数 <code>k</code> 和 <code>x</code>，从数组中找到最靠近 <code>x</code>（两数之差最小）的 <code>k</code> 个数。返回的结果必须要是按升序排好的。如果有两个数与 <code>x</code> 的差值一样，优先选择数值较小的那个数。</p>
-<p><strong>示例 1:</strong></p>
-<pre><code>输入: [1,2,3,4,5], k=4, x=3
-输出: [1,2,3,4]</code></pre><p><strong>示例 2:</strong></p>
-<pre><code>输入: [1,2,3,4,5], k=4, x=-1
-输出: [1,2,3,4]</code></pre><p><strong>说明:</strong></p>
-<ol>
-<li>k 的值为正数，且总是小于给定排序数组的长度。</li>
-<li>数组不为空，且长度不超过 104</li>
-<li>数组里的每个元素与 x 的绝对值不超过 104</li>
-</ol>
-<p><strong>更新(2017/9/19):</strong><br>这个参数 <em>arr</em> 已经被改变为一个<strong>整数数组</strong>（而不是整数列表）。 <strong>请重新加载代码定义以获取最新更改。</strong></p>
+        <h1 id="两个数组的交集"><a href="#两个数组的交集" class="headerlink" title="两个数组的交集"></a>两个数组的交集</h1><p>给定两个数组，编写一个函数来计算它们的交集。</p>
+<p>示例 1：</p>
+<pre><code>输入：nums1 = [1,2,2,1], nums2 = [2,2]
+
+输出：[2]
+</code></pre><p>示例 2：</p>
+<pre><code>输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+
+输出：[9,4]
+</code></pre><p>说明：</p>
+<p>输出结果中的每个元素一定是唯一的。<br>我们可以不考虑输出结果的顺序。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/intersection-of-two-arrays" target="_blank" rel="noopener">https://leetcode-cn.com/problems/intersection-of-two-arrays</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
 <hr>
 <a id="more"></a>
 
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>本文参考这位大佬的题解[方法二： 二分查找最优区间的左边界]</p>
-<p><a href="https://leetcode-cn.com/problems/find-k-closest-elements/solution/pai-chu-fa-shuang-zhi-zhen-er-fen-fa-python-dai-ma/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-k-closest-elements/solution/pai-chu-fa-shuang-zhi-zhen-er-fen-fa-python-dai-ma/</a></p>
-<p>此问题转换为 <strong>查找最优区间的左边界</strong></p>
-<pre><code>输入: [1,2,3,4,5], k=4, x=3
-输出: [1,2,3,4]</code></pre><p>例如这个示例，<strong>k为4</strong>，即区间的长度为4，这个区间可能是 <strong>[1,2,3,4] 和 [2,3,4,5]</strong>，所以最左边界元素的区间在 <strong>[0, 1]</strong>范围内</p>
-<p>也就是说，<strong>最优区间的左边界</strong>在<strong>[0, length-k]</strong>这个区间中</p>
-<p>那么，现在的问题就转换成了 在<strong>[0, length-k]</strong>区间内找到一个元素，这个元素是<strong>最优区间的左边界</strong></p>
-<p>来整理一下题目的条件：</p>
-<blockquote>
-<p><strong>x</strong> ： 目标值</p>
-<p><strong>k</strong> ： 结果数组内的元素个数</p>
-</blockquote>
-<ol>
-<li>最优区间内的每个元素与 <strong>x</strong> 的差值都是最小的</li>
-<li>找到的最优区间必须升序排列的</li>
+<h2 id="排序-双指针"><a href="#排序-双指针" class="headerlink" title="排序+双指针"></a>排序+双指针</h2><h3 id="思路及算法"><a href="#思路及算法" class="headerlink" title="思路及算法"></a>思路及算法</h3><ol>
+<li>对两个数组进行升序排序</li>
+<li>为两个数组分别设置两个「指针」 p1 p2，初始值为0</li>
+<li>比较<code>nums1[p1]</code>与<code>nums2[p2]</code></li>
 </ol>
-<h3 id="步骤解析"><a href="#步骤解析" class="headerlink" title="步骤解析"></a>步骤解析</h3><p>1.找到左边界元素所在区间</p>
 <blockquote>
-<p>这个很简单，就是[0, length-k]</p>
+<p>  1) nums1[p1] &gt; nums2[p2]</p>
+<p>  两个数组都是升序排序，假如<code>nums1[p1]</code>这个元素在<code>nums2</code>中存在「同等大小的元素」，那么必定在当前<code>p2</code>的后面，所以此时执行 <code>p2 += 1</code>，<code>p2</code>指针向右移动一位</p>
+<p>  2) nums1[p1] &lt; nums2[p2]</p>
+<p>  与上方同理 <code>p1 += 1</code></p>
+<p>  3) nums1[p1] == nums2[p2]</p>
+<p>  这时即找到了「交集」，将此元素加入新的数组中，方便我们之后输出</p>
+<p>  在题目中有要求「输出结果中的每个元素一定是唯一的。」</p>
+<p>  所以，当满足相等情况时，应该判断「结果数组」中，是否已经有同等大小的元素存在了</p>
+<p>  有则跳过，无则添加</p>
+<p>  然后，p1 p2 同时向右移动一位</p>
 </blockquote>
-<p>2.区间内的中位数(<strong>x - arr[mid]</strong>与<strong>arr[mid+k] - x</strong>进行比较)</p>
+<ol start="4">
+<li>重复「步骤3」</li>
+</ol>
 <blockquote>
-<p>首先明白此时<strong>mid</strong>和<strong>mid+k</strong>各自代表的意义是什么？</p>
-<p>mid：“最优区间”的左边界，可能当前不是最优区间，待进一步二分查找</p>
-<p>mid+k：“最优区间”右边界的<strong>右边一位</strong></p>
-<p>1) 如果<strong>x - arr[mid] &gt; arr[mid+k] - x</strong>,说明什么？</p>
-<ul>
-<li>说明 <strong>x</strong> 更应该靠近<strong>arr[mid+k]</strong>一些， 即<strong>arr[mid, mid+k]</strong>这个区间整体向右滑动，才可能成为 <strong>最优区间</strong></li>
-<li>要使得这个区间<strong>向右滑动</strong>，也就是将这个区间的<strong>左边界右移</strong>。</li>
-<li>回到二分查找，就是向右收缩 =&gt; <strong>left = mid + 1</strong></li>
-</ul>
-<p>2) 如果<strong>x - arr[mid] &lt; arr[mid+k] - x</strong>,说明什么？</p>
-<ul>
-<li>说明 <strong>mid + k位置 及 右边所有的元素</strong> 都不符合最优区间（因为是升序的），当前的“最优区间”为 arr[mid, mid + k]。但是mid之前可能存在有元素哦，所以mid之前的元素应该继续进行判断</li>
-<li>mid之前的元素可能有更优的，就是区间<strong>可能向左移动</strong>，也可能当前mid就是最优区间的左边界（不移动）</li>
-<li>为了找到更合适的mid，所以应该收缩[0, length-k]这个区间，因为是去找mid及mid之前的元素，所以是向左收缩，即 right = mid</li>
-<li>为什么是right = mid，而不是right = mid - 1？因为mid这个位置的值，可能刚好就是<strong>最优区间的左边界</strong>，如果mid-1就错过了</li>
-</ul>
-<p>3) 如果<strong>x - arr[mid] = arr[mid+k] - x</strong>,说明什么？</p>
-<ul>
-<li>仔细想想，这两者差值相等的情况是和 <strong>2)</strong> 的情况一致</li>
-</ul>
+<p>  重复步骤3，什么时候结束循环呢？</p>
+<p>  两个指针都在向右走，当其中一个「指针」等于其数组长度时，即退出循环。</p>
+<p>  可以在每次循环开始前，判断两个指针是否越界，越界就退出循环</p>
 </blockquote>
-<p>3.经过左右边界的不断收缩，最终找到的一个元素，这个元素就是 <strong>最优区间的左边界</strong>,即可求出答案</p>
-<p><img src="https://s1.ax1x.com/2020/07/08/UVsOsg.gif" alt="程序执行动图"></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="python">class Solution:
-    def findClosestElements(self, arr: List[int], k: int, x: int) -&gt; List[int]:
-        left, right = 0, len(arr) - k # 确定最优区间的左边界所在区间范围
-        while left &lt; right:
-            mid = (left + right) &gt;&gt; 1 # 找到中位数
-            if x - arr[mid] &gt; arr[mid+k] - x: # 比较差值，收缩区间
-                left = mid + 1
-            elif x - arr[mid] &lt;= arr[mid+k] - x:
-                right = mid
-        return arr[left:left+k]</code></pre>
+<h3 id="动图演示"><a href="#动图演示" class="headerlink" title="动图演示"></a>动图演示</h3><p><img src="http://cdn.z2blog.com/img/20200713145202.gif" alt=""></p>
+<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><pre><code class="python">class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -&gt; List[int]:
+        p1, p2 = 0, 0
+        nums1.sort()
+        nums2.sort()
+        res = []
+        while 1:
+            # 判断是否越界
+            if p1 == len(nums1) or p2 == len(nums2): break
+
+            if nums1[p1] &gt; nums2[p2]:
+                p2 += 1
+            elif nums1[p1] &lt; nums2[p2]:
+                p1 += 1
+            else:
+                # 判断元素是否存在，避免重复元素
+                if nums2[p2] not in res:
+                    res.append(nums2[p2])
+                # 两个指针同时向右移动
+                p1 += 1
+                p2 += 1
+        return res</code></pre>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>时间复杂度：O(m \log m+n \log n)O(mlogm+nlogn)，其中 mm 和 nn 分别是两个数组的长度。对两个数组进行排序的时间复杂度是 O(m \log m+n \log n)O(mlogm+nlogn)，遍历两个数组的时间复杂度是 O(m+n)O(m+n)，因此总时间复杂度是 O(m \log m+n \log n)O(mlogm+nlogn)。</p>
+<p>空间复杂度：O(\min(m,n))O(min(m,n))，其中 mm 和 nn 分别是两个数组的长度。为返回值创建一个数组 intersection，其长度为较短的数组的长度。不过在 C++ 中，我们可以直接创建一个 vector，不需要把答案临时存放在一个额外的数组中，所以这种实现的空间复杂度为 O(1)。</p>
+<h1 id="两个数组的交集-II"><a href="#两个数组的交集-II" class="headerlink" title="两个数组的交集 II"></a>两个数组的交集 II</h1><p>给定两个数组，编写一个函数来计算它们的交集。 </p>
+<p>示例 1：</p>
+<pre><code>输入：nums1 = [1,2,2,1], nums2 = [2,2]
+
+输出：[2,2]
+</code></pre><p>示例 2:</p>
+<pre><code>输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+
+输出：[4,9]
+</code></pre><p>说明：</p>
+<p>输出结果中每个元素出现的次数，应与元素在两个数组中出现次数的最小值一致。<br>我们可以不考虑输出结果的顺序。<br>进阶：</p>
+<p>如果给定的数组已经排好序呢？你将如何优化你的算法？<br>如果 nums1 的大小比 nums2 小很多，哪种方法更优？<br>如果 nums2 的元素存储在磁盘上，磁盘内存是有限的，并且你不能一次加载所有的元素到内存中，你该怎么办？</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/intersection-of-two-arrays-ii" target="_blank" rel="noopener">https://leetcode-cn.com/problems/intersection-of-two-arrays-ii</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<hr>
+<h2 id="排序-双指针-1"><a href="#排序-双指针-1" class="headerlink" title="排序+双指针"></a>排序+双指针</h2><p>在此题中多了一个要求「输出结果中每个元素出现的次数，应与元素在两个数组中出现次数的最小值一致」</p>
+<p>同样可以使用「排序+双指针」的方法解决此题。</p>
+<p>唯一有所不同的是，当遇到<code>nums1[p1] == nums2[p2]</code>时，不用再去判断「结果数组」中是否已经存在同等大小的元素。</p>
+<h3 id="动图演示-1"><a href="#动图演示-1" class="headerlink" title="动图演示"></a>动图演示</h3><h3 id="完整代码-1"><a href="#完整代码-1" class="headerlink" title="完整代码"></a>完整代码</h3><pre><code class="python">class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -&gt; List[int]:
+        p1, p2 = 0, 0
+        nums1.sort()
+        nums2.sort()
+        res = []
+        while 1:
+            # 判断是否越界
+            if p1 == len(nums1) or p2 == len(nums2): break
+
+            if nums1[p1] &gt; nums2[p2]:
+                p2 += 1
+            elif nums1[p1] &lt; nums2[p2]:
+                p1 += 1
+            else:
+                res.append(nums2[p2])
+                # 两个指针同时向右移动
+                p1 += 1
+                p2 += 1
+        return res</code></pre>
+<h2 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h2><h3 id="思路及算法-1"><a href="#思路及算法-1" class="headerlink" title="思路及算法"></a>思路及算法</h3><p>摘自官方题解</p>
+<blockquote>
+<p>  由于同一个数字在两个数组中都可能出现多次，因此需要用哈希表存储每个数字出现的次数。对于一个数字，其在交集中出现的次数等于该数字在两个数组中出现次数的最小值。</p>
+<p>  首先遍历第一个数组，并在哈希表中记录第一个数组中的每个数字以及对应出现的次数，然后遍历第二个数组，对于第二个数组中的每个数字，如果在哈希表中存在这个数字，则将该数字添加到答案，并减少哈希表中该数字出现的次数。</p>
+<p>  为了降低空间复杂度，首先遍历较短的数组并在哈希表中记录每个数字以及对应出现的次数，然后遍历较长的数组得到交集。</p>
+<p>  作者：LeetCode-Solution<br>  链接：<a href="https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/solution/liang-ge-shu-zu-de-jiao-ji-ii-by-leetcode-solution/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/solution/liang-ge-shu-zu-de-jiao-ji-ii-by-leetcode-solution/</a><br>  来源：力扣（LeetCode）<br>  著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</blockquote>
+<h3 id="动图演示-2"><a href="#动图演示-2" class="headerlink" title="动图演示"></a>动图演示</h3><p>官方做的图解好好看，自己做的有点点小丑，哈哈哈</p>
+<p><img src="http://cdn.z2blog.com/img/20200713152800.gif" alt="来源leetcode"></p>
+<h3 id="完整代码-2"><a href="#完整代码-2" class="headerlink" title="完整代码"></a>完整代码</h3><pre><code class="python">class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -&gt; List[int]:
+        import collections
+        # 构建nums1的元素个数表
+        c = collections.Counter(nums1)
+        res = []
+        for n in nums2:
+            if n in c:
+                if c[n] != 0:
+                    # 如果等于0了，则表示nums2中的这个元素数量比nums1多
+                    # 而题目要求按最小值
+                    c[n] -= 1
+                    res.append(n)
+        return res</code></pre>
 
       
     </div>
@@ -455,7 +514,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2/" rel="tag"># 二分搜索</a>
+            <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"># 数组</a>
+          
+            <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag"># 哈希表</a>
+          
+            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag"># 双指针</a>
+          
+            <a href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag"># 排序</a>
           
         </div>
       
@@ -468,8 +533,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/12/23.%E5%90%88%E5%B9%B6K%E4%B8%AA%E6%8E%92%E5%BA%8F%E5%88%97%E8%A1%A8/" rel="next" title="23.合并K个排序列表">
-                <i class="fa fa-chevron-left"></i> 23.合并K个排序列表
+              <a href="/2020/07/12/153&154.%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC/" rel="next" title="153&154.寻找旋转排序数组中的最小值">
+                <i class="fa fa-chevron-left"></i> 153&154.寻找旋转排序数组中的最小值
               </a>
             
           </div>
@@ -477,10 +542,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/12/378.%E6%9C%89%E5%BA%8F%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/" rel="prev" title="378.有序矩阵中第K小的元素">
-                378.有序矩阵中第K小的元素 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -628,7 +689,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#找到K个最接近的元素"><span class="nav-number">1.</span> <span class="nav-text">找到K个最接近的元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">1.1.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤解析"><span class="nav-number">1.1.1.</span> <span class="nav-text">步骤解析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#两个数组的交集"><span class="nav-number">1.</span> <span class="nav-text">两个数组的交集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#排序-双指针"><span class="nav-number">1.1.</span> <span class="nav-text">排序+双指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#思路及算法"><span class="nav-number">1.1.1.</span> <span class="nav-text">思路及算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动图演示"><span class="nav-number">1.1.2.</span> <span class="nav-text">动图演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完整代码"><span class="nav-number">1.1.3.</span> <span class="nav-text">完整代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复杂度分析"><span class="nav-number">1.1.4.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#两个数组的交集-II"><span class="nav-number">2.</span> <span class="nav-text">两个数组的交集 II</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#排序-双指针-1"><span class="nav-number">2.1.</span> <span class="nav-text">排序+双指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#动图演示-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">动图演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完整代码-1"><span class="nav-number">2.1.2.</span> <span class="nav-text">完整代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希表"><span class="nav-number">2.2.</span> <span class="nav-text">哈希表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#思路及算法-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">思路及算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动图演示-2"><span class="nav-number">2.2.2.</span> <span class="nav-text">动图演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完整代码-2"><span class="nav-number">2.2.3.</span> <span class="nav-text">完整代码</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
