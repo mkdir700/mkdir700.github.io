@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Mkdir, 算法笔记" />
+  <meta name="keywords" content="排序算法," />
 
 
 
@@ -79,15 +79,17 @@
 
 
 
-<meta name="description" content="Mkdir700的算法笔记">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mkdir700的算法笔记">
-<meta property="og:url" content="http://mkdir700.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/index.html">
+<meta name="description" content="思路开始的时候逐渐让数组变得基本有序，最后使用一次使用「插入排序」就变得高效了。  「逐渐让数组变得基本有序」的方法是让移动的「步幅」增大，不是一步一步挪过去，而是「大步流星」、「连蹦带跳」走过去； 「逐渐缩小增量」「分组实施插入排序让数组变得逐渐接近有序」「最后执行一次标准的插入排序」（ 最后一轮就是「原汁原味」的插入排序。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="希尔排序">
+<meta property="og:url" content="http://mkdir700.github.io/2020/07/19/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="Mkdir700的算法笔记">
-<meta property="og:description" content="Mkdir700的算法笔记">
+<meta property="og:description" content="思路开始的时候逐渐让数组变得基本有序，最后使用一次使用「插入排序」就变得高效了。  「逐渐让数组变得基本有序」的方法是让移动的「步幅」增大，不是一步一步挪过去，而是「大步流星」、「连蹦带跳」走过去； 「逐渐缩小增量」「分组实施插入排序让数组变得逐渐接近有序」「最后执行一次标准的插入排序」（ 最后一轮就是「原汁原味」的插入排序。">
 <meta property="og:locale" content="zh">
+<meta property="article:published_time" content="2020-07-19T06:53:56.627Z">
+<meta property="article:modified_time" content="2020-07-19T06:53:46.000Z">
 <meta property="article:author" content="Mkdir700">
-<meta property="article:tag" content="算法 笔记">
+<meta property="article:tag" content="排序算法">
 <meta name="twitter:card" content="summary">
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://mkdir700.github.io/tags/双指针/"/>
+  <link rel="canonical" href="http://mkdir700.github.io/2020/07/19/排序算法之希尔排序/"/>
 
 
 
 
 
-  <title>Tag: 双指针 | Mkdir700的算法笔记</title>
+  <title>希尔排序 | Mkdir700的算法笔记</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -261,82 +263,239 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>双指针<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mkdir700.github.io/2020/07/19/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mkdir700">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mkdir700的算法笔记">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2020/07/13/287.%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/" itemprop="url">
-              
-                <span itemprop="name">287.寻找重复数</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">希尔排序</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-07-13T23:57:36+08:00"
-              content="2020-07-13" >
-          07-13
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-19T14:53:56+08:00">
+                2020-07-19
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">算法学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>开始的时候逐渐让数组变得基本有序，最后使用一次使用「插入排序」就变得高效了。</p>
+<ul>
+<li>「逐渐让数组变得基本有序」的方法是让移动的「步幅」增大，不是一步一步挪过去，而是「大步流星」、「连蹦带跳」走过去；</li>
+<li>「逐渐缩小增量」「分组实施插入排序让数组变得逐渐接近有序」「最后执行一次标准的插入排序」（ 最后一轮就是「原汁原味」的插入排序。</li>
+</ul>
+<a id="more"></a>
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2020/07/13/349&350.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/" itemprop="url">
-              
-                <span itemprop="name">349&350.两个数组的交集</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-07-13T17:25:39+08:00"
-              content="2020-07-13" >
-          07-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+<h2 id="动态演示"><a href="#动态演示" class="headerlink" title="动态演示"></a>动态演示</h2><p>视频： <a href="https://www.bilibili.com/video/av64424835/" target="_blank" rel="noopener">https://www.bilibili.com/video/av64424835/</a></p>
+<h2 id="边想边写"><a href="#边想边写" class="headerlink" title="边想边写"></a>边想边写</h2><ul>
+<li>获取数组长度，求出第一次「步长」</li>
+</ul>
+<pre><code class="python">def shell_sort(nums):
+    length = len(nums)
+    gap = length // 2
+    # ...</code></pre>
+<ul>
+<li>遍历数组，并比较</li>
+</ul>
+<pre><code class="python">def shell_sort(nums):
+    length = len(nums)
+    gap = length // 2
+    for i in range(length):
+        # 越界则退出循环
+        if i + gap &gt;= length:
+            break
+        if nums[i] &gt; nums[i+gap]:
+            nums[i], nums[i+gap] = nums[i+gap], nums[i]
+</code></pre>
+<ul>
+<li>上方只是完成了一次「步长」的比较，我们需要让步长一直到除到1才能结束</li>
+</ul>
+<pre><code class="python">def shell_sort(nums):
+    length = len(nums)
+    gap = length // 2
+    while gap &gt; 0:
+        for i in range(length):
+            if i + gap &gt;= length:
+                break
+            if nums[i] &gt; nums[i + gap]:
+                nums[i], nums[i + gap] = nums[i + gap], nums[i]
+        gap = gap // 2
+    return nums</code></pre>
+<blockquote>
+<p>  当最后<code>gap=1</code>时，其实就是执行了一次 「插入排序」</p>
+</blockquote>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><pre><code class="python">def shell_sort(nums):
+    length = len(nums)
+    gap = length // 2
+    while gap &gt; 0:
+        for i in range(length):
+            if i + gap &gt;= length:
+                break
+            if nums[i] &gt; nums[i + gap]:
+                nums[i], nums[i + gap] = nums[i + gap], nums[i]
+        gap = gap // 2
+    return nums</code></pre>
+<h2 id="用例测试"><a href="#用例测试" class="headerlink" title="用例测试"></a>用例测试</h2><p>测试用例： <a href="https://leetcode-cn.com/submissions/detail/89203696/testcase/" target="_blank" rel="noopener">https://leetcode-cn.com/submissions/detail/89203696/testcase/</a></p>
+<p>使用此算法，<strong>用时：0.1754603385925293</strong></p>
+<p>和「选择排序相比」，效率大大提高</p>
+<h2 id="与「插入排序」对比"><a href="#与「插入排序」对比" class="headerlink" title="与「插入排序」对比"></a>与「插入排序」对比</h2><p>5000个随机数 「数组」的排序耗时：</p>
+<blockquote>
+<p>  shell_sort time:  0.020738601684570312<br>  insert_sort time:  0.8852617740631104</p>
+</blockquote>
+<p>5000个随机数 「“几乎有序”数组」的排序耗时：</p>
+<blockquote>
+<p>  shell_sort time:  0.0062313079833984375<br>  insert_sort time:  0.0076389312744140625</p>
+</blockquote>
+<p>至此，我们大致看出，对杂乱的情况排序，「希尔排序」更快，而这其中的主要原因就是 <strong>插入排序更擅长 “几乎有序”的数组</strong>， 在 “几乎有序”的数组排序中，「希尔」与「插入」相差无几</p>
+<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul>
+<li>时间复杂度：O(n^(1.3—2)^)，希尔排序是<strong>非稳定的排序方法</strong>，最坏的情况与「插入排序」一样是 <em>O(n^2)</em></li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag"># 排序算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/19/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" rel="next" title="插入排序">
+                <i class="fa fa-chevron-left"></i> 插入排序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -344,6 +503,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -364,8 +527,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -441,6 +613,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态演示"><span class="nav-number">2.</span> <span class="nav-text">动态演示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边想边写"><span class="nav-number">3.</span> <span class="nav-text">边想边写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整代码"><span class="nav-number">4.</span> <span class="nav-text">完整代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用例测试"><span class="nav-number">5.</span> <span class="nav-text">用例测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与「插入排序」对比"><span class="nav-number">6.</span> <span class="nav-text">与「插入排序」对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间复杂度"><span class="nav-number">7.</span> <span class="nav-text">时间复杂度</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -581,6 +769,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
