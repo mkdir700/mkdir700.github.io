@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>排序算法之归并排序</title>
+      <link href="/2020/07/21/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/"/>
+      <url>/2020/07/21/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
+      
+        <content type="html"><![CDATA[<hr><hr><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><strong>基本思路：</strong>借助额外空间，合并两个有序数组，得到更长的有序数组</p><p><strong>算法思想：</strong>分而治之（分治思想）。「分而治之」</p><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><h3 id="认识递归"><a href="#认识递归" class="headerlink" title="认识递归"></a>认识递归</h3><p>「归并排序」使用递归，会使得我们的思路比较清晰，所以先认识下「递归」</p><blockquote><p>程序调用自身的编程技巧称为递归（ recursion）</p></blockquote><p>打印 十次 <code>hello world!</code></p><p>使用循环</p><pre><code class="python">&gt;&gt;&gt; for i in range(10):...     print(&quot;hello world!&quot;)...hello world!hello world!hello world!hello world!hello world!hello world!hello world!hello world!hello world!hello world!&gt;&gt;&gt;</code></pre><p>使用递归</p><pre><code class="python">&gt;&gt;&gt; def helper(n):...     print(&quot;hello world&quot;)...     n -= 1...     if n == 0: return...     helper(n)...&gt;&gt;&gt; helper(10)hello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello world</code></pre><h3 id="递归练习"><a href="#递归练习" class="headerlink" title="递归练习"></a>递归练习</h3><p><a href="https://leetcode-cn.com/problems/fibonacci-number/" target="_blank" rel="noopener">533.斐波那契数</a></p><blockquote><p>斐波那契数，通常用 F(n) 表示，形成的序列称为斐波那契数列。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是：</p><p>F(0) = 0,   F(1) = 1<br>F(N) = F(N - 1) + F(N - 2), 其中 N &gt; 1.<br>给定 N，计算 F(N)。</p><p><strong>示例 1：</strong></p><pre><code>输入：2输出：1解释：F(2) = F(1) + F(0) = 1 + 0 = 1.</code></pre></blockquote><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><a href="https://www.bilibili.com/video/BV1Gx411Y7sF?from=search&seid=4792988933263748689" target="_blank" rel="noopener">[中文字幕]3D动画演示合并（归并）排序VS快速排序</a></p><h2 id="边想边写"><a href="#边想边写" class="headerlink" title="边想边写"></a>边想边写</h2><ul><li>将数组分割为不可再分状态</li></ul><blockquote><p>边想边写，一步一步的来</p><p>首要目标是，<strong>将当前这个数组分成两段并继续分割，分到最小单位为止</strong></p></blockquote><pre><code class="python">def merge(nl, nr):    &quot;&quot;&quot;合并两个有序数组&quot;&quot;&quot;    for l in nl:def partition(nums):    &quot;&quot;&quot;将当前数组一分为二&quot;&quot;&quot;    if len(nums) &lt;= 1:        return nums    mid = (0 + len(nums) - 1) &gt;&gt; 1    left = partition(nums[:mid])    right = partition(nums[mid:])    return merge(left, right)def merge_sort(nums):    &quot;&quot;&quot;归并排序主函数&quot;&quot;&quot;    left, right = partition(nums)    return merge(left, right)</code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>希尔排序</title>
       <link href="/2020/07/19/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/"/>
       <url>/2020/07/19/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/</url>

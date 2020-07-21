@@ -79,13 +79,15 @@
 
 
 
-<meta name="description" content="Mkdir700的算法笔记">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mkdir700的算法笔记">
-<meta property="og:url" content="http://mkdir700.github.io/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/index.html">
+<meta name="description" content="思路基本思路：借助额外空间，合并两个有序数组，得到更长的有序数组 算法思想：分而治之（分治思想）。「分而治之」 递归认识递归「归并排序」使用递归，会使得我们的思路比较清晰，所以先认识下「递归」  程序调用自身的编程技巧称为递归（ recursion）  打印 十次 hello world! 使用循环 &gt;&gt;&gt; for i in range(10): ...     print(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序算法之归并排序">
+<meta property="og:url" content="http://mkdir700.github.io/2020/07/21/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="Mkdir700的算法笔记">
-<meta property="og:description" content="Mkdir700的算法笔记">
+<meta property="og:description" content="思路基本思路：借助额外空间，合并两个有序数组，得到更长的有序数组 算法思想：分而治之（分治思想）。「分而治之」 递归认识递归「归并排序」使用递归，会使得我们的思路比较清晰，所以先认识下「递归」  程序调用自身的编程技巧称为递归（ recursion）  打印 十次 hello world! 使用循环 &gt;&gt;&gt; for i in range(10): ...     print(">
 <meta property="og:locale" content="zh">
+<meta property="article:published_time" content="2020-07-21T13:51:57.394Z">
+<meta property="article:modified_time" content="2020-07-21T13:51:57.394Z">
 <meta property="article:author" content="Mkdir700">
 <meta property="article:tag" content="算法 笔记">
 <meta name="twitter:card" content="summary">
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://mkdir700.github.io/tags/哈希表/"/>
+  <link rel="canonical" href="http://mkdir700.github.io/2020/07/21/排序算法之归并排序/"/>
 
 
 
 
 
-  <title>Tag: 哈希表 | Mkdir700的算法笔记</title>
+  <title>排序算法之归并排序 | Mkdir700的算法笔记</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -261,54 +263,218 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>哈希表<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mkdir700.github.io/2020/07/21/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mkdir700">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mkdir700的算法笔记">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2020/07/13/349&350.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/" itemprop="url">
-              
-                <span itemprop="name">349&350.两个数组的交集</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">排序算法之归并排序</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-07-13T17:25:39+08:00"
-              content="2020-07-13" >
-          07-13
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-21T21:51:57+08:00">
+                2020-07-21
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<hr>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><strong>基本思路：</strong>借助额外空间，合并两个有序数组，得到更长的有序数组</p>
+<p><strong>算法思想：</strong>分而治之（分治思想）。「分而治之」</p>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><h3 id="认识递归"><a href="#认识递归" class="headerlink" title="认识递归"></a>认识递归</h3><p>「归并排序」使用递归，会使得我们的思路比较清晰，所以先认识下「递归」</p>
+<blockquote>
+<p>程序调用自身的编程技巧称为递归（ recursion）</p>
+</blockquote>
+<p>打印 十次 <code>hello world!</code></p>
+<p>使用循环</p>
+<pre><code class="python">&gt;&gt;&gt; for i in range(10):
+...     print(&quot;hello world!&quot;)
+...
+hello world!
+hello world!
+hello world!
+hello world!
+hello world!
+hello world!
+hello world!
+hello world!
+hello world!
+hello world!
+&gt;&gt;&gt;</code></pre>
+<p>使用递归</p>
+<pre><code class="python">&gt;&gt;&gt; def helper(n):
+...     print(&quot;hello world&quot;)
+...     n -= 1
+...     if n == 0: return
+...     helper(n)
+...
+&gt;&gt;&gt; helper(10)
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world</code></pre>
+<h3 id="递归练习"><a href="#递归练习" class="headerlink" title="递归练习"></a>递归练习</h3><p><a href="https://leetcode-cn.com/problems/fibonacci-number/" target="_blank" rel="noopener">533.斐波那契数</a></p>
+<blockquote>
+<p>斐波那契数，通常用 F(n) 表示，形成的序列称为斐波那契数列。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是：</p>
+<p>F(0) = 0,   F(1) = 1<br>F(N) = F(N - 1) + F(N - 2), 其中 N &gt; 1.<br>给定 N，计算 F(N)。</p>
+<p><strong>示例 1：</strong></p>
+<pre><code>输入：2
+输出：1
+解释：F(2) = F(1) + F(0) = 1 + 0 = 1.</code></pre></blockquote>
+<h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><a href="https://www.bilibili.com/video/BV1Gx411Y7sF?from=search&seid=4792988933263748689" target="_blank" rel="noopener">[中文字幕]3D动画演示合并（归并）排序VS快速排序</a></p>
+<h2 id="边想边写"><a href="#边想边写" class="headerlink" title="边想边写"></a>边想边写</h2><ul>
+<li>将数组分割为不可再分状态</li>
+</ul>
+<blockquote>
+<p>边想边写，一步一步的来</p>
+<p>首要目标是，<strong>将当前这个数组分成两段并继续分割，分到最小单位为止</strong></p>
+</blockquote>
+<pre><code class="python">def merge(nl, nr):
+    &quot;&quot;&quot;合并两个有序数组&quot;&quot;&quot;
+    for l in nl:
+
+
+def partition(nums):
+    &quot;&quot;&quot;将当前数组一分为二&quot;&quot;&quot;
+    if len(nums) &lt;= 1:
+        return nums
+    mid = (0 + len(nums) - 1) &gt;&gt; 1
+    left = partition(nums[:mid])
+    right = partition(nums[mid:])
+    return merge(left, right)
+
+def merge_sort(nums):
+    &quot;&quot;&quot;归并排序主函数&quot;&quot;&quot;
+    left, right = partition(nums)
+    return merge(left, right)
+
+</code></pre>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/19/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" rel="next" title="希尔排序">
+                <i class="fa fa-chevron-left"></i> 希尔排序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -316,6 +482,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -336,8 +506,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -413,6 +592,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归"><span class="nav-number">2.</span> <span class="nav-text">递归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#认识递归"><span class="nav-number">2.1.</span> <span class="nav-text">认识递归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归练习"><span class="nav-number">2.2.</span> <span class="nav-text">递归练习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画演示"><span class="nav-number">3.</span> <span class="nav-text">动画演示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边想边写"><span class="nav-number">4.</span> <span class="nav-text">边想边写</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -553,6 +748,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
