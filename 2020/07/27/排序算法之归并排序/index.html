@@ -79,21 +79,20 @@
 
 
 
-<meta name="description" content="思路每次将一个数字插入到一个有序数组中，成为一个更长的有序数组，在有限次操作之后，数组整体有序">
+<meta name="description" content="思路基本思路：借助额外空间，合并两个有序数组，得到更长的有序数组 算法思想：分而治之（分治思想）。「分而治之」">
 <meta property="og:type" content="article">
-<meta property="og:title" content="插入排序">
-<meta property="og:url" content="http://mkdir700.github.io/2020/07/19/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:title" content="归并排序">
+<meta property="og:url" content="http://mkdir700.github.io/2020/07/27/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="Mkdir700的算法笔记">
-<meta property="og:description" content="思路每次将一个数字插入到一个有序数组中，成为一个更长的有序数组，在有限次操作之后，数组整体有序">
+<meta property="og:description" content="思路基本思路：借助额外空间，合并两个有序数组，得到更长的有序数组 算法思想：分而治之（分治思想）。「分而治之」">
 <meta property="og:locale" content="zh">
-<meta property="og:image" content="http://cdn.z2blog.com/img/20200719104503.gif">
-<meta property="og:image" content="http://cdn.z2blog.com/img/20200719111301.gif">
-<meta property="article:published_time" content="2020-07-19T06:50:02.115Z">
-<meta property="article:modified_time" content="2020-07-19T06:49:48.000Z">
+<meta property="og:image" content="http://cdn.z2blog.com/img/20200722135538.gif">
+<meta property="article:published_time" content="2020-07-27T07:09:15.583Z">
+<meta property="article:modified_time" content="2020-07-27T07:07:24.000Z">
 <meta property="article:author" content="Mkdir700">
 <meta property="article:tag" content="排序算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://cdn.z2blog.com/img/20200719104503.gif">
+<meta name="twitter:image" content="http://cdn.z2blog.com/img/20200722135538.gif">
 
 
 
@@ -123,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://mkdir700.github.io/2020/07/19/排序算法之插入排序/"/>
+  <link rel="canonical" href="http://mkdir700.github.io/2020/07/27/排序算法之归并排序/"/>
 
 
 
 
 
-  <title>插入排序 | Mkdir700的算法笔记</title>
+  <title>归并排序 | Mkdir700的算法笔记</title>
   
 
 
@@ -280,7 +279,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://mkdir700.github.io/2020/07/19/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/">
+    <link itemprop="mainEntityOfPage" href="http://mkdir700.github.io/2020/07/27/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mkdir700">
@@ -297,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">插入排序</h1>
+          <h1 class="post-title" itemprop="name headline">归并排序</h1>
         
 
         <div class="post-meta">
@@ -309,8 +308,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-19T14:50:02+08:00">
-                2020-07-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-27T15:09:15+08:00">
+                2020-07-27
               </time>
             
 
@@ -369,78 +368,89 @@
       
 
       
-        <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>每次将一个数字插入到一个有序数组中，成为一个更长的有序数组，在有限次操作之后，数组整体有序</p>
+        <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><strong>基本思路：</strong>借助额外空间，合并两个有序数组，得到更长的有序数组</p>
+<p><strong>算法思想：</strong>分而治之（分治思想）。「分而治之」</p>
 <a id="more"></a>
 
-<h2 id="动图演示"><a href="#动图演示" class="headerlink" title="动图演示"></a>动图演示</h2><p><img src="http://cdn.z2blog.com/img/20200719104503.gif" alt=""></p>
-<p>根据上方演示，可以直观的看出，从后面依次取数字，然后插入到前方有序的数组中</p>
-<p>图片来源： <a href="https://visualgo.net/zh/sorting" target="_blank" rel="noopener">https://visualgo.net/zh/sorting</a></p>
+<h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><a href="https://www.bilibili.com/video/BV1Gx411Y7sF?from=search&seid=4792988933263748689" target="_blank" rel="noopener">[中文字幕]3D动画演示合并（归并）排序VS快速排序</a></p>
 <h2 id="边想边写"><a href="#边想边写" class="headerlink" title="边想边写"></a>边想边写</h2><ul>
-<li>既然需要从后续数组中依次取值，所以必然会遍历这个数组</li>
+<li>将数组分割为不可再分状态</li>
 </ul>
-<pre><code class="python">def insert_sort(nums):
-    length = len(nums)
-    for i in range(1, length):
-        # ...</code></pre>
-<ul>
-<li>当取出一个数字时，我们需要与前面的有序数组依次比较，找到「合适的插入位置」，根据演示图，是逆序遍历「有序数组」的</li>
-</ul>
-<pre><code class="python">def insert_sort(nums):
-    length = len(nums)
-    for i in range(1, length):
-        for j in range(i-1, -1, -1):
-            # ...
-</code></pre>
-<p>这里解释下 <code>range(i-1, -1, -1)</code>的写法，这是<code>python</code>的逆序遍历</p>
 <blockquote>
-<p>  第一个参数<code>i-1</code>， 这个很好理解，我在第<code>i</code>个位置，取出这个数字，自然需要逆序遍历，<code>i</code>之前的有序数组，所以是从<code>i-1</code></p>
-<p>  第二个参数<code>-1</code> ，这个是遍历的步长，这里表示每次遍历的跨度为<code>1</code>，因为是逆序，遍历的索引需要不断减小，所以是<code>-1</code></p>
-<p>  第三个参数<code>-1</code>，表示「逆序遍历」</p>
+<p>边想边写，一步一步的来</p>
+<p>首要目标是，将当前数组分成两段（left 和 right），循环此步骤直到不可再分</p>
 </blockquote>
+<pre><code class="python">def merge_sort(arr):
+    mid = len(arr) &gt;&gt; 1
+    if len(arr) &lt;= 1: # 当只有一个元素时，直接返回
+        return arr
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    # ...</code></pre>
 <ul>
-<li>在逆序遍历有序数组的过程中，不断比较，找到合适位置并“插入”</li>
+<li>比较并合并</li>
 </ul>
-<pre><code class="python">def insert_sort(nums):
-    length = len(nums)
-    for i in range(1, length):
-        for j in range(i-1, -1, -1):
-            if nums[i] &gt;= nums[j]:
-                break
-            elif nums[i] &lt; nums[j]:
-                nums[i], nums[j] = nums[j], nums[i]
-</code></pre>
+<p><img src="http://cdn.z2blog.com/img/20200722135538.gif" alt="比较过程演示"></p>
+<p>每个数组都需要一个游标，用于记录当前的位置.</p>
+<pre><code class="python">cur_l, cur_r = 0, 0</code></pre>
+<p><strong>比较大小</strong></p>
+<pre><code class="python">res = [] # 用于保存此次合并结果
+if left[cur_l] &lt; right[cur_r]:
+    res.append(left[cur_l])
+    # 移动游标
+    cur_l += 1
+else:
+    res.append(right[cur_r])
+    cur_r += 1</code></pre>
+<p><strong>上方只是比较一次，再套上一个循环，完整比较.</strong></p>
+<p>循环条件： <code>len(left) &lt; cur_l and len(right) &lt; cur_r</code></p>
+<p>其中一个数组的游标等于其长度，则退出循环</p>
+<pre><code class="python">while len(left) &lt; cur_l and len(right) &lt; cur_r:
+    res = [] # 用于保存此次合并结果
+if left[cur_l] &lt; right[cur_r]:
+    res.append(left[cur_l])
+    # 移动游标
+    cur_l += 1
+else:
+    res.append(right[cur_r])
+    cur_r += 1</code></pre>
+<p>循环退出后，有一个数组必定留有一个元素，没有被比较。 直接添加到 <code>res</code> 之后即可</p>
+<pre><code class="python">res += left[cur_l:]
+res += right[cur_r:]</code></pre>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><pre><code class="python">def merge_sort(arr):
+    mid = len(arr) &gt;&gt; 1
+    if len(arr) &lt;= 1:
+        return arr
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    res = []
+    cur_l, cur_r = 0, 0
+    while cur_l &lt; len(left) and cur_r &lt; len(right):
+        if left[cur_l] &lt;= right[cur_r]:
+            res.append(left[cur_l])
+            cur_l += 1
+        else:
+            res.append(right[cur_r])
+            cur_r += 1
+    res += left[cur_l:]
+    res += right[cur_r:]
+    return res</code></pre>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>实现归并排序的时候，要特别注意，不要把这个算法实现成非稳定排序，区别就在 <code>&lt;=</code> 和 <code>&lt;</code> </p>
+<pre><code class="python">        if left[cur_l] &lt; right[cur_r]:
+            res.append(left[cur_l])
+            cur_l += 1</code></pre>
+<p>如果这里使用了 <code>&lt;</code> ，那么下方的情况</p>
 <blockquote>
-<p>  在大于等于的情况下，此时我们所取出来的<code>nums[i]</code> 是前面「有序数组」中的最大值，所以可以<strong>提前终止此内循环</strong>，避免后续无用的操作</p>
-<p>  在小于的情况下，则需要将<code>nums[i]</code>与有序数组部分逆序比较，这里的 “插入” 并非是真的插入，而完成 “插入”操作，我们可以使用「值交换」</p>
-<p>  完成一次「值交换」后，还需要向前比较，所以应该更改它们的索引值，<code>i</code>是我们取出来的数字的索引，当交换发生后，此时 <code>i</code> 所表示的值发生了改变，此时我们应该将 <code>i</code> 重新表示为 「取出来的数字」，看文字有点绕，看下图</p>
+<p>  left [1,2] 和 right [2, 3] 两个有序数组</p>
+<p>  当left[1] 与 right[0] 相比较时，相等，满足 <code>if left[cur_l] &lt;= right[cur_r]:</code></p>
+<p>  此时，right的2 会先于 left的2 合并， 也就是说，原本left的2在前面，现在left的2到了right的2后面</p>
 </blockquote>
-<p><img src="http://cdn.z2blog.com/img/20200719111301.gif" alt=""></p>
-<p><code>j</code>移动是交给循环的，所以我们只需要让<code>i</code>向前移动即可</p>
-<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><pre><code class="python">def insert_sort(nums):
-    length = len(nums)
-    for i in range(1, length):
-        for j in range(i-1, -1, -1):
-            if nums[i] &gt;= nums[j]:
-                break
-            elif nums[i] &lt; nums[j]:
-                nums[i], nums[j] = nums[j], nums[i]
-                i = j # 或者 i -= 1
-    return nums</code></pre>
-<h2 id="用例测试"><a href="#用例测试" class="headerlink" title="用例测试"></a>用例测试</h2><p>测试用例： <a href="https://leetcode-cn.com/submissions/detail/89203696/testcase/" target="_blank" rel="noopener">https://leetcode-cn.com/submissions/detail/89203696/testcase/</a></p>
-<p>使用此算法，<strong>用时：156.1655251979828</strong></p>
-<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a><strong>复杂度分析</strong></h2><ul>
-<li>时间复杂度：<em>O(n^2^)</em>，这里 N 是数组的长度；</li>
-<li>空间复杂度：<em>O(1)</em>，使用到常数个临时变量。</li>
+<p>此时的 归并排序 就是不稳定的</p>
+<p>怎么判断排序稳定：保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同</p>
+<h2 id="经典问题"><a href="#经典问题" class="headerlink" title="经典问题"></a>经典问题</h2><ul>
+<li>《剑指 Offer》第 51 题：<a href="https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/" target="_blank" rel="noopener">数组中的逆序对</a>，照着归并排序的思路就能写出来；</li>
+<li>「力扣」第 315 题：<a href="https://leetcode-cn.com/problems/count-of-smaller-numbers-after-self/" target="_blank" rel="noopener">计算右侧小于当前元素的个数</a>，它们是一个问题。</li>
 </ul>
-<h2 id="插入排序的特点（重要）"><a href="#插入排序的特点（重要）" class="headerlink" title="插入排序的特点（重要）"></a>插入排序的特点（重要）</h2><ul>
-<li>「插入排序」可以提前终止内层循环；</li>
-<li>在数组「几乎有序」的前提下，「插入排序」的时间复杂度可以达到 <em>O(1)</em>，因此「插入排序」可以作为高级排序算法的一个子过程（后面再「归并排序」和「快速排序」算法里我们会看到）。</li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>优化：「将一个数字插入一个有序的数组」这一步，可以不使用逐步交换，使用先赋值给「临时变量」，然后「适当的元素」后移，空出一个位置，最后把「临时变量」赋值给这个空位的策略（就是上面那张图的意思）。</li>
-<li>由于「插入排序」在「几乎有序」的数组上表现良好，特别地，在「短数组」上的表现也很好。因为「短数组」的特点是：每个元素离它最终排定的位置都不会太远。为此，<strong>在小区间内执行排序任务的时候，可以转向使用「插入排序」</strong>。</li>
-</ul>
-<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://www.yuque.com/liweiwei1419/algo/pbpdec#Bdb7S" target="_blank" rel="noopener">https://www.yuque.com/liweiwei1419/algo/pbpdec#Bdb7S</a></p>
 
       
     </div>
@@ -471,8 +481,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/19/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/" rel="next" title="选择排序">
-                <i class="fa fa-chevron-left"></i> 选择排序
+              <a href="/2020/07/19/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" rel="next" title="希尔排序">
+                <i class="fa fa-chevron-left"></i> 希尔排序
               </a>
             
           </div>
@@ -481,8 +491,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/07/19/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" rel="prev" title="希尔排序">
-                希尔排序 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/07/27/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E7%9A%84%E4%BC%98%E5%8C%96/" rel="prev" title="归并排序的优化">
+                归并排序的优化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -631,7 +641,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动图演示"><span class="nav-number">2.</span> <span class="nav-text">动图演示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边想边写"><span class="nav-number">3.</span> <span class="nav-text">边想边写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整代码"><span class="nav-number">4.</span> <span class="nav-text">完整代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用例测试"><span class="nav-number">5.</span> <span class="nav-text">用例测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复杂度分析"><span class="nav-number">6.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入排序的特点（重要）"><span class="nav-number">7.</span> <span class="nav-text">插入排序的特点（重要）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文章"><span class="nav-number">9.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画演示"><span class="nav-number">2.</span> <span class="nav-text">动画演示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边想边写"><span class="nav-number">3.</span> <span class="nav-text">边想边写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整代码"><span class="nav-number">4.</span> <span class="nav-text">完整代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意"><span class="nav-number">5.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经典问题"><span class="nav-number">6.</span> <span class="nav-text">经典问题</span></a></li></ol></div>
             
 
           </div>

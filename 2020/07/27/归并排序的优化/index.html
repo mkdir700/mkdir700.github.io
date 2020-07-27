@@ -82,12 +82,12 @@
 <meta name="description" content="归并排序的优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="归并排序的优化">
-<meta property="og:url" content="http://mkdir700.github.io/2020/07/24/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E7%9A%84%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:url" content="http://mkdir700.github.io/2020/07/27/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E7%9A%84%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="Mkdir700的算法笔记">
 <meta property="og:description" content="归并排序的优化">
 <meta property="og:locale" content="zh">
-<meta property="article:published_time" content="2020-07-24T14:57:25.271Z">
-<meta property="article:modified_time" content="2020-07-24T14:57:18.000Z">
+<meta property="article:published_time" content="2020-07-27T07:09:24.899Z">
+<meta property="article:modified_time" content="2020-07-27T07:08:39.000Z">
 <meta property="article:author" content="Mkdir700">
 <meta property="article:tag" content="排序算法">
 <meta name="twitter:card" content="summary">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://mkdir700.github.io/2020/07/24/归并排序的优化/"/>
+  <link rel="canonical" href="http://mkdir700.github.io/2020/07/27/归并排序的优化/"/>
 
 
 
@@ -277,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://mkdir700.github.io/2020/07/24/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E7%9A%84%E4%BC%98%E5%8C%96/">
+    <link itemprop="mainEntityOfPage" href="http://mkdir700.github.io/2020/07/27/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E7%9A%84%E4%BC%98%E5%8C%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mkdir700">
@@ -306,8 +306,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-24T22:57:25+08:00">
-                2020-07-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-27T15:09:24+08:00">
+                2020-07-27
               </time>
             
 
@@ -385,7 +385,7 @@
     res = []
     cur_l, cur_r = 0, 0
     while cur_l &lt; len(left) and cur_r &lt; len(right):
-        if left[cur_l] &lt; right[cur_r]:
+        if left[cur_l] &lt;= right[cur_r]:
             res.append(left[cur_l])
             cur_l += 1
         else:
@@ -462,10 +462,10 @@ merge_two_sorted_array(arr, left, mid, right)</code></pre>
             # 右边已走完
             arr[i + left] = temp[p1]
             p1 += 1
-        elif temp[p1] &lt; temp[p2]:
+        elif temp[p1] &lt;= temp[p2]:
             arr[i + left] = temp[p1]
             p1 += 1
-        elif temp[p1] &gt;= temp[p2]:
+        elif temp[p1] &gt; temp[p2]:
             arr[i + left] = temp[p2]
             p2 += 1</code></pre>
 <p>一点一点解释上面<code>merge_two_sorted_array</code>的代码</p>
@@ -493,10 +493,10 @@ merge_two_sorted_array(arr, left, mid, right)</code></pre>
             # 右边已走完
             arr[i + left] = temp[p1]
             p1 += 1
-        elif temp[p1] &lt; temp[p2]:
+        elif temp[p1] &lt;= temp[p2]:
             arr[i + left] = temp[p1]
             p1 += 1
-        elif temp[p1] &gt;= temp[p2]:
+        elif temp[p1] &gt; temp[p2]:
             arr[i + left] = temp[p2]
             p2 += 1</code></pre>
 <p>前两个判断： 判断左右两数组中，其中一个走完后，所应该做的操作</p>
@@ -518,10 +518,10 @@ merge_two_sorted_array(arr, left, mid, right)</code></pre>
             # 右边已走完
             arr[i + left] = temp[p1]
             p1 += 1
-        elif temp[p1] &lt; temp[p2]:
+        elif temp[p1] &lt;= temp[p2]:
             arr[i + left] = temp[p1]
             p1 += 1
-        elif temp[p1] &gt;= temp[p2]:
+        elif temp[p1] &gt; temp[p2]:
             arr[i + left] = temp[p2]
             p2 += 1
 
@@ -619,7 +619,7 @@ def main():
             # 右边走完了
             arr[k] = nums_for_compare[p1]
             p1 += 1
-           elif nums_for_compare[p1] &lt; nums_for_compare[p2]:
+           elif nums_for_compare[p1] &lt;= nums_for_compare[p2]:
             arr[k] = nums_for_compare[p1]
             p1 += 1
         else:
@@ -681,6 +681,7 @@ def merge_sort(arr, left, right):
 
 
 def main():
+    # 优化3
     global nums_for_compare
     arr = [1,2,3,4,0]
     nums_for_compare = list(range(len(arr)))
@@ -720,7 +721,7 @@ if __name__ == &#39;__main__&#39;:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/23/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" rel="next" title="归并排序">
+              <a href="/2020/07/27/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" rel="next" title="归并排序">
                 <i class="fa fa-chevron-left"></i> 归并排序
               </a>
             
@@ -729,6 +730,10 @@ if __name__ == &#39;__main__&#39;:
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/27/%E9%9D%A2%E8%AF%95%E9%A2%9851.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9/" rel="prev" title="面试题51.数组中的逆序对">
+                面试题51.数组中的逆序对 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -805,7 +810,7 @@ if __name__ == &#39;__main__&#39;:
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -816,7 +821,7 @@ if __name__ == &#39;__main__&#39;:
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
@@ -827,7 +832,7 @@ if __name__ == &#39;__main__&#39;:
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
