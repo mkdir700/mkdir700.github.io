@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>双路快排</title>
+      <link href="/2020/07/28/%E5%8F%8C%E8%B7%AF%E5%BF%AB%E6%8E%92/"/>
+      <url>/2020/07/28/%E5%8F%8C%E8%B7%AF%E5%BF%AB%E6%8E%92/</url>
+      
+        <content type="html"><![CDATA[<p>在基本快排的切分过程中，每一次遍历都是将基准值与下一个小于它的元素进行交换，最后移动到的位置，就是当前基准值的最终位置。</p><h2 id="双路快排的一次切分演示"><a href="#双路快排的一次切分演示" class="headerlink" title="双路快排的一次切分演示"></a>双路快排的一次切分演示</h2><p><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/Animation.gif" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 排序算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>面试题51.数组中的逆序对</title>
       <link href="/2020/07/27/%E9%9D%A2%E8%AF%95%E9%A2%9851.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9/"/>
       <url>/2020/07/27/%E9%9D%A2%E8%AF%95%E9%A2%9851.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9/</url>
