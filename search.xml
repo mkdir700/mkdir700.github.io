@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>三路快排</title>
+      <link href="/2020/07/31/%E4%B8%89%E8%B7%AF%E5%BF%AB%E6%8E%92/"/>
+      <url>/2020/07/31/%E4%B8%89%E8%B7%AF%E5%BF%AB%E6%8E%92/</url>
+      
+        <content type="html"><![CDATA[<h2 id="三种快排版本"><a href="#三种快排版本" class="headerlink" title="三种快排版本"></a>三种快排版本</h2><p><strong>基础快排：</strong></p><p>将区间分为两部分，小于等于 和 大于</p><p><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596203945210.png" alt=""></p><p><strong>双路快排：</strong></p><p>将区间分为两部分，<strong>小于等于</strong> 和 <strong>大于等于</strong>，重复元素等概率的分配到这两部分中</p><p><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596203854081.png" alt=""></p><p><strong>三路快排：</strong></p><p><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596204214810.png" alt=""></p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>三路快排基本思路：将区间分为三个部分（小于基准数， 等于基准数， 大于基准数）。将重复数字集中在区间的中间。</p><h2 id="边想边写"><a href="#边想边写" class="headerlink" title="边想边写"></a>边想边写</h2><ul><li>定义指针</li></ul><table><thead><tr><th>参数</th><th>说明</th><th>区间</th></tr></thead><tbody><tr><td><code>pivot</code></td><td>基准数</td><td><code>arr[left]</code></td></tr><tr><td><code>lt</code></td><td>小于基准数的元素</td><td><code>arr[left...lt]</code></td></tr><tr><td><code>gt</code></td><td>大于基准数的元素</td><td><code>arr[gt...right]</code></td></tr><tr><td><code>i</code></td><td>用作遍历，确定等于基准数区间</td><td><code>arr[lt+1...i]</code></td></tr><tr><td><code>left</code></td><td>区间左边界</td><td></td></tr><tr><td><code>right</code></td><td>区间右边界</td><td></td></tr></tbody></table><pre><code class="python">def partition(arr, left, right):    pivot = arr[left]    lt = left    gt = right + 1    i = left + 1</code></pre><ul><li>遍历区间</li></ul><p>从 <code>left+1</code> 开始遍历，即从 <code>i</code> 开始遍历，需要遍历到 <code>right</code>，所以循环条件是</p><p><code>i &lt; right + 1</code> 即 <code>i &lt; gt</code></p><pre><code class="python">def partition(arr, left, right):    pivot = arr[left]    lt = left    gt = right + 1    i = left + 1    while i &lt; gt:        pass</code></pre><ul><li>小于基准数</li></ul><p><code>lt</code>指针表示的是，当前元素以及在区间<code>arr[left+1...lt]</code>的所有元素都是小于基准值的</p><p>此时 <code>i</code> 位置的值小于基准值，则应当将这个元素接在 <code>lt</code>的后面一位，所以有</p><pre><code class="python">lt += 1arr[lt], arr[i] = arr[i], arr[lt]i += 1</code></pre><ul><li>等于基准数</li></ul><ul><li>大于基准数</li></ul><p>既然此时 <code>i</code> 的值大于基准数，那么就可以将这个数与<code>gt</code>位置元素交换，将大的数换到右边部分</p><p>在交换之后，因为 交换之后<code>i</code>的值不确定大小，所以这里 <code>i</code> 就不进行移动了，而是在下一次循环中继续判断。</p><pre><code class="python">arr[i], arr[gt] = arr[gt], arr[i]gt -= 1</code></pre><pre><code class="python">def partition(arr, left, right):    pivot = arr[left]    # 寻找小于基准数的指针    lt = left    # 寻找大于基准数的指针    gt = right + 1    i = left + 1    while i &lt; gt:        if arr[i] &lt; pivot:            # 当前元素小于基准值            lt += 1            arr[lt], arr[i] = arr[i], arr[lt]            i += 1        elif arr[i] &gt; pivot:            # 当前元素大于基准值            # 所以应该将这个元素移动至右边的部分            gt -= 1            arr[i], arr[gt] = arr[gt], arr[i]        elif arr[i] == pivot:            i += 1    arr[left], arr[lt] = arr[lt], arr[left]    return lt, gt</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 排序算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>双路快排</title>
       <link href="/2020/07/30/%E5%8F%8C%E8%B7%AF%E5%BF%AB%E6%8E%92/"/>
       <url>/2020/07/30/%E5%8F%8C%E8%B7%AF%E5%BF%AB%E6%8E%92/</url>

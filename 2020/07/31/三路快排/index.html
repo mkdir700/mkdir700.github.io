@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Mkdir, 算法笔记" />
+  <meta name="keywords" content="排序算法," />
 
 
 
@@ -79,16 +79,22 @@
 
 
 
-<meta name="description" content="Mkdir700的算法笔记">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mkdir700的算法笔记">
-<meta property="og:url" content="http://mkdir700.github.io/tags/%E7%9F%A9%E9%98%B5/index.html">
+<meta name="description" content="三种快排版本基础快排： 将区间分为两部分，小于等于 和 大于  双路快排： 将区间分为两部分，小于等于 和 大于等于，重复元素等概率的分配到这两部分中  三路快排：  思路三路快排基本思路：将区间分为三个部分（小于基准数， 等于基准数， 大于基准数）。将重复数字集中在区间的中间。 边想边写 定义指针     参数 说明 区间    pivot 基准数 arr[left]   lt 小于基准数的元素">
+<meta property="og:type" content="article">
+<meta property="og:title" content="三路快排">
+<meta property="og:url" content="http://mkdir700.github.io/2020/07/31/%E4%B8%89%E8%B7%AF%E5%BF%AB%E6%8E%92/index.html">
 <meta property="og:site_name" content="Mkdir700的算法笔记">
-<meta property="og:description" content="Mkdir700的算法笔记">
+<meta property="og:description" content="三种快排版本基础快排： 将区间分为两部分，小于等于 和 大于  双路快排： 将区间分为两部分，小于等于 和 大于等于，重复元素等概率的分配到这两部分中  三路快排：  思路三路快排基本思路：将区间分为三个部分（小于基准数， 等于基准数， 大于基准数）。将重复数字集中在区间的中间。 边想边写 定义指针     参数 说明 区间    pivot 基准数 arr[left]   lt 小于基准数的元素">
 <meta property="og:locale" content="zh">
+<meta property="og:image" content="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596203945210.png">
+<meta property="og:image" content="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596203854081.png">
+<meta property="og:image" content="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596204214810.png">
+<meta property="article:published_time" content="2020-07-31T14:45:45.732Z">
+<meta property="article:modified_time" content="2020-07-31T14:45:45.732Z">
 <meta property="article:author" content="Mkdir700">
-<meta property="article:tag" content="算法 笔记">
+<meta property="article:tag" content="排序算法">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596203945210.png">
 
 
 
@@ -118,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://mkdir700.github.io/tags/矩阵/"/>
+  <link rel="canonical" href="http://mkdir700.github.io/2020/07/31/三路快排/"/>
 
 
 
 
 
-  <title>Tag: 矩阵 | Mkdir700的算法笔记</title>
+  <title>三路快排 | Mkdir700的算法笔记</title>
   
 
 
@@ -143,7 +149,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -261,54 +267,277 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>矩阵<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mkdir700.github.io/2020/07/31/%E4%B8%89%E8%B7%AF%E5%BF%AB%E6%8E%92/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mkdir700">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mkdir700的算法笔记">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2020/07/12/378.%E6%9C%89%E5%BA%8F%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/" itemprop="url">
-              
-                <span itemprop="name">378.有序矩阵中第K小的元素</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">三路快排</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-07-12T16:23:00+08:00"
-              content="2020-07-12" >
-          07-12
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-31T22:45:45+08:00">
+                2020-07-31
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">算法学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="三种快排版本"><a href="#三种快排版本" class="headerlink" title="三种快排版本"></a>三种快排版本</h2><p><strong>基础快排：</strong></p>
+<p>将区间分为两部分，小于等于 和 大于</p>
+<p><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596203945210.png" alt=""></p>
+<p><strong>双路快排：</strong></p>
+<p>将区间分为两部分，<strong>小于等于</strong> 和 <strong>大于等于</strong>，重复元素等概率的分配到这两部分中</p>
+<p><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596203854081.png" alt=""></p>
+<p><strong>三路快排：</strong></p>
+<p><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596204214810.png" alt=""></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>三路快排基本思路：将区间分为三个部分（小于基准数， 等于基准数， 大于基准数）。将重复数字集中在区间的中间。</p>
+<h2 id="边想边写"><a href="#边想边写" class="headerlink" title="边想边写"></a>边想边写</h2><ul>
+<li>定义指针</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>区间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pivot</code></td>
+<td>基准数</td>
+<td><code>arr[left]</code></td>
+</tr>
+<tr>
+<td><code>lt</code></td>
+<td>小于基准数的元素</td>
+<td><code>arr[left...lt]</code></td>
+</tr>
+<tr>
+<td><code>gt</code></td>
+<td>大于基准数的元素</td>
+<td><code>arr[gt...right]</code></td>
+</tr>
+<tr>
+<td><code>i</code></td>
+<td>用作遍历，确定等于基准数区间</td>
+<td><code>arr[lt+1...i]</code></td>
+</tr>
+<tr>
+<td><code>left</code></td>
+<td>区间左边界</td>
+<td></td>
+</tr>
+<tr>
+<td><code>right</code></td>
+<td>区间右边界</td>
+<td></td>
+</tr>
+</tbody></table>
+<pre><code class="python">def partition(arr, left, right):
+    pivot = arr[left]
+    lt = left
+    gt = right + 1
+    i = left + 1</code></pre>
+<ul>
+<li>遍历区间</li>
+</ul>
+<p>从 <code>left+1</code> 开始遍历，即从 <code>i</code> 开始遍历，需要遍历到 <code>right</code>，所以循环条件是</p>
+<p><code>i &lt; right + 1</code> 即 <code>i &lt; gt</code></p>
+<pre><code class="python">def partition(arr, left, right):
+    pivot = arr[left]
+    lt = left
+    gt = right + 1
+    i = left + 1
+    while i &lt; gt:
+        pass</code></pre>
+<ul>
+<li>小于基准数</li>
+</ul>
+<p><code>lt</code>指针表示的是，当前元素以及在区间<code>arr[left+1...lt]</code>的所有元素都是小于基准值的</p>
+<p>此时 <code>i</code> 位置的值小于基准值，则应当将这个元素接在 <code>lt</code>的后面一位，所以有</p>
+<pre><code class="python">lt += 1
+arr[lt], arr[i] = arr[i], arr[lt]
+i += 1</code></pre>
+<ul>
+<li>等于基准数</li>
+</ul>
+<ul>
+<li>大于基准数</li>
+</ul>
+<p>既然此时 <code>i</code> 的值大于基准数，那么就可以将这个数与<code>gt</code>位置元素交换，将大的数换到右边部分</p>
+<p>在交换之后，因为 交换之后<code>i</code>的值不确定大小，所以这里 <code>i</code> 就不进行移动了，而是在下一次循环中继续判断。</p>
+<pre><code class="python">arr[i], arr[gt] = arr[gt], arr[i]
+gt -= 1</code></pre>
+<pre><code class="python">def partition(arr, left, right):
+    pivot = arr[left]
+    # 寻找小于基准数的指针
+    lt = left
+    # 寻找大于基准数的指针
+    gt = right + 1
+
+    i = left + 1
+    while i &lt; gt:
+        if arr[i] &lt; pivot:
+            # 当前元素小于基准值
+            lt += 1
+            arr[lt], arr[i] = arr[i], arr[lt]
+            i += 1
+        elif arr[i] &gt; pivot:
+            # 当前元素大于基准值
+            # 所以应该将这个元素移动至右边的部分
+            gt -= 1
+            arr[i], arr[gt] = arr[gt], arr[i]
+        elif arr[i] == pivot:
+            i += 1
+    arr[left], arr[lt] = arr[lt], arr[left]
+    return lt, gt</code></pre>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag"># 排序算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/30/%E5%8F%8C%E8%B7%AF%E5%BF%AB%E6%8E%92/" rel="next" title="双路快排">
+                <i class="fa fa-chevron-left"></i> 双路快排
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -316,6 +545,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -336,8 +569,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -413,6 +655,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#三种快排版本"><span class="nav-number">1.</span> <span class="nav-text">三种快排版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边想边写"><span class="nav-number">3.</span> <span class="nav-text">边想边写</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -553,6 +811,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
