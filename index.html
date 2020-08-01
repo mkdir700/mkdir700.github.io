@@ -276,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://mkdir700.github.io/2020/07/31/%E4%B8%89%E8%B7%AF%E5%BF%AB%E6%8E%92/">
+    <link itemprop="mainEntityOfPage" href="http://mkdir700.github.io/2020/08/01/%E4%B8%89%E8%B7%AF%E5%BF%AB%E6%8E%92/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mkdir700">
@@ -295,7 +295,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/31/%E4%B8%89%E8%B7%AF%E5%BF%AB%E6%8E%92/" itemprop="url">三路快排</a></h1>
+                <a class="post-title-link" href="/2020/08/01/%E4%B8%89%E8%B7%AF%E5%BF%AB%E6%8E%92/" itemprop="url">三路快排</a></h1>
         
 
         <div class="post-meta">
@@ -307,8 +307,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-31T22:47:13+08:00">
-                2020-07-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-01T10:39:17+08:00">
+                2020-08-01
               </time>
             
 
@@ -368,17 +368,27 @@
 
       
         
-          <h2 id="三种快排图解"><a href="#三种快排图解" class="headerlink" title="三种快排图解"></a>三种快排图解</h2><p><strong>基础快排：</strong></p>
+          <h2 id="快排图解"><a href="#快排图解" class="headerlink" title="快排图解"></a>快排图解</h2><p><strong>基础快排：</strong></p>
 <p>将区间分为两部分，小于等于 和 大于</p>
 <p><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596203945210.png" alt=""></p>
 <p><strong>双路快排：</strong></p>
 <p>将区间分为两部分，<strong>小于等于</strong> 和 <strong>大于等于</strong>，重复元素等概率的分配到这两部分中</p>
 <p><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596203854081.png" alt=""></p>
 <p><strong>三路快排：</strong></p>
+<p>三路快排又多加了一个指针，用于将区间分为三部分</p>
+<p>二路快排是将与基准值相等的元素，等概率的分配到左右两部分</p>
+<p>三路快排则是将与基准值相等的元素，集中在区间的中间部分(紧接小于基准值区间的右边)</p>
+<blockquote>
+<p>  arr[left] 基准值</p>
+<p>  arr[left + 1, lt] 小于基准值的区间</p>
+<p>  arr[lt+1, i - 1] 等于基准值的区间</p>
+<p>  arr[i, gt - 1] 暂未被遍历的区间</p>
+<p>  arr[gt, right] 大于基准值的区间</p>
+</blockquote>
 <p><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596204214810.png" alt=""></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/07/31/%E4%B8%89%E8%B7%AF%E5%BF%AB%E6%8E%92/#more" rel="contents">
+            <a class="btn" href="/2020/08/01/%E4%B8%89%E8%B7%AF%E5%BF%AB%E6%8E%92/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
