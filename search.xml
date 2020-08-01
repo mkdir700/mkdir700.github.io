@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>215.数组中的第 K 个最大元素</title>
+      <link href="/2020/08/01/251.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/"/>
+      <url>/2020/08/01/251.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/</url>
+      
+        <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。</p><p>示例 1:</p><pre><code>输入: [3,2,1,5,6,4] 和 k = 2输出: 5</code></pre><p>示例 2:</p><pre><code>输入: [3,2,3,1,2,4,5,5,6] 和 k = 4输出: 4</code></pre><p>说明:</p><p>你可以假设 k 总是有效的，且 1 ≤ k ≤ 数组的长度。</p><p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/kth-largest-element-in-an-array</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p><a id="more"></a><h2 id="解法1：基于堆排序"><a href="#解法1：基于堆排序" class="headerlink" title="解法1：基于堆排序"></a>解法1：基于堆排序</h2><pre><code class="python">class Solution:    def findKthLargest(self, nums: List[int], k: int) -&gt; int:        import heapq        queue = []        for n in nums:            heapq.heappush(queue, n)            if len(queue) &gt; k:                heapq.heappop(queue)        return heapq.heappop(queue)</code></pre><h2 id="解法2：基于快速排序的切分"><a href="#解法2：基于快速排序的切分" class="headerlink" title="解法2：基于快速排序的切分"></a>解法2：基于快速排序的切分</h2><p>在快速排序<strong>切分</strong> 这一步中，可以简单的看做是左右两部分，分别是小于基准值和大于基准值</p><p>如果小于基准值部分的元素个数为K，那么此时切分元素刚好就是第K大的元素</p><h3 id="基于基础快排的切分过程"><a href="#基于基础快排的切分过程" class="headerlink" title="基于基础快排的切分过程"></a>基于基础快排的切分过程</h3><pre><code class="python">def partition(nums, left, right):    # 拿出基准值    pivot = nums[left]    lt = left    for i in range(left + 1, right + 1):        if nums[i] &lt; pivot:            lt += 1            nums[lt], nums[i] = nums[i], nums[lt]    nums[left], nums[lt] = nums[lt], nums[left]    return lt</code></pre><p>在上述代码返回 <code>lt</code> ，此时将数组逻辑的分割成两部分，我们只需要判断下 在 <code>lt</code>之前的元素个数与<code>k</code>的关系即可</p><pre><code class="python">def findKthLargest(nums, k):    length = len(nums)    left = 0    right = length - 1    # 应该比K小于或等于的元素个数    target = length - k    while True:        p_index = partition(nums, left, right)        if target == p_index:            return nums[p_index]        elif target &lt; p_index:            # 下一轮搜索区间 [left, p_index - 1]            right = p_index - 1        elif target &gt; p_index:            # 下一轮搜索区间 [p_index + 1, right]            left = p_index + 1</code></pre><p>了解过快排算法就知道这种切分写法虽然简单易理解，但是存在递归树倾斜的情况，严重影响执行效率，在此基础上，我们可以随机选择基准值降低递归树倾斜的概率</p><pre><code class="python">import randomdef partition(nums, left, right):    # 在[left, right]中随机选择一个    index = random.randint(left, right)    nums[left], nums[index] = nums[index], nums[left]    # 取出基准值    pivot = nums[left]    lt = left    for i in range(left + 1, right + 1):        if nums[i] &lt; pivot:            lt += 1            nums[lt], nums[i] = nums[i], nums[lt]    nums[left], nums[lt] = nums[lt], nums[left]    return lt</code></pre><h3 id="基于双路快排的切分过程"><a href="#基于双路快排的切分过程" class="headerlink" title="基于双路快排的切分过程"></a>基于双路快排的切分过程</h3><p>既然可以使用快速排序的切分来完成此题，同样也可以用快排的优化方式来优化这种解法，提高执行效率</p><pre><code class="python">def findKthLargest(nums, k):    length = len(nums)    left = 0    right = length - 1    # 应该比K小于或等于的元素个数    target = length - k    while True:        p_index = partition(nums, left, right)        if target == p_index:            return nums[p_index]        elif target &lt; p_index:            # 下一轮搜索区间 [left, p_index - 1]            right = p_index - 1        elif target &gt; p_index:            # 下一轮搜索区间 [p_index + 1, right]            left = p_index + 1def partition(nums, left, right):    pivot = nums[left]    le = left + 1    ge = right    while True:        while le &lt;= right and nums[le] &lt; pivot:            le += 1        while ge &gt;= left + 1 and nums[ge] &gt; pivot:            ge -= 1        if le &gt; ge:            break        nums[le], nums[ge] = nums[ge], nums[le]        le += 1        ge -= 1    nums[left], nums[ge] = nums[ge], nums[left]    return ge</code></pre><h3 id="基于三路快排的切分过程"><a href="#基于三路快排的切分过程" class="headerlink" title="基于三路快排的切分过程"></a>基于三路快排的切分过程</h3>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 切分 </tag>
+            
+            <tag> 优先队列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>三路快排</title>
       <link href="/2020/08/01/%E4%B8%89%E8%B7%AF%E5%BF%AB%E6%8E%92/"/>
       <url>/2020/08/01/%E4%B8%89%E8%B7%AF%E5%BF%AB%E6%8E%92/</url>

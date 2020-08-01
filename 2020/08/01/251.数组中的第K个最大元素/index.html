@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="排序算法," />
+  <meta name="keywords" content="切分,优先队列," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="归并排序的优化">
+<meta name="description" content="题目在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。 示例 1: 输入: [3,2,1,5,6,4] 和 k &#x3D; 2 输出: 5示例 2: 输入: [3,2,3,1,2,4,5,5,6] 和 k &#x3D; 4 输出: 4说明: 你可以假设 k 总是有效的，且 1 ≤ k ≤ 数组的长度。 来源：力扣（LeetCode）链接：ht">
 <meta property="og:type" content="article">
-<meta property="og:title" content="归并排序的优化">
-<meta property="og:url" content="http://mkdir700.github.io/2020/07/27/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E7%9A%84%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:title" content="215.数组中的第 K 个最大元素">
+<meta property="og:url" content="http://mkdir700.github.io/2020/08/01/251.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/index.html">
 <meta property="og:site_name" content="Mkdir700的算法笔记">
-<meta property="og:description" content="归并排序的优化">
+<meta property="og:description" content="题目在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。 示例 1: 输入: [3,2,1,5,6,4] 和 k &#x3D; 2 输出: 5示例 2: 输入: [3,2,3,1,2,4,5,5,6] 和 k &#x3D; 4 输出: 4说明: 你可以假设 k 总是有效的，且 1 ≤ k ≤ 数组的长度。 来源：力扣（LeetCode）链接：ht">
 <meta property="og:locale" content="zh">
-<meta property="article:published_time" content="2020-07-27T07:09:24.899Z">
-<meta property="article:modified_time" content="2020-07-27T07:08:39.000Z">
+<meta property="article:published_time" content="2020-08-01T13:51:52.592Z">
+<meta property="article:modified_time" content="2020-08-01T13:51:41.364Z">
 <meta property="article:author" content="Mkdir700">
-<meta property="article:tag" content="排序算法">
+<meta property="article:tag" content="切分">
+<meta property="article:tag" content="优先队列">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://mkdir700.github.io/2020/07/27/归并排序的优化/"/>
+  <link rel="canonical" href="http://mkdir700.github.io/2020/08/01/251.数组中的第K个最大元素/"/>
 
 
 
 
 
-  <title>归并排序的优化 | Mkdir700的算法笔记</title>
+  <title>215.数组中的第 K 个最大元素 | Mkdir700的算法笔记</title>
   
 
 
@@ -277,7 +278,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://mkdir700.github.io/2020/07/27/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E7%9A%84%E4%BC%98%E5%8C%96/">
+    <link itemprop="mainEntityOfPage" href="http://mkdir700.github.io/2020/08/01/251.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mkdir700">
@@ -294,7 +295,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">归并排序的优化</h1>
+          <h1 class="post-title" itemprop="name headline">215.数组中的第 K 个最大元素</h1>
         
 
         <div class="post-meta">
@@ -306,8 +307,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-27T15:09:24+08:00">
-                2020-07-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-01T21:51:52+08:00">
+                2020-08-01
               </time>
             
 
@@ -316,28 +317,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">算法学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -366,332 +345,112 @@
       
 
       
-        <blockquote>
-<p>  归并排序的优化</p>
-</blockquote>
-<a id="more"></a> 
-
-<p><strong>参考文章：</strong></p>
-<p><a href="https://www.yuque.com/liweiwei1419/algo/phxqap" target="_blank" rel="noopener">第 2.5 节 归并排序的优化</a></p>
-<h2 id="重写归并排序"><a href="#重写归并排序" class="headerlink" title="重写归并排序"></a>重写归并排序</h2><p>在之前「归并排序」的写法中，一直依靠「python中列表分割」，所以可以很快并很简单的实现归并排序</p>
-<pre><code class="python">def merge_sort(arr):
-    mid = len(arr) &gt;&gt; 1
-    if len(arr) &lt;= 1:
-        return arr
-    # 左边数组
-    left = merge_sort(arr[:mid])
-    # 右边数组
-    right = merge_sort(arr[mid:])
-    res = []
-    cur_l, cur_r = 0, 0
-    while cur_l &lt; len(left) and cur_r &lt; len(right):
-        if left[cur_l] &lt;= right[cur_r]:
-            res.append(left[cur_l])
-            cur_l += 1
-        else:
-            res.append(right[cur_r])
-            cur_r += 1
-    res += left[cur_l:]
-    res += right[cur_r:]
-    return res</code></pre>
-<p>上方的写法实实在在的进行了数组分割并重建，可以使我们快速的理解「归并排序」，并且<strong>在保持不改动原数组的情况下，进行归并排序</strong></p>
-<p>缺点就是，浪费了许多空间，每一次递归都新创建了 <code>left</code> 和 <code>right</code> 两个数组</p>
-<p>接下来，重写「归并排序」，<strong>在原数组上进行归并排序</strong></p>
-<ul>
-<li>写出最顶层函数</li>
-</ul>
-<blockquote>
-<p>  因为是在原数组上进行“逻辑分割”， 所以需要传入索引值</p>
-<p>  left： 数组的起始元素索引</p>
-<p>  right：数组的结束元素索引 </p>
-</blockquote>
-<pre><code class="python">def main():
-    nums = [1,3,7,2,0]
-      length = len(nums)
-    merge_sort(nums, 0, length - 1)</code></pre>
-<ul>
-<li>写递归函数</li>
-</ul>
-<blockquote>
-<p>  不同于之前的写法，这里我们将写两个函数</p>
-<p>  merge_sort： 归并排序的主函数，主要用于“分割”数组</p>
-<p>  merge_two_sorted_array： 合并两个有序数组</p>
-</blockquote>
-<pre><code class="python">def merge_sort(arr, left, right):
-    if left &gt;= right:
-        return 
-    mid = (left + right) &gt;&gt; 1
-    merge_sort(arr, left, mid)
-    merge_sort(arr, mid + 1, right)
-    merge_two_sorted_array(arr, left, mid, right)</code></pre>
-<p><strong>注意1：</strong></p>
-<pre><code class="python">if left &gt;= right:
-    return </code></pre>
-<p>递归的结束条件，举例说明</p>
-<blockquote>
-<p>  [1,2] 这个数组进行归并</p>
-<p>  left = 0, right = 1</p>
-<p>  mid计算后得 0</p>
-<p>  进入下一层递归<code>merge_sort(arr, left, mid)</code></p>
-<p>  此时，left = 0 , mid = 0，表示只有一个元素不可再分，所以应该直接返回</p>
-</blockquote>
-<p><strong>注意2：</strong></p>
-<p><code>merge_sort(arr, left, mid)</code> ，逻辑分割原数组</p>
-<p><strong>注意3：</strong></p>
-<pre><code class="python">merge_sort(arr, left, mid)
-merge_sort(arr, mid + 1, right)
-merge_two_sorted_array(arr, left, mid, right)</code></pre>
-<p>在执行完左右两次 <code>merge_sort</code>之后，[left, mid] 和 [mid+1, right] 分别有序，所以调用 <code>merge_two_sorted_array</code> 将[left, right]区间内的元素进行排序</p>
-<ul>
-<li>编写<code>merge_two_sorted_array</code>方法</li>
-</ul>
-<pre><code class="python">def merge_two_sorted_array(arr, left, mid, right):
-    # 左数组 arr[left:mid]
-    # 右数组 arr[mid:right]
-    # 将这个需要合并的区间复制一份出来，用于比较
-    temp = arr[left:right + 1]
-    # p1, p2 分别是左数组和右数组的起始位置索引值
-    p1, p2 = 0, mid - left + 1
-    length = len(temp)
-    for i in range(length):
-        if p1 &gt; mid - left:
-            # 左边已走完
-            arr[i + left] = temp[p2]
-            p2 += 1
-        elif p2 &gt; length - 1:
-            # 右边已走完
-            arr[i + left] = temp[p1]
-            p1 += 1
-        elif temp[p1] &lt;= temp[p2]:
-            arr[i + left] = temp[p1]
-            p1 += 1
-        elif temp[p1] &gt; temp[p2]:
-            arr[i + left] = temp[p2]
-            p2 += 1</code></pre>
-<p>一点一点解释上面<code>merge_two_sorted_array</code>的代码</p>
-<p><strong>注意1：temp = arr[left:right + 1]</strong></p>
-<p>将原数组[left, right]区间复制出来，其重要就是方便比较。用<code>temp</code>数组比较，然后将正确的值赋值到原数组对应的位置</p>
-<p><strong>注意2：p1, p2 = 0, mid - left + 1</strong></p>
-<p>p1, p2 是两个有序数组的起始位置索引，p1 和 p2的索引是对于 <code>temp</code> 来说的</p>
-<p>再解释下为什么p1 p2 会是 0 , mid - left + 1</p>
-<blockquote>
-<p>  首先在原数组中有</p>
-<p>  左数组 arr[left:mid]， 区间为 [left, mid - 1]</p>
-<p>  右数组 arr[mid:right]， 区间为 [mid, right]</p>
-<p>  所以，此时左数组的起始元素位置索引是 <code>left</code>， 而右数组的是 <code>mid</code></p>
-<p>  因为 此区间被赋值到 临时数组<code>temp</code>上，所以对于临时数组而言：</p>
-<p>  左数组的起始元素位置索引是 <code>left - left</code> ，即 <code>0</code></p>
-<p>  右数组的起始元素位置索引是 <code>mid - left + 1</code></p>
-</blockquote>
-<p><strong>循环内的代码</strong></p>
-<pre><code class="python">    for i in range(length):
-        if p1 &gt; mid - left:
-            # 左边已走完
-            arr[i + left] = temp[p2]
-            p2 += 1
-        elif p2 &gt; length - 1:
-            # 右边已走完
-            arr[i + left] = temp[p1]
-            p1 += 1
-        elif temp[p1] &lt;= temp[p2]:
-            arr[i + left] = temp[p1]
-            p1 += 1
-        elif temp[p1] &gt; temp[p2]:
-            arr[i + left] = temp[p2]
-            p2 += 1</code></pre>
-<p>前两个判断： 判断左右两数组中，其中一个走完后，所应该做的操作</p>
-<p>后两个判断：判断大小关系</p>
-<p><strong>完整代码：</strong></p>
-<pre><code class="python">def merge_two_sorted_array(arr, left, mid, right):
-    # arr[left:mid]
-    # arr[mid:right]
-    p1, p2 = 0, mid - left + 1
-    # 将这个需要合并的区间复制一份出来，用于比较
-    temp = arr[left:right + 1]
-    length = len(temp)
-    for i in range(length):
-        if p1 &gt; mid - left:
-            # 左边已走完
-            arr[i + left] = temp[p2]
-            p2 += 1
-        elif p2 &gt; length - 1:
-            # 右边已走完
-            arr[i + left] = temp[p1]
-            p1 += 1
-        elif temp[p1] &lt;= temp[p2]:
-            arr[i + left] = temp[p1]
-            p1 += 1
-        elif temp[p1] &gt; temp[p2]:
-            arr[i + left] = temp[p2]
-            p2 += 1
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。</p>
+<p>示例 1:</p>
+<pre><code>输入: [3,2,1,5,6,4] 和 k = 2
+输出: 5</code></pre><p>示例 2:</p>
+<pre><code>输入: [3,2,3,1,2,4,5,5,6] 和 k = 4
+输出: 4</code></pre><p>说明:</p>
+<p>你可以假设 k 总是有效的，且 1 ≤ k ≤ 数组的长度。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/kth-largest-element-in-an-array</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<a id="more"></a>
 
 
-def merge_sort(arr, left, right):
-    if left &gt;= right:
-        return
-    mid = (left + right) &gt;&gt; 1
-    merge_sort(arr, left, mid)
-    merge_sort(arr, mid + 1, right)
-    merge_two_sorted_array(arr, left, mid, right)
 
-
-def main():
-    arr = [1,0,6]
-    merge_sort(arr, 0, len(arr)-1)
-    # merge_sort(arr)
-    print(arr)</code></pre>
-<h2 id="三个优化方向"><a href="#三个优化方向" class="headerlink" title="三个优化方向"></a>三个优化方向</h2><ul>
-<li>如果两个数组，直接拼起来就是有序的，就无须 merge。即当 <code>arr[mid] &lt;= arr[mid + 1]</code> 的时候是不用 merge 的；</li>
-<li>因为「插入排序」在小规模的排序任务上表现出色，所以我们可以在小区间里使用「插入排序」；</li>
-<li>我们每次做归并的时候，都 new 了辅助的空间，用完之后就丢弃了。事实上，我们可以全程使用 <strong>1 个和待排序数组一样长度的数组</strong>作为辅助归并两个排序数组的临时空间，这样就避免了频繁 new  和 delete 数组空间的操作。</li>
-</ul>
-<h2 id="优化1：如果两个数组有序则无需归并"><a href="#优化1：如果两个数组有序则无需归并" class="headerlink" title="优化1：如果两个数组有序则无需归并"></a>优化1：如果两个数组有序则无需归并</h2><pre><code class="python">def merge_sort(arr, left, right):
-    if left &gt;= right:
-        return
-    mid = left + (right - left) // 2
-    merge_sort(arr, left, mid)
-    merge_sort(arr, mid + 1, right)
-    # 优化1
-    if arr[mid] &lt;= arr[mid + 1]:
-        return
-    merge_of_two_sorted_array(arr, left, mid, right)</code></pre>
-<h2 id="优化2：小区间使用「插入排序」"><a href="#优化2：小区间使用「插入排序」" class="headerlink" title="优化2：小区间使用「插入排序」"></a>优化2：小区间使用「插入排序」</h2><p>定义一个新函数 <code>insert_sort_for_merge</code> 在原数组[left, right]区间内通过「插入排序」变得有序</p>
-<pre><code class="python">def insert_sort_for_merge_1(arr, left, right):
-    &quot;&quot;&quot;
-    逐个向前交换的插入排序
-    &quot;&quot;&quot;
-    # n = right - left + 1
+<h2 id="解法1：基于堆排序"><a href="#解法1：基于堆排序" class="headerlink" title="解法1：基于堆排序"></a>解法1：基于堆排序</h2><pre><code class="python">class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -&gt; int:
+        import heapq
+        queue = []
+        for n in nums:
+            heapq.heappush(queue, n)
+            if len(queue) &gt; k:
+                heapq.heappop(queue)
+        return heapq.heappop(queue)</code></pre>
+<h2 id="解法2：基于快速排序的切分"><a href="#解法2：基于快速排序的切分" class="headerlink" title="解法2：基于快速排序的切分"></a>解法2：基于快速排序的切分</h2><p>在快速排序<strong>切分</strong> 这一步中，可以简单的看做是左右两部分，分别是小于基准值和大于基准值</p>
+<p>如果小于基准值部分的元素个数为K，那么此时切分元素刚好就是第K大的元素</p>
+<h3 id="基于基础快排的切分过程"><a href="#基于基础快排的切分过程" class="headerlink" title="基于基础快排的切分过程"></a>基于基础快排的切分过程</h3><pre><code class="python">def partition(nums, left, right):
+    # 拿出基准值
+    pivot = nums[left]
+    lt = left
     for i in range(left + 1, right + 1):
-        for j in range(i, left, -1):  # 这里是 left
-            if arr[j - 1] &gt; arr[j]:
-                arr[j], arr[j - 1] = arr[j - 1], arr[j]
-            else:
-                break</code></pre>
-<p>关于「插入排序」还有一种「多次赋值」法更加高效</p>
-<pre><code class="python">def insert_sort_for_merge_2(arr, left, right):
-    &quot;&quot;&quot;
-    多次赋值
-    &quot;&quot;&quot;
+        if nums[i] &lt; pivot:
+            lt += 1
+            nums[lt], nums[i] = nums[i], nums[lt]
+    nums[left], nums[lt] = nums[lt], nums[left]
+    return lt</code></pre>
+<p>在上述代码返回 <code>lt</code> ，此时将数组逻辑的分割成两部分，我们只需要判断下 在 <code>lt</code>之前的元素个数与<code>k</code>的关系即可</p>
+<pre><code class="python">def findKthLargest(nums, k):
+    length = len(nums)
+    left = 0
+    right = length - 1
+    # 应该比K小于或等于的元素个数
+    target = length - k
+    while True:
+        p_index = partition(nums, left, right)
+        if target == p_index:
+            return nums[p_index]
+        elif target &lt; p_index:
+            # 下一轮搜索区间 [left, p_index - 1]
+            right = p_index - 1
+        elif target &gt; p_index:
+            # 下一轮搜索区间 [p_index + 1, right]
+            left = p_index + 1</code></pre>
+<p>了解过快排算法就知道这种切分写法虽然简单易理解，但是存在递归树倾斜的情况，严重影响执行效率，在此基础上，我们可以随机选择基准值降低递归树倾斜的概率</p>
+<pre><code class="python">import random
+
+def partition(nums, left, right):
+    # 在[left, right]中随机选择一个
+    index = random.randint(left, right)
+    nums[left], nums[index] = nums[index], nums[left]
+
+    # 取出基准值
+    pivot = nums[left]
+    lt = left
     for i in range(left + 1, right + 1):
-        # 临时保存
-        temp = arr[i]
-        # 表示当前元素的前一个位置
-        p = i - 1
-        while p &gt;= left and arr[p] &gt; temp:
-            # 将p所在位置元素向后移动一位，留出插入位置
-            arr[p+1] = arr[p]
-            # ”指针“ 左移
-            p -= 1
-        # 退出循环时，空出了一个位置，这个位置可以将 我们之前临时保存的值插入
-        arr[p + 1] = temp</code></pre>
-<p>「插入排序」在小规模的排序任务上表现出色，所以我们这里让长度小于 15 的区间使用插入排序</p>
-<pre><code class="python">def merge_sort(arr, left, right):
-    # 优化2
-    if right - left &lt;= 15:
-        insert_sort_for_merge_2(arr, left, right)
-        return
+        if nums[i] &lt; pivot:
+            lt += 1
+            nums[lt], nums[i] = nums[i], nums[lt]
+    nums[left], nums[lt] = nums[lt], nums[left]
+    return lt</code></pre>
+<h3 id="基于双路快排的切分过程"><a href="#基于双路快排的切分过程" class="headerlink" title="基于双路快排的切分过程"></a>基于双路快排的切分过程</h3><p>既然可以使用快速排序的切分来完成此题，同样也可以用快排的优化方式来优化这种解法，提高执行效率</p>
+<pre><code class="python">def findKthLargest(nums, k):
+    length = len(nums)
+    left = 0
+    right = length - 1
+    # 应该比K小于或等于的元素个数
+    target = length - k
+    while True:
+        p_index = partition(nums, left, right)
+        if target == p_index:
+            return nums[p_index]
+        elif target &lt; p_index:
+            # 下一轮搜索区间 [left, p_index - 1]
+            right = p_index - 1
+        elif target &gt; p_index:
+            # 下一轮搜索区间 [p_index + 1, right]
+            left = p_index + 1
 
-    mid = left + (right - left) // 2  # 这是一个陷阱
-    merge_sort(arr, left, mid)
-    merge_sort(arr, mid + 1, right)
-    # 优化1
-    if arr[mid] &lt;= arr[mid + 1]:
-        return
-    merge_of_two_sorted_array(arr, left, mid, right)</code></pre>
-<h2 id="优化3：全局使用一个临时数组用于归并"><a href="#优化3：全局使用一个临时数组用于归并" class="headerlink" title="优化3：全局使用一个临时数组用于归并"></a>优化3：全局使用一个临时数组用于归并</h2><pre><code class="python">def main(arr):
-    # 优化3： 定义一个同等长度的全局辅助数组
-    global nums_for_compare
-    nums_for_compare = list(range(len(nums)))
-    merge_sort(nums, 0, len(nums) - 1)</code></pre>
-<p>之前我们在 <code>merge_of_two_sorted_array</code> 函数中，有不断的新建 <code>temp</code>数组用于比较，此时我们可以替换成这个全局数组 <code>nums_for_compare</code>，同样使用left 和 right 限制其区间</p>
-<pre><code class="python">def merge_two_sorted_array(arr, left, mid, right):
-    # 因为nums_for_compare 默认是空的，所以我们需要在对应索引位置赋值
-    for i in range(left, right + 1):
-        nums_for_compare[i] = arr[i]
-    p1 = left # 左边数组起始位置索引
-    p2 = mid + 1 # 右边数组起始位置索引
-    for k in range(left, right + 1):
-        if p1 &gt;= mid + 1:
-            # 左边走完了
-            arr[k] = nums_for_compare[p2]
-            p2 += 1
-        elif p2 &gt;= lengh - 1:
-            # 右边走完了
-            arr[k] = nums_for_compare[p1]
-            p1 += 1
-           elif nums_for_compare[p1] &lt;= nums_for_compare[p2]:
-            arr[k] = nums_for_compare[p1]
-            p1 += 1
-        else:
-            arr[k] = nums_for_compare[p2]
-            p2 += 1</code></pre>
-<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><pre><code class="python">def insert_sort_for_merge_2(arr, left, right):
-    &quot;&quot;&quot;
-    多次赋值
-    &quot;&quot;&quot;
-    for i in range(left + 1, right + 1):
-        # 临时保存
-        temp = arr[i]
-        p = i - 1
-        while p &gt;= left and arr[p] &gt; temp:
-            # if arr[p] &gt; temp:
-            arr[p + 1] = arr[p]
-            # ”指针“ 左移
-            p -= 1
-        # 退出循环时，空出了一个位置，这个位置可以将 我们之前临时保存的值插入
-        arr[p + 1] = temp
+def partition(nums, left, right):
+    pivot = nums[left]
+    le = left + 1
+    ge = right
+    while True:
+        while le &lt;= right and nums[le] &lt; pivot:
+            le += 1
 
+        while ge &gt;= left + 1 and nums[ge] &gt; pivot:
+            ge -= 1
 
-def merge_two_sorted_array(arr, left, mid, right):
-    # 因为nums_for_compare 默认是空的，所以我们需要在对应索引位置赋值
-    for i in range(left, right + 1):
-        nums_for_compare[i] = arr[i]
-    p1 = left  # 左边数组起始位置索引
-    p2 = mid + 1  # 右边数组起始位置索引
-    for k in range(left, right + 1):
-        if p1 &gt;= mid + 1:
-            # 左边走完了
-            arr[k] = nums_for_compare[p2]
-            p2 += 1
-        elif p2 &gt; right:
-            # 右边走完了
-            arr[k] = nums_for_compare[p1]
-            p1 += 1
-        elif nums_for_compare[p1] &lt; nums_for_compare[p2]:
-            arr[k] = nums_for_compare[p1]
-            p1 += 1
-        else:
-            arr[k] = nums_for_compare[p2]
-            p2 += 1
+        if le &gt; ge:
+            break
 
+        nums[le], nums[ge] = nums[ge], nums[le]
+        le += 1
+        ge -= 1
 
-def merge_sort(arr, left, right):
-    # 优化2
-    if right - left &lt;= 15:
-        insert_sort_for_merge_2(arr, left, right)
-        return
-
-    mid = left + (right - left) // 2  # 这是一个陷阱
-    merge_sort(arr, left, mid)
-    merge_sort(arr, mid + 1, right)
-    # 优化1
-    if arr[mid] &lt;= arr[mid + 1]:
-        return
-    merge_two_sorted_array(arr, left, mid, right)
-
-
-def main():
-    # 优化3
-    global nums_for_compare
-    arr = [1,2,3,4,0]
-    nums_for_compare = list(range(len(arr)))
-    merge_sort(arr, 0, len(arr) - 1)
-
-
-if __name__ == &#39;__main__&#39;:
-    main()
-</code></pre>
-
+    nums[left], nums[ge] = nums[ge], nums[left]
+    return ge</code></pre>
+<h3 id="基于三路快排的切分过程"><a href="#基于三路快排的切分过程" class="headerlink" title="基于三路快排的切分过程"></a>基于三路快排的切分过程</h3>
       
     </div>
     
@@ -708,7 +467,9 @@ if __name__ == &#39;__main__&#39;:
       
         <div class="post-tags">
           
-            <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag"># 排序算法</a>
+            <a href="/tags/%E5%88%87%E5%88%86/" rel="tag"># 切分</a>
+          
+            <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" rel="tag"># 优先队列</a>
           
         </div>
       
@@ -721,8 +482,8 @@ if __name__ == &#39;__main__&#39;:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/27/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" rel="next" title="归并排序">
-                <i class="fa fa-chevron-left"></i> 归并排序
+              <a href="/2020/08/01/%E4%B8%89%E8%B7%AF%E5%BF%AB%E6%8E%92/" rel="next" title="三路快排">
+                <i class="fa fa-chevron-left"></i> 三路快排
               </a>
             
           </div>
@@ -730,10 +491,6 @@ if __name__ == &#39;__main__&#39;:
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/27/%E9%9D%A2%E8%AF%95%E9%A2%9851.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9/" rel="prev" title="面试题51.数组中的逆序对">
-                面试题51.数组中的逆序对 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -881,7 +638,7 @@ if __name__ == &#39;__main__&#39;:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重写归并排序"><span class="nav-number">1.</span> <span class="nav-text">重写归并排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三个优化方向"><span class="nav-number">2.</span> <span class="nav-text">三个优化方向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化1：如果两个数组有序则无需归并"><span class="nav-number">3.</span> <span class="nav-text">优化1：如果两个数组有序则无需归并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化2：小区间使用「插入排序」"><span class="nav-number">4.</span> <span class="nav-text">优化2：小区间使用「插入排序」</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化3：全局使用一个临时数组用于归并"><span class="nav-number">5.</span> <span class="nav-text">优化3：全局使用一个临时数组用于归并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整代码"><span class="nav-number">6.</span> <span class="nav-text">完整代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法1：基于堆排序"><span class="nav-number">2.</span> <span class="nav-text">解法1：基于堆排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法2：基于快速排序的切分"><span class="nav-number">3.</span> <span class="nav-text">解法2：基于快速排序的切分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于基础快排的切分过程"><span class="nav-number">3.1.</span> <span class="nav-text">基于基础快排的切分过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于双路快排的切分过程"><span class="nav-number">3.2.</span> <span class="nav-text">基于双路快排的切分过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于三路快排的切分过程"><span class="nav-number">3.3.</span> <span class="nav-text">基于三路快排的切分过程</span></a></li></ol></li></ol></div>
             
 
           </div>
