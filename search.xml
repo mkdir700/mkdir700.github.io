@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>1095. 山脉数组中查找目标值</title>
+      <link href="/2020/08/02/1095.%E5%B1%B1%E8%84%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E7%9B%AE%E6%A0%87%E5%80%BC/"/>
+      <url>/2020/08/02/1095.%E5%B1%B1%E8%84%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E7%9B%AE%E6%A0%87%E5%80%BC/</url>
+      
+        <content type="html"><![CDATA[<p>给你一个 山脉数组 <code>mountainArr</code>，请你返回能够使得 <code>mountainArr.get(index)</code> 等于 target 最小 的下标 index 值。</p><p>如果不存在这样的下标 index，就请返回 -1。</p><p>何为山脉数组？如果数组 A 是一个山脉数组的话，那它满足如下条件：</p><p>首先，A.length &gt;= 3</p><p>其次，在 <code>0 &lt; i &lt; A.length - 1</code> 条件下，存在 i 使得：</p><p><code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i]</code><br><code>A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code></p><p>你将 不能直接访问该山脉数组，必须通过 MountainArray 接口来获取数据：</p><p><code>MountainArray.get(k)</code> - 会返回数组中索引为k 的元素（下标从 0 开始）<br><code>MountainArray.length()</code> - 会返回该数组的长度</p><p>注意：</p><p>对 MountainArray.get 发起超过 100 次调用的提交将被视为错误答案</p><p>示例 1：</p><pre><code>输入：array = [1,2,3,4,5,3,1], target = 3输出：2解释：3 在数组中出现了两次，下标分别为 2 和 5，我们返回最小的下标 2。</code></pre><p>示例 2：</p><pre><code>输入：array = [0,1,2,4,2,1], target = 3输出：-1解释：3 在数组中没有出现，返回 -1。</code></pre><p>提示：</p><p><code>3 &lt;= mountain_arr.length() &lt;= 10000</code><br><code>0 &lt;= target &lt;= 10^9</code><br><code>0 &lt;= mountain_arr.get(index) &lt;= 10^9</code></p><p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/find-in-mountain-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-in-mountain-array</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p><a id="more"></a><h2 id="思路及算法"><a href="#思路及算法" class="headerlink" title="思路及算法"></a>思路及算法</h2><p>通过峰值元素，可以将原数组在逻辑上一分为二，分出来的两个子数组分别有序。</p><p>然后分别对 左边子数组 和 右边子数组 进行查找即可，两个数组均不满足则返回 <code>-1</code></p><h3 id="查找峰值元素"><a href="#查找峰值元素" class="headerlink" title="查找峰值元素"></a>查找峰值元素</h3><p>通过题目了解和直观的判断，我们可以知道 <strong>当一个数既大于左邻居数又大于右邻居数时，这个数就是峰值元素</strong></p><p>于是乎，我们可以使用二分查找的方法找到 峰值元素</p><pre><code class="python">def find_peak_index(left, right):    while left + 1 &lt; right:        mid = (left + right) &gt;&gt; 1        x = mountain_arr.get(mid)         # 中间元素        y = mountain_arr.get(mid+1)        # 右邻居元素        z = mountain_arr.get(mid-1)        # 左邻居元素        if x &gt; y and x &gt; z:            # 找到峰值            return mid        elif y &gt;= x &gt;= z:            left = mid        elif y &lt;= x &lt;= z:            right = mid</code></pre><p>因为两个子数组有着明显差异，一个升序，一个降序，所以收缩边界的条件可以进行优化</p><ul><li>当mid位置的元素大于右邻居元素时 <code>arr[mid] &gt; arr[mid + 1]</code></li></ul><p>mid落在了降序的子数组中，峰值在其左侧，所以<strong>收缩右边界 right = mid</strong>，因为当前 mid 的值刚好可能是峰值，所以这里就不 <code>+1</code></p><ul><li>反面 <code>arr[mid] &lt;= arr[mid + 1]</code></li></ul><p>mid落在了升序的子数组中，峰值在其右侧，所以<strong>收缩左边界 left = mid + 1</strong>，因为 mid 小于右邻居元素，所以它不可能是峰值元素，所以这里可以 <code>+1</code>   </p><pre><code class="python">def find_peak_index(left, right):    while left &lt; right:        mid = (left + right) &gt;&gt; 1        if mountain_arr.get(mid) &gt; mountain_arr.get(mid + 1):            right = mid        else:            left = mid + 1    return left</code></pre><h3 id="查找target元素"><a href="#查找target元素" class="headerlink" title="查找target元素"></a>查找target元素</h3><p>如果存在重复元素，按题目要求应该返回索引值较小的，所以我们先查找升序数组。</p><p>这一步依然是使用二分查找</p><pre><code class="python">        def binary_search(left, right, v):            while left &lt;= right:                mid = (left + right) &gt;&gt; 1                mid_value = mountain_arr.get(mid)                if mid_value &lt; target:                    if v:                        left = mid + 1                    else:                        right = mid - 1                elif mid_value &gt; target:                    if v:                        right = mid - 1                    else:                        left = mid + 1                else:                    return mid            return -1</code></pre><p>为了减少代码量，使升序数组和降序数组都可以使用，则新增一个布尔值，用于判断当前数组是升序还是降序</p><h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><pre><code class="python"># &quot;&quot;&quot;# This is MountainArray&#39;s API interface.# You should not implement it, or speculate about its implementation# &quot;&quot;&quot;#class MountainArray:#    def get(self, index: int) -&gt; int:#    def length(self) -&gt; int:class Solution:    def findInMountainArray(self, target: int, mountain_arr: &#39;MountainArray&#39;) -&gt; int:        # nums[i] &gt; nums[i+1] 表示i是峰值元素        size = mountain_arr.length()        left = 0        right = size - 1        def find_peak_index(left, right):            while left + 1 &lt; right:                mid = (left + right) &gt;&gt; 1                if mountain_arr.get(mid) &gt; mountain_arr.get(mid + 1):                    right = mid                else:                    left = mid + 1            return right        def binary_search(left, right, v):            while left &lt;= right:                mid = (left + right) &gt;&gt; 1                mid_value = mountain_arr.get(mid)                if mid_value &lt; target:                    if v:                        left = mid + 1                    else:                        right = mid - 1                elif mid_value &gt; target:                    if v:                        right = mid - 1                    else:                        left = mid + 1                else:                    return mid            return -1        peak = find_peak_index(left, right)        l = binary_search(left, peak, True)        if l != -1: return l        r = binary_search(peak+1, right, False)        return r if r != -1 else -1</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二分查找 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>215.数组中的第 K 个最大元素</title>
       <link href="/2020/08/01/251.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/"/>
       <url>/2020/08/01/251.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/</url>

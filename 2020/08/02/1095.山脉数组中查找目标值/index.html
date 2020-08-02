@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="排序算法," />
+  <meta name="keywords" content="二分查找," />
 
 
 
@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="思路开始的时候逐渐让数组变得基本有序，最后使用一次使用「插入排序」就变得高效了。  「逐渐让数组变得基本有序」的方法是让移动的「步幅」增大，不是一步一步挪过去，而是「大步流星」、「连蹦带跳」走过去； 「逐渐缩小增量」「分组实施插入排序让数组变得逐渐接近有序」「最后执行一次标准的插入排序」（ 最后一轮就是「原汁原味」的插入排序。">
+<meta name="description" content="给你一个 山脉数组 mountainArr，请你返回能够使得 mountainArr.get(index) 等于 target 最小 的下标 index 值。 如果不存在这样的下标 index，就请返回 -1。 何为山脉数组？如果数组 A 是一个山脉数组的话，那它满足如下条件： 首先，A.length &gt;&#x3D; 3 其次，在 0 &lt; i &lt; A.length - 1 条件下，存在 i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="希尔排序">
-<meta property="og:url" content="http://mkdir700.github.io/2020/07/19/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:title" content="1095. 山脉数组中查找目标值">
+<meta property="og:url" content="http://mkdir700.github.io/2020/08/02/1095.%E5%B1%B1%E8%84%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E7%9B%AE%E6%A0%87%E5%80%BC/index.html">
 <meta property="og:site_name" content="Mkdir700的算法笔记">
-<meta property="og:description" content="思路开始的时候逐渐让数组变得基本有序，最后使用一次使用「插入排序」就变得高效了。  「逐渐让数组变得基本有序」的方法是让移动的「步幅」增大，不是一步一步挪过去，而是「大步流星」、「连蹦带跳」走过去； 「逐渐缩小增量」「分组实施插入排序让数组变得逐渐接近有序」「最后执行一次标准的插入排序」（ 最后一轮就是「原汁原味」的插入排序。">
+<meta property="og:description" content="给你一个 山脉数组 mountainArr，请你返回能够使得 mountainArr.get(index) 等于 target 最小 的下标 index 值。 如果不存在这样的下标 index，就请返回 -1。 何为山脉数组？如果数组 A 是一个山脉数组的话，那它满足如下条件： 首先，A.length &gt;&#x3D; 3 其次，在 0 &lt; i &lt; A.length - 1 条件下，存在 i">
 <meta property="og:locale" content="zh">
-<meta property="article:published_time" content="2020-07-19T06:53:56.627Z">
-<meta property="article:modified_time" content="2020-07-19T06:53:46.000Z">
+<meta property="article:published_time" content="2020-08-02T02:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-02T03:29:33.000Z">
 <meta property="article:author" content="Mkdir700">
-<meta property="article:tag" content="排序算法">
+<meta property="article:tag" content="二分查找">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://mkdir700.github.io/2020/07/19/排序算法之希尔排序/"/>
+  <link rel="canonical" href="http://mkdir700.github.io/2020/08/02/1095.山脉数组中查找目标值/"/>
 
 
 
 
 
-  <title>希尔排序 | Mkdir700的算法笔记</title>
+  <title>1095. 山脉数组中查找目标值 | Mkdir700的算法笔记</title>
   
 
 
@@ -277,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://mkdir700.github.io/2020/07/19/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/">
+    <link itemprop="mainEntityOfPage" href="http://mkdir700.github.io/2020/08/02/1095.%E5%B1%B1%E8%84%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E7%9B%AE%E6%A0%87%E5%80%BC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mkdir700">
@@ -294,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">希尔排序</h1>
+          <h1 class="post-title" itemprop="name headline">1095. 山脉数组中查找目标值</h1>
         
 
         <div class="post-meta">
@@ -306,8 +306,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-19T14:53:56+08:00">
-                2020-07-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-02T10:00:00+08:00">
+                2020-08-02
               </time>
             
 
@@ -329,8 +329,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">算法学习</span>
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98/" itemprop="url" rel="index">
+                    <span itemprop="name">算法题</span>
                   </a>
                 </span>
 
@@ -366,77 +366,128 @@
       
 
       
-        <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>开始的时候逐渐让数组变得基本有序，最后使用一次使用「插入排序」就变得高效了。</p>
-<ul>
-<li>「逐渐让数组变得基本有序」的方法是让移动的「步幅」增大，不是一步一步挪过去，而是「大步流星」、「连蹦带跳」走过去；</li>
-<li>「逐渐缩小增量」「分组实施插入排序让数组变得逐渐接近有序」「最后执行一次标准的插入排序」（ 最后一轮就是「原汁原味」的插入排序。</li>
-</ul>
+        <p>给你一个 山脉数组 <code>mountainArr</code>，请你返回能够使得 <code>mountainArr.get(index)</code> 等于 target 最小 的下标 index 值。</p>
+<p>如果不存在这样的下标 index，就请返回 -1。</p>
+<p>何为山脉数组？如果数组 A 是一个山脉数组的话，那它满足如下条件：</p>
+<p>首先，A.length &gt;= 3</p>
+<p>其次，在 <code>0 &lt; i &lt; A.length - 1</code> 条件下，存在 i 使得：</p>
+<p><code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i]</code><br><code>A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code></p>
+<p>你将 不能直接访问该山脉数组，必须通过 MountainArray 接口来获取数据：</p>
+<p><code>MountainArray.get(k)</code> - 会返回数组中索引为k 的元素（下标从 0 开始）<br><code>MountainArray.length()</code> - 会返回该数组的长度</p>
+<p>注意：</p>
+<p>对 MountainArray.get 发起超过 100 次调用的提交将被视为错误答案</p>
+<p>示例 1：</p>
+<pre><code>输入：array = [1,2,3,4,5,3,1], target = 3
+输出：2
+解释：3 在数组中出现了两次，下标分别为 2 和 5，我们返回最小的下标 2。</code></pre><p>示例 2：</p>
+<pre><code>输入：array = [0,1,2,4,2,1], target = 3
+输出：-1
+解释：3 在数组中没有出现，返回 -1。</code></pre><p>提示：</p>
+<p><code>3 &lt;= mountain_arr.length() &lt;= 10000</code><br><code>0 &lt;= target &lt;= 10^9</code><br><code>0 &lt;= mountain_arr.get(index) &lt;= 10^9</code></p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/find-in-mountain-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-in-mountain-array</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
 <a id="more"></a>
 
-<h2 id="动态演示"><a href="#动态演示" class="headerlink" title="动态演示"></a>动态演示</h2><p>视频： <a href="https://www.bilibili.com/video/av64424835/" target="_blank" rel="noopener">https://www.bilibili.com/video/av64424835/</a></p>
-<h2 id="边想边写"><a href="#边想边写" class="headerlink" title="边想边写"></a>边想边写</h2><ul>
-<li>获取数组长度，求出第一次「步长」</li>
-</ul>
-<pre><code class="python">def shell_sort(nums):
-    length = len(nums)
-    gap = length // 2
-    # ...</code></pre>
+<h2 id="思路及算法"><a href="#思路及算法" class="headerlink" title="思路及算法"></a>思路及算法</h2><p>通过峰值元素，可以将原数组在逻辑上一分为二，分出来的两个子数组分别有序。</p>
+<p>然后分别对 左边子数组 和 右边子数组 进行查找即可，两个数组均不满足则返回 <code>-1</code></p>
+<h3 id="查找峰值元素"><a href="#查找峰值元素" class="headerlink" title="查找峰值元素"></a>查找峰值元素</h3><p>通过题目了解和直观的判断，我们可以知道 <strong>当一个数既大于左邻居数又大于右邻居数时，这个数就是峰值元素</strong></p>
+<p>于是乎，我们可以使用二分查找的方法找到 峰值元素</p>
+<pre><code class="python">def find_peak_index(left, right):
+    while left + 1 &lt; right:
+        mid = (left + right) &gt;&gt; 1
+        x = mountain_arr.get(mid)         # 中间元素
+        y = mountain_arr.get(mid+1)        # 右邻居元素
+        z = mountain_arr.get(mid-1)        # 左邻居元素
+        if x &gt; y and x &gt; z:
+            # 找到峰值
+            return mid
+        elif y &gt;= x &gt;= z:
+            left = mid
+        elif y &lt;= x &lt;= z:
+            right = mid</code></pre>
+<p>因为两个子数组有着明显差异，一个升序，一个降序，所以收缩边界的条件可以进行优化</p>
 <ul>
-<li>遍历数组，并比较</li>
+<li>当mid位置的元素大于右邻居元素时 <code>arr[mid] &gt; arr[mid + 1]</code></li>
 </ul>
-<pre><code class="python">def shell_sort(nums):
-    length = len(nums)
-    gap = length // 2
-    for i in range(length):
-        # 越界则退出循环
-        if i + gap &gt;= length:
-            break
-        if nums[i] &gt; nums[i+gap]:
-            nums[i], nums[i+gap] = nums[i+gap], nums[i]
-</code></pre>
+<p>mid落在了降序的子数组中，峰值在其左侧，所以<strong>收缩右边界 right = mid</strong>，因为当前 mid 的值刚好可能是峰值，所以这里就不 <code>+1</code></p>
 <ul>
-<li>上方只是完成了一次「步长」的比较，我们需要让步长一直到除到1才能结束</li>
+<li>反面 <code>arr[mid] &lt;= arr[mid + 1]</code></li>
 </ul>
-<pre><code class="python">def shell_sort(nums):
-    length = len(nums)
-    gap = length // 2
-    while gap &gt; 0:
-        for i in range(length):
-            if i + gap &gt;= length:
-                break
-            if nums[i] &gt; nums[i + gap]:
-                nums[i], nums[i + gap] = nums[i + gap], nums[i]
-        gap = gap // 2
-    return nums</code></pre>
-<blockquote>
-<p>  当最后<code>gap=1</code>时，其实就是执行了一次 「插入排序」</p>
-</blockquote>
-<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><pre><code class="python">def shell_sort(nums):
-    length = len(nums)
-    gap = length // 2
-    while gap &gt; 0:
-        for i in range(length):
-            if i + gap &gt;= length:
-                break
-            if nums[i] &gt; nums[i + gap]:
-                nums[i], nums[i + gap] = nums[i + gap], nums[i]
-        gap = gap // 2
-    return nums</code></pre>
-<h2 id="用例测试"><a href="#用例测试" class="headerlink" title="用例测试"></a>用例测试</h2><p>测试用例： <a href="https://leetcode-cn.com/submissions/detail/89203696/testcase/" target="_blank" rel="noopener">https://leetcode-cn.com/submissions/detail/89203696/testcase/</a></p>
-<p>使用此算法，<strong>用时：0.1754603385925293</strong></p>
-<p>和「选择排序相比」，效率大大提高</p>
-<h2 id="与「插入排序」对比"><a href="#与「插入排序」对比" class="headerlink" title="与「插入排序」对比"></a>与「插入排序」对比</h2><p>5000个随机数 「数组」的排序耗时：</p>
-<blockquote>
-<p>  shell_sort time:  0.020738601684570312<br>  insert_sort time:  0.8852617740631104</p>
-</blockquote>
-<p>5000个随机数 「“几乎有序”数组」的排序耗时：</p>
-<blockquote>
-<p>  shell_sort time:  0.0062313079833984375<br>  insert_sort time:  0.0076389312744140625</p>
-</blockquote>
-<p>至此，我们大致看出，对杂乱的情况排序，「希尔排序」更快，而这其中的主要原因就是 <strong>插入排序更擅长 “几乎有序”的数组</strong>， 在 “几乎有序”的数组排序中，「希尔」与「插入」相差无几</p>
-<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul>
-<li>时间复杂度：O(n^(1.3—2)^)，希尔排序是<strong>非稳定的排序方法</strong>，最坏的情况与「插入排序」一样是 <em>O(n^2)</em></li>
-</ul>
+<p>mid落在了升序的子数组中，峰值在其右侧，所以<strong>收缩左边界 left = mid + 1</strong>，因为 mid 小于右邻居元素，所以它不可能是峰值元素，所以这里可以 <code>+1</code>   </p>
+<pre><code class="python">def find_peak_index(left, right):
+    while left &lt; right:
+        mid = (left + right) &gt;&gt; 1
+        if mountain_arr.get(mid) &gt; mountain_arr.get(mid + 1):
+            right = mid
+        else:
+            left = mid + 1
+    return left</code></pre>
+<h3 id="查找target元素"><a href="#查找target元素" class="headerlink" title="查找target元素"></a>查找target元素</h3><p>如果存在重复元素，按题目要求应该返回索引值较小的，所以我们先查找升序数组。</p>
+<p>这一步依然是使用二分查找</p>
+<pre><code class="python">        def binary_search(left, right, v):
+            while left &lt;= right:
+                mid = (left + right) &gt;&gt; 1
+                mid_value = mountain_arr.get(mid)
+                if mid_value &lt; target:
+                    if v:
+                        left = mid + 1
+                    else:
+                        right = mid - 1
+                elif mid_value &gt; target:
+                    if v:
+                        right = mid - 1
+                    else:
+                        left = mid + 1
+                else:
+                    return mid
+            return -1</code></pre>
+<p>为了减少代码量，使升序数组和降序数组都可以使用，则新增一个布尔值，用于判断当前数组是升序还是降序</p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><pre><code class="python"># &quot;&quot;&quot;
+# This is MountainArray&#39;s API interface.
+# You should not implement it, or speculate about its implementation
+# &quot;&quot;&quot;
+#class MountainArray:
+#    def get(self, index: int) -&gt; int:
+#    def length(self) -&gt; int:
+
+class Solution:
+    def findInMountainArray(self, target: int, mountain_arr: &#39;MountainArray&#39;) -&gt; int:
+        # nums[i] &gt; nums[i+1] 表示i是峰值元素
+        size = mountain_arr.length()
+        left = 0
+        right = size - 1
+
+        def find_peak_index(left, right):
+            while left + 1 &lt; right:
+                mid = (left + right) &gt;&gt; 1
+                if mountain_arr.get(mid) &gt; mountain_arr.get(mid + 1):
+                    right = mid
+                else:
+                    left = mid + 1
+            return right
+
+        def binary_search(left, right, v):
+            while left &lt;= right:
+                mid = (left + right) &gt;&gt; 1
+                mid_value = mountain_arr.get(mid)
+                if mid_value &lt; target:
+                    if v:
+                        left = mid + 1
+                    else:
+                        right = mid - 1
+                elif mid_value &gt; target:
+                    if v:
+                        right = mid - 1
+                    else:
+                        left = mid + 1
+                else:
+                    return mid
+            return -1
+
+        peak = find_peak_index(left, right)
+        l = binary_search(left, peak, True)
+        if l != -1: return l
+        r = binary_search(peak+1, right, False)
+        return r if r != -1 else -1</code></pre>
 
       
     </div>
@@ -454,7 +505,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag"># 排序算法</a>
+            <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="tag"># 二分查找</a>
           
         </div>
       
@@ -467,8 +518,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/19/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" rel="next" title="插入排序">
-                <i class="fa fa-chevron-left"></i> 插入排序
+              <a href="/2020/08/01/251.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/" rel="next" title="215.数组中的第 K 个最大元素">
+                <i class="fa fa-chevron-left"></i> 215.数组中的第 K 个最大元素
               </a>
             
           </div>
@@ -476,10 +527,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/27/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E4%B9%8B%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" rel="prev" title="归并排序">
-                归并排序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -627,7 +674,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态演示"><span class="nav-number">2.</span> <span class="nav-text">动态演示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边想边写"><span class="nav-number">3.</span> <span class="nav-text">边想边写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整代码"><span class="nav-number">4.</span> <span class="nav-text">完整代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用例测试"><span class="nav-number">5.</span> <span class="nav-text">用例测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与「插入排序」对比"><span class="nav-number">6.</span> <span class="nav-text">与「插入排序」对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间复杂度"><span class="nav-number">7.</span> <span class="nav-text">时间复杂度</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路及算法"><span class="nav-number">1.</span> <span class="nav-text">思路及算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查找峰值元素"><span class="nav-number">1.1.</span> <span class="nav-text">查找峰值元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找target元素"><span class="nav-number">1.2.</span> <span class="nav-text">查找target元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整代码"><span class="nav-number">2.</span> <span class="nav-text">完整代码</span></a></li></ol></div>
             
 
           </div>
