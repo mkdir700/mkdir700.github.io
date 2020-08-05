@@ -88,7 +88,7 @@
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="http://cdn.z2blog.com/img/20200712183006.png">
 <meta property="article:published_time" content="2020-08-04T08:00:00.000Z">
-<meta property="article:modified_time" content="2020-08-05T13:53:38.000Z">
+<meta property="article:modified_time" content="2020-08-05T14:01:44.000Z">
 <meta property="article:author" content="Mkdir700">
 <meta property="article:tag" content="二分查找">
 <meta name="twitter:card" content="summary">
@@ -477,6 +477,11 @@
 <p>这是 <strong>搜索旋转排序数组</strong> 的延伸题目，本题中的 <strong>nums  可能包含重复元素。</strong><br>这会影响到程序的时间复杂度吗？会有怎样的影响，为什么？</p>
 <p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii" target="_blank" rel="noopener">https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii</a></p>
 <hr>
+<p>相比33题，这道题多了一个条件 <strong>nums 可能包含重复元素</strong></p>
+<p>所以可能出现这样的数组： <code>[2,2,2,1,2]</code></p>
+<p>在33题中，进行边界收缩依靠的是 <code>nums[left]</code> 与 <code>nums[mid]</code> 的关系，不是大于就是小于，我们可以清晰的判断并进行收缩</p>
+<p>而在<code>[2,2,2,1,2]</code>这个数组中，<code>nums[mid]</code> 与 <code>nums[left]</code> 相等时，nums[right] 可能也是相等的，所以这就导致了，我们无法分辨<code>mid</code>目前所处位置，可能是左边也可能是右边</p>
+<p>解决方法：当满足<code>nums[left] == nums[mid]</code>，将<code>left</code>向右收缩一位，直到不满足前面这个条件，然后就转换了33题。</p>
 <pre><code class="python">class Solution:
     def search(self, nums: List[int], target: int) -&gt; bool:
         left, right = 0, len(nums) - 1
@@ -496,8 +501,7 @@
                     left = mid + 1
                 else:
                     right = mid - 1
-         return False
-</code></pre>
+         return False</code></pre>
 
       
     </div>
