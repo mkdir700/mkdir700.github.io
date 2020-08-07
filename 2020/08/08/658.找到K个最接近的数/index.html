@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="二分搜索," />
+  <meta name="keywords" content="二分查找," />
 
 
 
@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="找到K个最接近的元素给定一个排序好的数组，两个整数 k 和 x，从数组中找到最靠近 x（两数之差最小）的 k 个数。返回的结果必须要是按升序排好的。如果有两个数与 x 的差值一样，优先选择数值较小的那个数。 示例 1: 输入: [1,2,3,4,5], k&#x3D;4, x&#x3D;3 输出: [1,2,3,4]示例 2: 输入: [1,2,3,4,5], k&#x3D;4, x&#x3D;-1 输出: [1,2,3,4]说明:">
+<meta name="description" content="题目给定一个排序好的数组，两个整数 k 和 x，从数组中找到最靠近 x（两数之差最小）的 k 个数。返回的结果必须要是按升序排好的。如果有两个数与 x 的差值一样，优先选择数值较小的那个数。 示例 1: 输入: [1,2,3,4,5], k&#x3D;4, x&#x3D;3 输出: [1,2,3,4]示例 2: 输入: [1,2,3,4,5], k&#x3D;4, x&#x3D;-1 输出: [1,2,3,4]说明:  k 的值为正数，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="658.找到K个最接近的元素">
-<meta property="og:url" content="http://mkdir700.github.io/2020/07/12/658.%E6%89%BE%E5%88%B0K%E4%B8%AA%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E6%95%B0/index.html">
+<meta property="og:title" content="658. 找到K个最接近的元素">
+<meta property="og:url" content="http://mkdir700.github.io/2020/08/08/658.%E6%89%BE%E5%88%B0K%E4%B8%AA%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E6%95%B0/index.html">
 <meta property="og:site_name" content="Mkdir700的算法笔记">
-<meta property="og:description" content="找到K个最接近的元素给定一个排序好的数组，两个整数 k 和 x，从数组中找到最靠近 x（两数之差最小）的 k 个数。返回的结果必须要是按升序排好的。如果有两个数与 x 的差值一样，优先选择数值较小的那个数。 示例 1: 输入: [1,2,3,4,5], k&#x3D;4, x&#x3D;3 输出: [1,2,3,4]示例 2: 输入: [1,2,3,4,5], k&#x3D;4, x&#x3D;-1 输出: [1,2,3,4]说明:">
+<meta property="og:description" content="题目给定一个排序好的数组，两个整数 k 和 x，从数组中找到最靠近 x（两数之差最小）的 k 个数。返回的结果必须要是按升序排好的。如果有两个数与 x 的差值一样，优先选择数值较小的那个数。 示例 1: 输入: [1,2,3,4,5], k&#x3D;4, x&#x3D;3 输出: [1,2,3,4]示例 2: 输入: [1,2,3,4,5], k&#x3D;4, x&#x3D;-1 输出: [1,2,3,4]说明:  k 的值为正数，">
 <meta property="og:locale" content="zh">
-<meta property="og:image" content="https://s1.ax1x.com/2020/07/08/UVsOsg.gif">
-<meta property="article:published_time" content="2020-07-12T06:23:05.969Z">
-<meta property="article:modified_time" content="2020-07-12T06:22:47.000Z">
+<meta property="og:image" content="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596816976206.png">
+<meta property="article:published_time" content="2020-08-07T16:19:01.698Z">
+<meta property="article:modified_time" content="2020-08-07T16:19:01.000Z">
 <meta property="article:author" content="Mkdir700">
-<meta property="article:tag" content="二分搜索">
+<meta property="article:tag" content="二分查找">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2020/07/08/UVsOsg.gif">
+<meta name="twitter:image" content="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596816976206.png">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://mkdir700.github.io/2020/07/12/658.找到K个最接近的数/"/>
+  <link rel="canonical" href="http://mkdir700.github.io/2020/08/08/658.找到K个最接近的数/"/>
 
 
 
 
 
-  <title>658.找到K个最接近的元素 | Mkdir700的算法笔记</title>
+  <title>658. 找到K个最接近的元素 | Mkdir700的算法笔记</title>
   
 
 
@@ -279,7 +279,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://mkdir700.github.io/2020/07/12/658.%E6%89%BE%E5%88%B0K%E4%B8%AA%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="http://mkdir700.github.io/2020/08/08/658.%E6%89%BE%E5%88%B0K%E4%B8%AA%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mkdir700">
@@ -296,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">658.找到K个最接近的元素</h1>
+          <h1 class="post-title" itemprop="name headline">658. 找到K个最接近的元素</h1>
         
 
         <div class="post-meta">
@@ -308,8 +308,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-12T14:23:05+08:00">
-                2020-07-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-08T00:19:01+08:00">
+                2020-08-08
               </time>
             
 
@@ -368,7 +368,7 @@
       
 
       
-        <h1 id="找到K个最接近的元素"><a href="#找到K个最接近的元素" class="headerlink" title="找到K个最接近的元素"></a>找到K个最接近的元素</h1><p>给定一个排序好的数组，两个整数 <code>k</code> 和 <code>x</code>，从数组中找到最靠近 <code>x</code>（两数之差最小）的 <code>k</code> 个数。返回的结果必须要是按升序排好的。如果有两个数与 <code>x</code> 的差值一样，优先选择数值较小的那个数。</p>
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个排序好的数组，两个整数 <code>k</code> 和 <code>x</code>，从数组中找到最靠近 <code>x</code>（两数之差最小）的 <code>k</code> 个数。返回的结果必须要是按升序排好的。如果有两个数与 <code>x</code> 的差值一样，优先选择数值较小的那个数。</p>
 <p><strong>示例 1:</strong></p>
 <pre><code>输入: [1,2,3,4,5], k=4, x=3
 输出: [1,2,3,4]</code></pre><p><strong>示例 2:</strong></p>
@@ -383,51 +383,40 @@
 <hr>
 <a id="more"></a>
 
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>本文参考这位大佬的题解[方法二： 二分查找最优区间的左边界]</p>
-<p><a href="https://leetcode-cn.com/problems/find-k-closest-elements/solution/pai-chu-fa-shuang-zhi-zhen-er-fen-fa-python-dai-ma/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-k-closest-elements/solution/pai-chu-fa-shuang-zhi-zhen-er-fen-fa-python-dai-ma/</a></p>
-<p>此问题转换为 <strong>查找最优区间的左边界</strong></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>一个月前做过此题，今天又做了下，不出意外的不知道又不知道怎么写了</p>
+<p>回来看这篇文章，写得也不是特别清晰，所以又重写了这篇题解</p>
+<p>本文参考这位大佬的题解 <a href="https://leetcode-cn.com/problems/find-k-closest-elements/solution/pai-chu-fa-shuang-zhi-zhen-er-fen-fa-python-dai-ma/" target="_blank" rel="noopener">方法二： 二分查找最优区间的左边界</a></p>
+<p>我看了大佬们的题解，都讲到了此问题转换为查找最优区间的左边界</p>
+<p>这里，我说明下为什么转换成查找最优区间的左边界的问题</p>
+<h3 id="转换问题"><a href="#转换问题" class="headerlink" title="转换问题"></a>转换问题</h3><p>对我个人而言，我一定需要去理解这个为什么，否则后面做题总是会混乱</p>
+<p><code>k</code>表示的是 最后输出的区间长度，也就是最优区间的长度</p>
+<p>那么可以理解为，只要确定一个区间的第一个元素就确定了这个区间，即 <code>[m ... m + k]</code></p>
+<p>所以问题就可以转换成寻找<strong>区间的左边界</strong></p>
+<p>因为<code>k</code>值 和 <code>nums</code>数组长度都是固定，所以<code>nums</code>能够产生的长度为<code>k</code>的子区间个数也是确定的</p>
 <pre><code>输入: [1,2,3,4,5], k=4, x=3
-输出: [1,2,3,4]</code></pre><p>例如这个示例，<strong>k为4</strong>，即区间的长度为4，这个区间可能是 <strong>[1,2,3,4] 和 [2,3,4,5]</strong>，所以最左边界元素的区间在 <strong>[0, 1]</strong>范围内</p>
-<p>也就是说，<strong>最优区间的左边界</strong>在<strong>[0, length-k]</strong>这个区间中</p>
-<p>那么，现在的问题就转换成了 在<strong>[0, length-k]</strong>区间内找到一个元素，这个元素是<strong>最优区间的左边界</strong></p>
-<p>来整理一下题目的条件：</p>
-<blockquote>
-<p><strong>x</strong> ： 目标值</p>
-<p><strong>k</strong> ： 结果数组内的元素个数</p>
-</blockquote>
-<ol>
-<li>最优区间内的每个元素与 <strong>x</strong> 的差值都是最小的</li>
-<li>找到的最优区间必须升序排列的</li>
-</ol>
-<h3 id="步骤解析"><a href="#步骤解析" class="headerlink" title="步骤解析"></a>步骤解析</h3><p>1.找到左边界元素所在区间</p>
-<blockquote>
-<p>这个很简单，就是[0, length-k]</p>
-</blockquote>
-<p>2.区间内的中位数(<strong>x - arr[mid]</strong>与<strong>arr[mid+k] - x</strong>进行比较)</p>
-<blockquote>
-<p>首先明白此时<strong>mid</strong>和<strong>mid+k</strong>各自代表的意义是什么？</p>
-<p>mid：“最优区间”的左边界，可能当前不是最优区间，待进一步二分查找</p>
-<p>mid+k：“最优区间”右边界的<strong>右边一位</strong></p>
-<p>1) 如果<strong>x - arr[mid] &gt; arr[mid+k] - x</strong>,说明什么？</p>
+输出: [1,2,3,4]</code></pre><p>例如上方示例，<strong>k为4</strong>，最优子区间只能是 <strong>[1,2,3,4] 或者 [2,3,4,5]</strong>，所以子区间的左边界元素在 <strong>[0, 1]</strong>范围内</p>
+<p>换成表达式，最优子区间的左边界在<code>[0, length - k]</code></p>
+<p>那么现在就是在<code>[0, length - k]</code>范围内寻找一个元素</p>
+<h3 id="如何比较"><a href="#如何比较" class="headerlink" title="如何比较"></a>如何比较</h3><p>在二分查找算法中，就是通过每次的条件比较，丢掉一半无用的数据</p>
+<p>在每一轮的循环中，我们可以计算出<code>x - nums[mid]</code> 的差值，如果这个差值过大，肯定需要向右移动，差值过小则向左移动。</p>
+<p>那么如何判断这个差值是过大还是过小呢？ 和谁比较呢？</p>
+<p><strong>与下一个子区间的左边界元素比较</strong></p>
+<p><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596816976206.png" alt=""></p>
 <ul>
-<li>说明 <strong>x</strong> 更应该靠近<strong>arr[mid+k]</strong>一些， 即<strong>arr[mid, mid+k]</strong>这个区间整体向右滑动，才可能成为 <strong>最优区间</strong></li>
-<li>要使得这个区间<strong>向右滑动</strong>，也就是将这个区间的<strong>左边界右移</strong>。</li>
-<li>回到二分查找，就是向右收缩 =&gt; <strong>left = mid + 1</strong></li>
+<li>如果<code>x - nums[mid] &gt; nums[mid + k] - x</code></li>
 </ul>
-<p>2) 如果<strong>x - arr[mid] &lt; arr[mid+k] - x</strong>,说明什么？</p>
+<p>此时区间<code>[mid ... mid + k - 1]</code> 应该整体向后移动一位变成 <code>[mid + 1 ... mid + k]</code>， 为什么？</p>
+<p>1、这个数组是升序排列；</p>
+<p>2、找到了差值更小值，所以应该将更小的值给包含到区间内，而<code>k</code>的长度不变，所以整体向右移动一位，其实就是子区间左边界向右移动一位</p>
 <ul>
-<li>说明 <strong>mid + k位置 及 右边所有的元素</strong> 都不符合最优区间（因为是升序的），当前的“最优区间”为 arr[mid, mid + k]。但是mid之前可能存在有元素哦，所以mid之前的元素应该继续进行判断</li>
-<li>mid之前的元素可能有更优的，就是区间<strong>可能向左移动</strong>，也可能当前mid就是最优区间的左边界（不移动）</li>
-<li>为了找到更合适的mid，所以应该收缩[0, length-k]这个区间，因为是去找mid及mid之前的元素，所以是向左收缩，即 right = mid</li>
-<li>为什么是right = mid，而不是right = mid - 1？因为mid这个位置的值，可能刚好就是<strong>最优区间的左边界</strong>，如果mid-1就错过了</li>
+<li>如果<code>x - nums[mid] &lt; nums[mid + k] - x</code></li>
 </ul>
-<p>3) 如果<strong>x - arr[mid] = arr[mid+k] - x</strong>,说明什么？</p>
+<p>这样的情况，说明<code>[mid + k ... right]</code>都不会是我们所需要的了，下一轮的搜索区间就是<code>[left, mid]</code>，因为<code>mid</code>这个位置可能刚好就是答案，所以这里向左收缩至<code>mid</code>即可，不必到<code>mid - 1</code></p>
 <ul>
-<li>仔细想想，这两者差值相等的情况是和 <strong>2)</strong> 的情况一致</li>
+<li>如果<code>x - nums[mid] == nums[mid + k] - x</code></li>
 </ul>
-</blockquote>
-<p>3.经过左右边界的不断收缩，最终找到的一个元素，这个元素就是 <strong>最优区间的左边界</strong>,即可求出答案</p>
-<p><img src="https://s1.ax1x.com/2020/07/08/UVsOsg.gif" alt="程序执行动图"></p>
+<p>题目要求：如果有两个数与 <code>x</code> 的差值一样，优先选择数值较小的那个数。</p>
+<p>所以等于 和 小于的处理方法一样</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="python">class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -&gt; List[int]:
         left, right = 0, len(arr) - k # 确定最优区间的左边界所在区间范围
@@ -455,7 +444,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2/" rel="tag"># 二分搜索</a>
+            <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="tag"># 二分查找</a>
           
         </div>
       
@@ -468,8 +457,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/12/23.%E5%90%88%E5%B9%B6K%E4%B8%AA%E6%8E%92%E5%BA%8F%E5%88%97%E8%A1%A8/" rel="next" title="23.合并K个排序列表">
-                <i class="fa fa-chevron-left"></i> 23.合并K个排序列表
+              <a href="/2020/08/04/33&81.%20%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" rel="next" title="33&81. 搜索旋转排序数组">
+                <i class="fa fa-chevron-left"></i> 33&81. 搜索旋转排序数组
               </a>
             
           </div>
@@ -477,10 +466,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/12/378.%E6%9C%89%E5%BA%8F%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/" rel="prev" title="378.有序矩阵中第K小的元素">
-                378.有序矩阵中第K小的元素 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -628,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#找到K个最接近的元素"><span class="nav-number">1.</span> <span class="nav-text">找到K个最接近的元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">1.1.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤解析"><span class="nav-number">1.1.1.</span> <span class="nav-text">步骤解析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#转换问题"><span class="nav-number">2.1.</span> <span class="nav-text">转换问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何比较"><span class="nav-number">2.2.</span> <span class="nav-text">如何比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>
