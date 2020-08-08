@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>167. 两数之和 II - 输入有序数组</title>
+      <link href="/2020/08/08/167.%20%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%20II%20-%20%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/"/>
+      <url>/2020/08/08/167.%20%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%20II%20-%20%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</url>
+      
+        <content type="html"><![CDATA[<p>给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。</p><p>函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。</p><p><strong>说明:</strong></p><ul><li>返回的下标值（index1 和 index2）不是从零开始的。</li><li>你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。</li></ul><p><strong>示例:</strong></p><pre><code>输入: numbers = [2, 7, 11, 15], target = 9输出: [1,2]解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。</code></pre><p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted" target="_blank" rel="noopener">https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted</a></p><a id="more"></a><hr><h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p><code>target</code>是数组中两个必定存在的数相加而来</p><p>我们可以固定一个数<code>x</code>，然后通过「二分查找」找出另外一个数字<code>y</code></p><p>如果没有找到，则重新固定一个数，继续寻找</p><p>举例：</p><pre><code>[2, 7, 11, 15] target = 9</code></pre><p><code>target - numbers[0]</code> 等于 <code>7</code>，然后在区间<code>[1 ... len(numbers)-1]</code>内 使用二分查找法，寻找是否有等于<code>7</code>的元素</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="python">class Solution:    def twoSum(self, numbers: List[int], target: int) -&gt; List[int]:        size = len(numbers)        for i in range(size):            # 待查找的值            y = target - numbers[i]            # 确定范围            left, right = i + 1, size - 1            # 二分查找            while left &lt;= right:                mid = (left + right) &gt;&gt; 1                if numbers[mid] &lt; y:                    left = mid + 1                elif numbers[mid] &gt; y:                    right = mid - 1                else:                    return [i+1, mid+1]</code></pre><h2 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>为数组的第一个元素和最后一个元素分别定义指针 <code>l</code> <code>h</code></p><ul><li><code>numbers[l] + numbers[h] &gt; target</code></li></ul><p>相加值大于<code>target</code>，此时我们需要让这个值变小，所以应该使<code>h</code>指针向左移动</p><ul><li><code>numbers[l] + numbers[h] &lt; target</code></li></ul><p>相加值小于<code>target</code>，此时我们需要让这个值变大，所以应该使<code>l</code>指针向右移动</p><ul><li><code>numbers[l] + numbers[h] == target</code></li></ul><p>找到答案，返回<code>[l+1, h+1]</code>即可</p><h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre><code class="python">class Solution:    def twoSum(self, numbers: List[int], target: int) -&gt; List[int]:        l, h = 0, len(numbers) - 1        while l &lt; h:            if numbers[l] + numbers[h] &gt; target:                h -= 1            elif numbers[l] + numbers[h] &lt; target:                l += 1            else:                return [l+1, h+1]</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 双指针 </tag>
+            
+            <tag> 二分查找 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>658. 找到K个最接近的元素</title>
       <link href="/2020/08/08/658.%E6%89%BE%E5%88%B0K%E4%B8%AA%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E6%95%B0/"/>
       <url>/2020/08/08/658.%E6%89%BE%E5%88%B0K%E4%B8%AA%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E6%95%B0/</url>
