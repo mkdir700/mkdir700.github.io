@@ -87,8 +87,8 @@
 <meta property="og:description" content="题目给定一个排序好的数组，两个整数 k 和 x，从数组中找到最靠近 x（两数之差最小）的 k 个数。返回的结果必须要是按升序排好的。如果有两个数与 x 的差值一样，优先选择数值较小的那个数。 示例 1: 输入: [1,2,3,4,5], k&#x3D;4, x&#x3D;3 输出: [1,2,3,4]示例 2: 输入: [1,2,3,4,5], k&#x3D;4, x&#x3D;-1 输出: [1,2,3,4]说明:  k 的值为正数，">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596816976206.png">
-<meta property="article:published_time" content="2020-08-07T16:19:01.698Z">
-<meta property="article:modified_time" content="2020-08-07T16:19:01.000Z">
+<meta property="article:published_time" content="2020-08-08T00:44:17.961Z">
+<meta property="article:modified_time" content="2020-08-08T00:43:57.000Z">
 <meta property="article:author" content="Mkdir700">
 <meta property="article:tag" content="二分查找">
 <meta name="twitter:card" content="summary">
@@ -308,7 +308,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-08T00:19:01+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-08T08:44:17+08:00">
                 2020-08-08
               </time>
             
@@ -383,11 +383,11 @@
 <hr>
 <a id="more"></a>
 
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>一个月前做过此题，今天又做了下，不出意外的不知道又不知道怎么写了</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>一个月前做过此题，今天又做了下，不出意外的又不知道怎么写了</p>
 <p>回来看这篇文章，写得也不是特别清晰，所以又重写了这篇题解</p>
 <p>本文参考这位大佬的题解 <a href="https://leetcode-cn.com/problems/find-k-closest-elements/solution/pai-chu-fa-shuang-zhi-zhen-er-fen-fa-python-dai-ma/" target="_blank" rel="noopener">方法二： 二分查找最优区间的左边界</a></p>
 <p>我看了大佬们的题解，都讲到了此问题转换为查找最优区间的左边界</p>
-<p>这里，我说明下为什么转换成查找最优区间的左边界的问题</p>
+<p>这里，我说明下为什么可以转换成查找最优区间的左边界的问题</p>
 <h3 id="转换问题"><a href="#转换问题" class="headerlink" title="转换问题"></a>转换问题</h3><p>对我个人而言，我一定需要去理解这个为什么，否则后面做题总是会混乱</p>
 <p><code>k</code>表示的是 最后输出的区间长度，也就是最优区间的长度</p>
 <p>那么可以理解为，只要确定一个区间的第一个元素就确定了这个区间，即 <code>[m ... m + k]</code></p>
@@ -397,7 +397,7 @@
 输出: [1,2,3,4]</code></pre><p>例如上方示例，<strong>k为4</strong>，最优子区间只能是 <strong>[1,2,3,4] 或者 [2,3,4,5]</strong>，所以子区间的左边界元素在 <strong>[0, 1]</strong>范围内</p>
 <p>换成表达式，最优子区间的左边界在<code>[0, length - k]</code></p>
 <p>那么现在就是在<code>[0, length - k]</code>范围内寻找一个元素</p>
-<h3 id="如何比较"><a href="#如何比较" class="headerlink" title="如何比较"></a>如何比较</h3><p>在二分查找算法中，就是通过每次的条件比较，丢掉一半无用的数据</p>
+<h3 id="如何比较"><a href="#如何比较" class="headerlink" title="如何比较"></a>如何比较</h3><p>在二分查找算法中，就是通过每一轮的条件比较，丢掉一半无用的数据</p>
 <p>在每一轮的循环中，我们可以计算出<code>x - nums[mid]</code> 的差值，如果这个差值过大，肯定需要向右移动，差值过小则向左移动。</p>
 <p>那么如何判断这个差值是过大还是过小呢？ 和谁比较呢？</p>
 <p><strong>与下一个子区间的左边界元素比较</strong></p>
