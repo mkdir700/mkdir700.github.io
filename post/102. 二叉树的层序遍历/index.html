@@ -8,7 +8,7 @@
 <meta name="keywords" content="Mkdir700的算法笔记">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>658. 找到K个最接近的元素 | Mkdir700的算法笔记</title>
+<title>102. 二叉树的层序遍历 | Mkdir700的算法笔记</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1601187476577">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/pisces.css">
@@ -29,8 +29,8 @@
 
 
 
-  <meta name="description" content="658. 找到K个最接近的元素" />
-  <meta name="keywords" content="二分查找" />
+  <meta name="description" content="102. 二叉树的层序遍历" />
+  <meta name="keywords" content="二叉树" />
 </head>
 
 <body>
@@ -244,13 +244,7 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E9%A2%98%E7%9B%AE">题目</a></li>
-<li><a href="#%E6%80%9D%E8%B7%AF">思路</a>
-<ul>
-<li><a href="#%E8%BD%AC%E6%8D%A2%E9%97%AE%E9%A2%98">转换问题</a></li>
-<li><a href="#%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83">如何比较</a></li>
-</ul>
-</li>
+<li><a href="#%E7%AE%97%E6%B3%95%E5%8F%8A%E6%80%9D%E8%B7%AF">算法及思路</a></li>
 <li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
 </ul>
 </li>
@@ -519,8 +513,8 @@
           <div class="section bg-color post post-page">
             <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://mkdir700.github.io/post/658.找到K个最接近的数/">
-      658. 找到K个最接近的元素
+    <a class="post-title-link" href="https://mkdir700.github.io/post/102. 二叉树的层序遍历/">
+      102. 二叉树的层序遍历
     </a>
   </h1>
   <div class="post-meta">
@@ -528,7 +522,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-08-08</span>
+      <span>2020-09-27</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -537,8 +531,8 @@
       <span class="pc-show">分类于</span>
       
       
-      <a href="https://mkdir700.github.io/tag/h8G2Z4U_D/">
-        <span>二分查找</span>
+      <a href="https://mkdir700.github.io/tag/Di0gdPyV5l/">
+        <span>二叉树</span>
       </a>
       
       
@@ -547,17 +541,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>4分钟</span>
+      <span>2分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1034<span class="pc-show">字数</span></span>
+      <span>348<span class="pc-show">字数</span></span>
     </span>
     
     
     
-    <span id="/post/658.找到K个最接近的数/" data-flag-title="658. 找到K个最接近的元素" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/102. 二叉树的层序遍历/" data-flag-title="102. 二叉树的层序遍历" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span>浏览量：<span class="leancloud-visitors-count"></span></span>
@@ -566,76 +560,70 @@
   </div>
 </header>
             <div class="post-body next-md-body" id="post_body">
-              <h2 id="题目">题目</h2>
-<p>给定一个排序好的数组，两个整数 <code>k</code> 和 <code>x</code>，从数组中找到最靠近 <code>x</code>（两数之差最小）的 <code>k</code> 个数。返回的结果必须要是按升序排好的。如果有两个数与 <code>x</code> 的差值一样，优先选择数值较小的那个数。</p>
-<p><strong>示例 1:</strong></p>
-<pre><code>输入: [1,2,3,4,5], k=4, x=3
-输出: [1,2,3,4]
+              <p>给你一个二叉树，请你返回其按 层序遍历 得到的节点值。 （即逐层地，从左到右访问所有节点）。</p>
+<p></p>
+<p><strong>示例：</strong></p>
+<pre><code>二叉树：[3,9,20,null,null,15,7],
+
+    3
+   / \
+  9  20
+    /  \
+   15   7
+返回其层次遍历结果：
+
+[
+  [3],
+  [9,20],
+  [15,7]
+]
 </code></pre>
-<p><strong>示例 2:</strong></p>
-<pre><code>输入: [1,2,3,4,5], k=4, x=-1
-输出: [1,2,3,4]
-</code></pre>
-<p><strong>说明:</strong></p>
-<ol>
-<li>k 的值为正数，且总是小于给定排序数组的长度。</li>
-<li>数组不为空，且长度不超过 104</li>
-<li>数组里的每个元素与 x 的绝对值不超过 104</li>
-</ol>
-<p><strong>更新(2017/9/19):</strong><br>
-这个参数 <em>arr</em> 已经被改变为一个<strong>整数数组</strong>（而不是整数列表）。 <strong>请重新加载代码定义以获取最新更改。</strong></p>
-<hr>
+<p>来源：力扣（LeetCode）<br>
+链接：https://leetcode-cn.com/problems/binary-tree-level-order-traversal</p>
 <!-- more -->
-<h2 id="思路">思路</h2>
-<p>一个月前做过此题，今天又做了下，不出意外的又不知道怎么写了</p>
-<p>回来看这篇文章，写得也不是特别清晰，所以又重写了这篇题解</p>
-<p>本文参考这位大佬的题解 <a href="https://leetcode-cn.com/problems/find-k-closest-elements/solution/pai-chu-fa-shuang-zhi-zhen-er-fen-fa-python-dai-ma/">方法二： 二分查找最优区间的左边界</a></p>
-<p>我看了大佬们的题解，都讲到了此问题转换为查找最优区间的左边界</p>
-<p>这里，我说明下为什么可以转换成查找最优区间的左边界的问题</p>
-<h3 id="转换问题">转换问题</h3>
-<p>对我个人而言，我一定需要去理解这个为什么，否则后面做题总是会混乱</p>
-<p><code>k</code>表示的是 最后输出的区间长度，也就是最优区间的长度</p>
-<p>那么可以理解为，只要确定一个区间的第一个元素就确定了这个区间，即 <code>[m ... m + k]</code></p>
-<p>所以问题就可以转换成寻找<strong>区间的左边界</strong></p>
-<p>因为<code>k</code>值 和 <code>nums</code>数组长度都是固定，所以<code>nums</code>能够产生的长度为<code>k</code>的子区间个数也是确定的</p>
-<pre><code>输入: [1,2,3,4,5], k=4, x=3
-输出: [1,2,3,4]
-</code></pre>
-<p>例如上方示例，<strong>k为4</strong>，最优子区间只能是 <strong>[1,2,3,4] 或者 [2,3,4,5]</strong>，所以子区间的左边界元素在 **[0, 1]**范围内</p>
-<p>换成表达式，最优子区间的左边界在<code>[0, length - k]</code></p>
-<p>那么现在就是在<code>[0, length - k]</code>范围内寻找一个元素</p>
-<h3 id="如何比较">如何比较</h3>
-<p>在二分查找算法中，就是通过每一轮的条件比较，丢掉一半无用的数据</p>
-<p>在每一轮的循环中，我们可以计算出<code>x - nums[mid]</code> 的差值，如果这个差值过大，肯定需要向右移动，差值过小则向左移动。</p>
-<p>那么如何判断这个差值是过大还是过小呢？ 和谁比较呢？</p>
-<p><strong>与下一个子区间的左边界元素比较</strong></p>
-<figure data-type="image" tabindex="1"><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1596816976206.png" alt="" loading="lazy"></figure>
-<ul>
-<li>如果<code>x - nums[mid] &gt; nums[mid + k] - x</code></li>
-</ul>
-<p>此时区间<code>[mid ... mid + k - 1]</code> 应该整体向后移动一位变成 <code>[mid + 1 ... mid + k]</code>， 为什么？</p>
-<p>1、这个数组是升序排列；</p>
-<p>2、找到了差值更小值，所以应该将更小的值给包含到区间内，而<code>k</code>的长度不变，所以整体向右移动一位，其实就是子区间左边界向右移动一位</p>
-<ul>
-<li>如果<code>x - nums[mid] &lt; nums[mid + k] - x</code></li>
-</ul>
-<p>这样的情况，说明<code>[mid + k ... right]</code>都不会是我们所需要的了，下一轮的搜索区间就是<code>[left, mid]</code>，因为<code>mid</code>这个位置可能刚好就是答案，所以这里向左收缩至<code>mid</code>即可，不必到<code>mid - 1</code></p>
-<ul>
-<li>如果<code>x - nums[mid] == nums[mid + k] - x</code></li>
-</ul>
-<p>题目要求：如果有两个数与 <code>x</code> 的差值一样，优先选择数值较小的那个数。</p>
-<p>所以等于 和 小于的处理方法一样</p>
+<hr>
+<h2 id="算法及思路">算法及思路</h2>
+<p>层序遍历的介绍：https://leetcode-cn.com/leetbook/read/data-structure-binary-tree/xej9yc/</p>
+<blockquote>
+<p>层序遍历就是逐层遍历树结构。</p>
+<p><code>广度优先搜索</code>是一种广泛运用在树或图这类数据结构中，遍历或搜索的算法。</p>
+</blockquote>
+<p>层序遍历</p>
+<figure data-type="image" tabindex="1"><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1601186275085-GIF%202020-9-27%2013-57-06.gif" alt="" loading="lazy"></figure>
+<p>每个节点都可能存储着左右子节点，所以在进入下一层前，需要将下一层的两个节点做记录</p>
+<p>记录什么？左右子节点以及下一层的深度</p>
+<p>如何记录？依靠队列这个数据结构(先进先出)</p>
 <h2 id="代码">代码</h2>
-<pre><code class="language-python">class Solution:
-    def findClosestElements(self, arr: List[int], k: int, x: int) -&gt; List[int]:
-        left, right = 0, len(arr) - k # 确定最优区间的左边界所在区间范围
-        while left &lt; right:
-            mid = (left + right) &gt;&gt; 1 # 找到中位数
-            if x - arr[mid] &gt; arr[mid+k] - x: # 比较差值，收缩区间
-                left = mid + 1
-            elif x - arr[mid] &lt;= arr[mid+k] - x:
-                right = mid
-        return arr[left:left+k]
+<pre><code class="language-python"># Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def levelOrder(self, root: TreeNode) -&gt; List[List[int]]:
+        from collections import deque
+        queue = deque()
+        ans = []
+        # 如果是空树，直接返回
+        if not root:
+            return ans
+        # 将根节点放入队列中
+        queue.append((0, root))
+        while queue:
+            d, node = queue.popleft()
+            if d == len(ans):
+                ans.append([])
+
+            ans[d].append(node.val)
+            
+            # 将当前节点的左右子节点入队
+            if node.left:
+                queue.append((d+1, node.left))
+            if node.right:
+                queue.append((d+1, node.right))
+        return ans
 </code></pre>
 
             </div>
@@ -647,7 +635,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://mkdir700.github.io/post/658.找到K个最接近的数/" title="658. 找到K个最接近的元素">https://mkdir700.github.io/post/658.找到K个最接近的数/</a>
+      <a href="https://mkdir700.github.io/post/102. 二叉树的层序遍历/" title="102. 二叉树的层序遍历">https://mkdir700.github.io/post/102. 二叉树的层序遍历/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -656,21 +644,17 @@
   </ul>
   <div class="tags">
     
-      <a href="https://mkdir700.github.io/tag/h8G2Z4U_D/"># 二分查找</a>
+      <a href="https://mkdir700.github.io/tag/Di0gdPyV5l/"># 二叉树</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="167. 两数之和II" href="https://mkdir700.github.io/post/167-liang-shu-zhi-he-ii/">167. 两数之和II</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="167. 两数之和II" href="https://mkdir700.github.io/post/167-liang-shu-zhi-he-ii/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="33&amp;81. 搜索旋转排序数组" href="https://mkdir700.github.io/post/33&amp;81. 搜索旋转排序数组/">33&amp;81. 搜索旋转排序数组</a>
-        <a class="nav-mobile-next" title="33&amp;81. 搜索旋转排序数组" href="https://mkdir700.github.io/post/33&amp;81. 搜索旋转排序数组/">下一篇</a>
+        <a class="nav-pc-next" title="剑指 Offer 04. 二维数组中的查找" href="https://mkdir700.github.io/post/剑指 Offer 04. 二维数组中的查找/">剑指 Offer 04. 二维数组中的查找</a>
+        <a class="nav-mobile-next" title="剑指 Offer 04. 二维数组中的查找" href="https://mkdir700.github.io/post/剑指 Offer 04. 二维数组中的查找/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
