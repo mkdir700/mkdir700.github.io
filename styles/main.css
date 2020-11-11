@@ -1471,10 +1471,6 @@ pre > span.copy-code:hover {
 }
 .next-md-body blockquote {
   margin: 0;
-  border-left: 4px solid #42b983;
-  padding: 10px 15px;
-  color: #777;
-  background-color: rgba(66, 185, 131, 0.1);
 }
 .next-md-body ol,
 .next-md-body ul {
@@ -1739,15 +1735,6 @@ pre > span.copy-code:hover {
 }
 .next-md-body img[align=left] {
   padding-right: 20px;
-}
-p code,
-li code {
-  padding: 2px 4px;
-  border-radius: 2px;
-  font-family: var(--font-monospace);
-  font-size: 0.92rem;
-  color: #e96900;
-  background-color: #f8f8f8;
 }
 .next-md-body code {
   border-radius: 3px;

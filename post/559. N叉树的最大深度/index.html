@@ -8,7 +8,7 @@
 <meta name="keywords" content="Mkdir700的算法笔记">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>647. 回文子串 | Mkdir700的算法笔记</title>
+<title>559. N叉树的最大深度 | Mkdir700的算法笔记</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1605064440932">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/pisces.css">
@@ -29,8 +29,8 @@
 
 
 
-  <meta name="description" content="647. 回文子串" />
-  <meta name="keywords" content="动态规划,双指针" />
+  <meta name="description" content="559. N叉树的最大深度" />
+  <meta name="keywords" content="N叉树" />
 </head>
 
 <body>
@@ -244,8 +244,8 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E7%AE%97%E6%B3%95">思路及算法</a></li>
-<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+<li><a href="#%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E9%81%8D%E5%8E%86">自顶向下遍历</a></li>
+<li><a href="#%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E9%81%8D%E5%8E%86">自底向上遍历</a></li>
 </ul>
 </li>
 </ul>
@@ -513,8 +513,8 @@
           <div class="section bg-color post post-page">
             <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://mkdir700.github.io/post/647. 回文子串/">
-      647. 回文子串
+    <a class="post-title-link" href="https://mkdir700.github.io/post/559. N叉树的最大深度/">
+      559. N叉树的最大深度
     </a>
   </h1>
   <div class="post-meta">
@@ -522,7 +522,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-08-19</span>
+      <span>2020-09-27</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -531,14 +531,8 @@
       <span class="pc-show">分类于</span>
       
       
-      <a href="https://mkdir700.github.io/tag/1DYzBAIMa/">
-        <span>动态规划</span>
-      </a>、
-      
-      
-      
-      <a href="https://mkdir700.github.io/tag/m0Yv3GZOr/">
-        <span>双指针</span>
+      <a href="https://mkdir700.github.io/tag/bKg7lohYB/">
+        <span>N叉树</span>
       </a>
       
       
@@ -547,17 +541,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>4分钟</span>
+      <span>2分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>956<span class="pc-show">字数</span></span>
+      <span>259<span class="pc-show">字数</span></span>
     </span>
     
     
     
-    <span id="/post/647. 回文子串/" data-flag-title="647. 回文子串" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/559. N叉树的最大深度/" data-flag-title="559. N叉树的最大深度" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span>浏览量：<span class="leancloud-visitors-count"></span></span>
@@ -566,111 +560,73 @@
   </div>
 </header>
             <div class="post-body next-md-body" id="post_body">
-              <p>给定一个字符串，你的任务是计算这个字符串中有多少个回文子串。</p>
-<p>具有不同开始位置或结束位置的子串，即使是由相同的字符组成，也会被视作不同的子串。</p>
-<p></p>
-<p><strong>示例 1：</strong></p>
-<pre><code>输入：&quot;abc&quot;
-输出：3
-解释：三个回文子串: &quot;a&quot;, &quot;b&quot;, &quot;c&quot;
-</code></pre>
-<p><strong>示例 2：</strong></p>
-<pre><code>输入：&quot;aaa&quot;
-输出：6
-解释：6个回文子串: &quot;a&quot;, &quot;a&quot;, &quot;a&quot;, &quot;aa&quot;, &quot;aa&quot;, &quot;aaa&quot;
-</code></pre>
-<p><strong>提示：</strong></p>
-<p>输入的字符串长度不会超过 1000 。</p>
+              <p>给定一个 N 叉树，找到其最大深度。</p>
+<p>最大深度是指从根节点到最远叶子节点的最长路径上的节点总数。</p>
+<p>例如，给定一个 <code>3</code>叉树 :</p>
+<figure data-type="image" tabindex="1"><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1601190107086.png" alt="" loading="lazy"></figure>
+<p>我们应返回其最大深度，<code>3</code>。</p>
+<p><strong>说明:</strong></p>
+<ul>
+<li>树的深度不会超过<code>1000</code>。</li>
+<li>树的节点总不会超过<code>5000</code>。</li>
+</ul>
 <p>来源：力扣（LeetCode）<br>
-链接：https://leetcode-cn.com/problems/palindromic-substrings</p>
-<!--more-->
+链接：https://leetcode-cn.com/problems/maximum-depth-of-n-ary-tree</p>
+<!-- more -->
 <hr>
-<h2 id="思路及算法">思路及算法</h2>
-<ul>
-<li><strong>什么是回文串？</strong></li>
-</ul>
-<p>一个字符串从左往右 和 从右往左都是一样，则这个字符串是『回文字符串』</p>
-<p>例如： <code>aba</code> ， 从右往左依然是<code>aba</code></p>
-<p><strong>注:  一个字符，也是回文串</strong></p>
-<ul>
-<li><strong>怎么判断回文串？</strong></li>
-</ul>
-<p>相关题目： <a href="https://leetcode-cn.com/problems/palindrome-number/">9. 回文数</a></p>
-<ul>
-<li>如果字符串长度为<code>1</code>，则它就是『回文串』</li>
-<li>如果字符串长度为<code>2</code>，两个字符相同，则它就是『回文串』，例如 <code>aa</code></li>
-<li>如果字符串长度大于<code>2</code>
-<ul>
-<li>首尾字符相同以及中间部分的字符串是『回文串』，则它就是『回文串』，例如<code>aba</code>，首尾字符串相同(<code>a</code>)并且中间字符<code>b</code>也是回文串</li>
-<li>首尾字符串相同，中间字符(串)不是回文串，则不是『回文串』，例如 <code>abca</code></li>
-<li>首尾字符不相同，不是『回文串』</li>
-</ul>
-</li>
-</ul>
-<p>通过上面的分析，主要就是在字符串大于<code>2</code>的情况，现在我们就来解决这种情况</p>
-<p>首先，我们需要判断首尾元素，可以想到『双指针』</p>
-<p>让指针<code>i</code>遍历整个字符串<code>[0 ... len(s)]</code></p>
-<p>另一个指针<code>j</code>遍历<code>[0 ... i]</code></p>
-<p><strong>双指针遍历动图演示</strong></p>
-<figure data-type="image" tabindex="1"><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1597839508382-%E6%88%AA%E5%9B%BE%E5%BD%95%E5%B1%8F_%E9%80%89%E6%8B%A9%E5%8C%BA%E5%9F%9F_20200819201718.gif" alt="双指针遍历过程" loading="lazy"></figure>
-<p>根据动图可知，我们需要判断的就是 <code>[j ... i]</code> 这个字符串是不是『回文串』，则需要知道 <code>[j+1 ... i-1]</code>是不是『回文串』，所以我们建立『dp矩阵』，来保存『回文状态』</p>
-<p>举个具体的例子<code>[a, b, a]</code></p>
-<figure data-type="image" tabindex="2"><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1597840446309.png" alt="" loading="lazy"></figure>
-<ul>
-<li><strong>长度等于<code>1</code></strong></li>
-</ul>
-<p>当<code>i</code>为0，<code>j</code>为0时，此时<code>[j ... i]</code>表示是一个字符<code>a</code>，所以它是回文串，在<code>dp[i][j]</code>的状态为<code>True</code></p>
-<p>(i = 1, j = 1) 和 (i = 2, j = 2) 同理</p>
-<ul>
-<li><strong>长度大于<code>2</code></strong></li>
-</ul>
-<p>当<code>i</code>走到<code>2</code>， <code>j</code>为0，此时 <code>[j ... i]</code> 表示的字符串就是 <code>aba</code></p>
-<ol>
-<li>
-<p>首先判断下这个字符串的长度(<code>length = i - j + 1</code>)，大于<code>2</code></p>
-</li>
-<li>
-<p>然后判断<code>s[i] == s[j]</code>， 首尾字符是否相等，结果是相等的</p>
-</li>
-<li>
-<p>接着判断 <code>j</code> 与 <code>i</code> 中间的字符串 是不是 『回文串』，也就是判断<code>[j+1 ... i-1]</code>是不是『回文串』，因为在之前的遍历中做过判断并将状态保存在了 <code>dp矩阵</code> 中，所以可以直接访问<code>dp[i-1][j+1]</code>。</p>
-</li>
-<li>
-<p>满足所有条件，就是『回文串』并将当前字符串的『回文状态』保存至<code>dp矩阵</code>中 <code>dp[i][j] == True</code></p>
-</li>
-</ol>
-<p><strong>同样的方法可以用来解决<a href="https://leetcode-cn.com/problems/longest-palindromic-substring/">5. 最长回文子串</a>，赶快动手试试吧</strong></p>
-<h2 id="代码">代码</h2>
-<pre><code class="language-python">class Solution:
-    def countSubstrings(self, s: str) -&gt; int:
-        n = len(s)
-        dp = [[False]*n for _ in range(n)]
-        ans = 0
+<h2 id="自顶向下遍历">自顶向下遍历</h2>
+<pre><code class="language-python">&quot;&quot;&quot;
+# Definition for a Node.
+class Node:
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+&quot;&quot;&quot;
+
+class Solution:
+    def __init__(self):
+        self.ans = 0
+
+    def maxDepth(self, root: 'Node') -&gt; int:
+        self.helper(root, 0)
+        return self.ans
+    
+    def helper(self, root, depth):
+        if not root:
+            return
         
-        # 为了代码直观看到双指针遍历过程，这里用的两个while
-        # 可以换成双for
-        # for i in range(n):
-        # 	for j in range(i+1):
-        i = 0
-        while i &lt; n:
-            j = 0
-            while j &lt;= i:
-                length = i - j + 1
-                # 长度为1，必定为回文串
-                if length == 1:
-                    dp[i][j] = True
-                    ans += 1
-                # 长度为2，首尾字符相同，则为回文串
-                elif length == 2 and s[i] == s[j]:
-                    dp[i][j] = True
-                    ans += 1
-                # 长度大于3，首尾字符相同，中间字符串为回文串，则为回文串
-                elif length &gt; 2 and s[i] == s[j] and dp[i-1][j+1] == True:
-                    ans += 1
-                    dp[i][j] = True
-                j += 1
-            i += 1                
-        return ans
+        if not root.children:
+            # 当前节点为叶子节点
+            self.ans = max(self.ans, depth+1)
+        
+        for node in root.children:
+            self.helper(node, depth+1)
+</code></pre>
+<h2 id="自底向上遍历">自底向上遍历</h2>
+<pre><code class="language-python">&quot;&quot;&quot;
+# Definition for a Node.
+class Node:
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+&quot;&quot;&quot;
+
+class Solution:
+    def maxDepth(self, root: 'Node') -&gt; int:
+
+        if not root:
+            return 0
+        
+        if not root.children:
+            return 1
+
+        l = []
+
+        for node in root.children:
+            l.append(self.maxDepth(node))
+        
+        return max(l) + 1
+        
 </code></pre>
 
             </div>
@@ -682,7 +638,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://mkdir700.github.io/post/647. 回文子串/" title="647. 回文子串">https://mkdir700.github.io/post/647. 回文子串/</a>
+      <a href="https://mkdir700.github.io/post/559. N叉树的最大深度/" title="559. N叉树的最大深度">https://mkdir700.github.io/post/559. N叉树的最大深度/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -691,23 +647,17 @@
   </ul>
   <div class="tags">
     
-      <a href="https://mkdir700.github.io/tag/1DYzBAIMa/"># 动态规划</a>
-    
-      <a href="https://mkdir700.github.io/tag/m0Yv3GZOr/"># 双指针</a>
+      <a href="https://mkdir700.github.io/tag/bKg7lohYB/"># N叉树</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="22. 括号生成" href="https://mkdir700.github.io/post/22. 括号生成/">22. 括号生成</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="22. 括号生成" href="https://mkdir700.github.io/post/22. 括号生成/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="300. 最长上升子序列" href="https://mkdir700.github.io/post/300-zui-chang-shang-sheng-zi-xu-lie/">300. 最长上升子序列</a>
-        <a class="nav-mobile-next" title="300. 最长上升子序列" href="https://mkdir700.github.io/post/300-zui-chang-shang-sheng-zi-xu-lie/">下一篇</a>
+        <a class="nav-pc-next" title="102. 二叉树的层序遍历" href="https://mkdir700.github.io/post/102. 二叉树的层序遍历/">102. 二叉树的层序遍历</a>
+        <a class="nav-mobile-next" title="102. 二叉树的层序遍历" href="https://mkdir700.github.io/post/102. 二叉树的层序遍历/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

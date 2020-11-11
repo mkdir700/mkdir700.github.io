@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mkdir700.github.io</id>
     <title>Mkdir700的算法笔记</title>
-    <updated>2020-09-27T06:18:09.908Z</updated>
+    <updated>2020-11-11T03:14:22.996Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mkdir700.github.io"/>
     <link rel="self" href="https://mkdir700.github.io/atom.xml"/>
@@ -10,6 +10,95 @@
     <logo>https://mkdir700.github.io/images/avatar.png</logo>
     <icon>https://mkdir700.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Mkdir700的算法笔记</rights>
+    <entry>
+        <title type="html"><![CDATA[559. N叉树的最大深度]]></title>
+        <id>https://mkdir700.github.io/post/559. N叉树的最大深度/</id>
+        <link href="https://mkdir700.github.io/post/559. N叉树的最大深度/">
+        </link>
+        <updated>2020-09-27T07:00:37.000Z</updated>
+        <summary type="html"><![CDATA[<p>给定一个 N 叉树，找到其最大深度。</p>
+<p>最大深度是指从根节点到最远叶子节点的最长路径上的节点总数。</p>
+<p>例如，给定一个 <code>3</code>叉树 :</p>
+<figure data-type="image" tabindex="1"><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1601190107086.png" alt="" loading="lazy"></figure>
+<p>我们应返回其最大深度，<code>3</code>。</p>
+<p><strong>说明:</strong></p>
+<ul>
+<li>树的深度不会超过<code>1000</code>。</li>
+<li>树的节点总不会超过<code>5000</code>。</li>
+</ul>
+<p>来源：力扣（LeetCode）<br>
+链接：https://leetcode-cn.com/problems/maximum-depth-of-n-ary-tree</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>给定一个 N 叉树，找到其最大深度。</p>
+<p>最大深度是指从根节点到最远叶子节点的最长路径上的节点总数。</p>
+<p>例如，给定一个 <code>3</code>叉树 :</p>
+<figure data-type="image" tabindex="1"><img src="https://imgbedz2.oss-cn-shenzhen.aliyuncs.com/1601190107086.png" alt="" loading="lazy"></figure>
+<p>我们应返回其最大深度，<code>3</code>。</p>
+<p><strong>说明:</strong></p>
+<ul>
+<li>树的深度不会超过<code>1000</code>。</li>
+<li>树的节点总不会超过<code>5000</code>。</li>
+</ul>
+<p>来源：力扣（LeetCode）<br>
+链接：https://leetcode-cn.com/problems/maximum-depth-of-n-ary-tree</p>
+<!-- more -->
+<hr>
+<h2 id="自顶向下遍历">自顶向下遍历</h2>
+<pre><code class="language-python">&quot;&quot;&quot;
+# Definition for a Node.
+class Node:
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+&quot;&quot;&quot;
+
+class Solution:
+    def __init__(self):
+        self.ans = 0
+
+    def maxDepth(self, root: 'Node') -&gt; int:
+        self.helper(root, 0)
+        return self.ans
+    
+    def helper(self, root, depth):
+        if not root:
+            return
+        
+        if not root.children:
+            # 当前节点为叶子节点
+            self.ans = max(self.ans, depth+1)
+        
+        for node in root.children:
+            self.helper(node, depth+1)
+</code></pre>
+<h2 id="自底向上遍历">自底向上遍历</h2>
+<pre><code class="language-python">&quot;&quot;&quot;
+# Definition for a Node.
+class Node:
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+&quot;&quot;&quot;
+
+class Solution:
+    def maxDepth(self, root: 'Node') -&gt; int:
+
+        if not root:
+            return 0
+        
+        if not root.children:
+            return 1
+
+        l = []
+
+        for node in root.children:
+            l.append(self.maxDepth(node))
+        
+        return max(l) + 1
+        
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[102. 二叉树的层序遍历]]></title>
         <id>https://mkdir700.github.io/post/102. 二叉树的层序遍历/</id>
@@ -987,81 +1076,6 @@ s: &quot;abab&quot; p: &quot;ab&quot;
                 needCnt += 1
                 left += 1
         return False
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[209. 长度最小的子数组]]></title>
-        <id>https://mkdir700.github.io/post/209. 长度最小的子数组/</id>
-        <link href="https://mkdir700.github.io/post/209. 长度最小的子数组/">
-        </link>
-        <updated>2020-08-30T15:22:21.000Z</updated>
-        <summary type="html"><![CDATA[<p>给定一个含有 <code>n</code> 个正整数的数组和一个正整数 <code>s</code> ，找出该数组中满足其和 <code>≥ s</code> 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 <code>0</code>。</p>
-<p></p>
-<p><strong>示例：</strong></p>
-<pre><code>输入：s = 7, nums = [2,3,1,2,4,3]
-输出：2
-解释：子数组 [4,3] 是该条件下的长度最小的子数组。
-</code></pre>
-<p><strong>进阶：</strong></p>
-<p>如果你已经完成了 O(n) 时间复杂度的解法, 请尝试 O(n log n) 时间复杂度的解法。</p>
-<p>来源：力扣（LeetCode）<br>
-链接：https://leetcode-cn.com/problems/minimum-size-subarray-sum</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>给定一个含有 <code>n</code> 个正整数的数组和一个正整数 <code>s</code> ，找出该数组中满足其和 <code>≥ s</code> 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 <code>0</code>。</p>
-<p></p>
-<p><strong>示例：</strong></p>
-<pre><code>输入：s = 7, nums = [2,3,1,2,4,3]
-输出：2
-解释：子数组 [4,3] 是该条件下的长度最小的子数组。
-</code></pre>
-<p><strong>进阶：</strong></p>
-<p>如果你已经完成了 O(n) 时间复杂度的解法, 请尝试 O(n log n) 时间复杂度的解法。</p>
-<p>来源：力扣（LeetCode）<br>
-链接：https://leetcode-cn.com/problems/minimum-size-subarray-sum</p>
-<!-- more -->
-<hr>
-<h2 id="思路及分析">思路及分析</h2>
-<p>『滑动窗口』的题一般来说，可以把思路给想明白，就是直接操作起来的时候不知道该怎么写</p>
-<p>滑动窗口首先就是将窗口的左边界与右边界初始化为<code>0</code></p>
-<p>然后，我们将右边界向右移动，看一下是否能够满足<strong>题目的要求</strong></p>
-<p>在这道题中的要求就是： <strong>窗口内元素的和&gt;=s</strong></p>
-<pre><code>s = 7, nums = [2,3,1,2,4,3]
-</code></pre>
-<p>当窗口包含元素<code>[2, 3, 1, 2]</code>时，大于<code>s</code>，这个时候已经满足了条件</p>
-<p>当满足条件时，我们需要做以下几件事</p>
-<ol>
-<li>记录当前的结果，在此题中是记录长度</li>
-<li>考虑将左边界收缩</li>
-</ol>
-<p>以上就是完成一次滑动的过程。</p>
-<ul>
-<li>当条件一直不被满足时，一直移动右边界</li>
-<li>当条件一致被满足时，一致收缩左边界</li>
-</ul>
-<h2 id="完整代码">完整代码</h2>
-<pre><code class="language-python">class Solution:
-    def minSubArrayLen(self, s: int, nums: List[int]) -&gt; int:
-        length = len(nums)
-        if length == 0:
-            return 0
-        # 左右边界
-        left, right = 0, 0
-        ans = float('inf')
-        # 当前数组长度
-        cur_len = 0
-        # 数组和
-        total = 0
-        while right &lt; length:
-            total += nums[right]
-            cur_len += 1
-            while total &gt;= s:
-                ans = min(ans, cur_len)
-                total -= nums[left]
-                left += 1
-                cur_len -= 1
-            right += 1
-        return ans if ans != float('inf') else 0
 </code></pre>
 ]]></content>
     </entry>
